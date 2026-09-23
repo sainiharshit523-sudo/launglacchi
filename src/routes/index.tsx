@@ -281,11 +281,11 @@ export function HomePage() {
 
       {/* Sticky Top Header Navigation */}
       <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur-md transition-all shadow-sm">
-        <div className="mx-auto flex min-h-[86px] sm:min-h-[96px] max-w-7xl items-center justify-between px-3 py-2.5 sm:px-6 sm:py-3.5 lg:px-8">
+        <div className="mx-auto flex min-h-[64px] sm:min-h-[86px] max-w-7xl items-center justify-between px-3 py-2 sm:px-6 sm:py-3.5 lg:px-8">
           <a
             href="#home"
             onClick={() => setActiveHref("#home")}
-            className="group rounded-2xl py-1.5 px-2 sm:px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all hover:bg-muted/40"
+            className="group rounded-2xl py-1 px-1 sm:py-1.5 sm:px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all hover:bg-muted/40 shrink-0"
             title="Laung Laachi Restaurant Brahmpur"
           >
             <BrandMark size="lg" />
@@ -337,15 +337,16 @@ export function HomePage() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Booking Button in Header with pulsing ring */}
             <Button
               type="button"
               onClick={() => setBookingOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-primary to-amber-600 text-primary-foreground font-bold shadow-md hover:opacity-95 text-xs sm:text-sm h-9 sm:h-10 px-3.5 sm:px-4.5 animate-pulse-ring hover:scale-102 transition-transform"
+              className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-primary to-amber-600 text-primary-foreground font-bold shadow-md hover:opacity-95 text-xs sm:text-sm h-8.5 sm:h-10 px-2.5 sm:px-4.5 animate-pulse-ring hover:scale-102 transition-transform"
             >
-              <PartyPopper className="mr-1.5 size-4 animate-icon-bounce" />
-              <span>Book Banquet</span>
+              <PartyPopper className="mr-1 sm:mr-1.5 size-3.5 sm:size-4 animate-icon-bounce shrink-0" />
+              <span className="hidden min-[420px]:inline">Book Banquet</span>
+              <span className="min-[420px]:hidden">Banquet</span>
             </Button>
 
             <Button asChild variant="outline" className="hidden sm:inline-flex h-10 border-border hover:border-primary hover:scale-102 transition-transform">
@@ -353,7 +354,7 @@ export function HomePage() {
                 href={restaurant.phoneHref}
                 onClick={() => activityTracker.trackCallClick({ source: "Header Call Button" })}
               >
-                <Phone className="mr-1.5 size-4 text-primary" />
+                <Phone className="mr-1.5 size-4 text-primary shrink-0" />
                 <span>Call now</span>
               </a>
             </Button>
@@ -361,19 +362,53 @@ export function HomePage() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden size-8.5 sm:size-10 rounded-xl border border-border/50 hover:bg-muted"
               onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X /> : <Menu />}
+              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
             </Button>
+          </div>
+        </div>
+
+        {/* Mobile Horizontal Quick-Nav Scroll Bar */}
+        <div className="lg:hidden border-t border-border/60 bg-card/85 backdrop-blur-md px-2.5 py-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+          <div className="flex items-center gap-1.5 min-w-max">
+            {navItemsConfig.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeHref === item.href;
+              return (
+                <a
+                  key={`mobile-bar-${item.label}`}
+                  href={item.href}
+                  onClick={() => setActiveHref(item.href)}
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all duration-200 ${
+                    isActive
+                      ? `bg-gradient-to-r ${item.activeGradient} text-white shadow-xs`
+                      : `bg-muted/80 text-foreground/80 border border-border/60 hover:bg-muted active:scale-95`
+                  }`}
+                >
+                  <Icon className={`size-3 ${isActive ? "text-white" : item.iconColor}`} />
+                  <span>{item.label}</span>
+                  {item.badge && (
+                    <span
+                      className={`text-[8.5px] px-1 py-0.2 rounded-full font-black ${
+                        isActive ? "bg-black/25 text-white" : "bg-background text-muted-foreground"
+                      }`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </a>
+              );
+            })}
           </div>
         </div>
 
         {/* Mobile Nav Menu Drawer with Thematic Colors and Animated Entry */}
         {mobileOpen && (
-          <nav className="border-t border-border bg-card/95 px-4 py-4 lg:hidden backdrop-blur-xl animate-pop-in" aria-label="Mobile navigation">
+          <nav className="border-t border-border bg-card/95 px-4 py-4 lg:hidden backdrop-blur-xl animate-pop-in max-h-[calc(100svh-5rem)] overflow-y-auto" aria-label="Mobile navigation">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {navItemsConfig.map((item) => {
                 const Icon = item.icon;
@@ -437,6 +472,23 @@ export function HomePage() {
                 <PartyPopper className="mr-2 size-5" />
                 Book Banquet Hall for Marriages & Parties
               </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="w-full h-11 border-border font-bold text-foreground"
+              >
+                <a
+                  href={restaurant.phoneHref}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    activityTracker.trackCallClick({ source: "Mobile Menu Call Button" });
+                  }}
+                >
+                  <Phone className="mr-2 size-4 text-primary" />
+                  Call Restaurant Directly: {restaurant.phoneDisplay}
+                </a>
+              </Button>
             </div>
           </nav>
         )}
@@ -444,7 +496,7 @@ export function HomePage() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="relative min-h-[calc(100svh-5.5rem)] overflow-hidden bg-foreground text-primary-foreground">
+        <section id="home" className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5.5rem)] overflow-hidden bg-foreground text-primary-foreground flex flex-col justify-center">
           {/* Background Hero Photo with soft parallax depth */}
           <img
             src={heroImage}
@@ -454,7 +506,8 @@ export function HomePage() {
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-center scale-105 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/35" />
+          {/* Dual responsive background gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/92 via-black/80 to-black/95 sm:bg-gradient-to-r sm:from-black/95 sm:via-black/75 sm:to-black/35" />
 
           {/* Floating Glassmorphic Badges on Desktop */}
           <a
@@ -506,68 +559,22 @@ export function HomePage() {
           </button>
 
           {/* Main Hero Content */}
-          <div className="relative mx-auto flex min-h-[calc(100svh-5.5rem)] max-w-7xl items-end px-4 pb-14 pt-20 sm:items-center sm:px-6 sm:pb-20 lg:px-8">
+          <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center px-4 py-8 sm:px-6 sm:py-16 lg:px-8">
             <div className="max-w-3xl">
               {/* Event Booking Announcement Badge */}
               <button
                 type="button"
                 onClick={() => setBookingOpen(true)}
-                className="mb-6 relative z-20 pointer-events-auto inline-flex items-center gap-2 rounded-full border border-gold/50 bg-black/50 px-4 py-1.5 text-xs font-extrabold uppercase text-secondary backdrop-blur hover:bg-black/80 hover:border-gold hover:scale-102 transition-all cursor-pointer shadow-lg group text-left"
+                className="mb-4 sm:mb-6 relative z-20 pointer-events-auto inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-gold/50 bg-black/60 px-3 py-1.5 sm:px-4 text-[11px] sm:text-xs font-extrabold uppercase text-secondary backdrop-blur hover:bg-black/80 hover:border-gold hover:scale-102 transition-all cursor-pointer shadow-lg group text-left"
               >
-                <PartyPopper className="size-4 text-gold group-hover:rotate-12 transition-transform" />
-                <span>Bookings Open for Marriages, Ring Ceremonies & Parties</span>
-                <ChevronRight className="size-3.5 text-gold/80 group-hover:translate-x-1 transition-transform" />
+                <PartyPopper className="size-3.5 sm:size-4 shrink-0 text-gold group-hover:rotate-12 transition-transform" />
+                <span className="truncate sm:hidden">Marriages & Parties Booking Open</span>
+                <span className="hidden sm:inline">Bookings Open for Marriages, Ring Ceremonies & Parties</span>
+                <ChevronRight className="size-3.5 shrink-0 text-gold/80 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <h1 className="text-balance break-words font-display text-[2.75rem] font-extrabold leading-[1.03] sm:text-6xl lg:text-8xl drop-shadow-md">
-                Good food.<br />
-                <span className="gold-gradient-text">Warm vibes.</span><br />
-                A stop worth remembering.
-              </h1>
-
-              <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/90 sm:text-lg drop-shadow">
-                Authentic Punjabi dining, air-conditioned banquet celebrations, and comfortable AC rooms along the historic Nangal–Chandigarh Road in Brahmpur.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="mt-8 flex flex-wrap gap-3.5">
-                <Button
-                  type="button"
-                  size="lg"
-                  onClick={() => setBookingOpen(true)}
-                  className="h-12 bg-gradient-to-r from-amber-500 to-amber-600 px-6 text-foreground font-extrabold shadow-xl hover:opacity-95 transform hover:-translate-y-0.5 transition-all"
-                >
-                  <PartyPopper className="mr-2 size-5" />
-                  Book Banquet Hall
-                </Button>
-
-                <Button asChild size="lg" className="h-12 bg-primary px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md">
-                  <a href="#menu">
-                    <Utensils className="mr-2 size-4" />
-                    View menu
-                  </a>
-                </Button>
-
-                <Button asChild size="lg" variant="outline" className="h-12 border-primary-foreground/40 bg-primary-foreground/10 px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur">
-                  <a href="#gallery">
-                    <ImageIcon className="mr-2 size-4" />
-                    View Gallery
-                  </a>
-                </Button>
-
-                <Button asChild size="lg" variant="ghost" className="h-12 px-5 text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground">
-                  <a
-                    href={restaurant.phoneHref}
-                    onClick={() => activityTracker.trackCallClick({ source: "Hero Section Call Button" })}
-                  >
-                    <Phone className="mr-2 size-4" />
-                    Call now
-                  </a>
-                </Button>
-              </div>
-
-              {/* Quick Metrics Bar in Hero */}
-              <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 pt-6 border-t border-white/15 max-w-2xl text-white">
+              {/* Mobile Google Rating Badge (Exclusive to mobile view) */}
+              <div className="mb-3 flex items-center gap-2 lg:hidden">
                 <a
                   href="#reviews"
                   onClick={(e) => {
@@ -577,27 +584,98 @@ export function HomePage() {
                       el.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="rounded-xl bg-white/5 p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur shadow-sm active:bg-black/80"
+                >
+                  <span className="grid size-5 place-items-center rounded-full bg-gold/20 text-gold text-[11px] font-black">
+                    ★
+                  </span>
+                  <span className="text-gold font-black">3.9</span>
+                  <span className="text-white/85 text-[11px]">· 650+ Google Reviews</span>
+                  <ArrowRight className="size-3 text-gold/80" />
+                </a>
+              </div>
+
+              <h1 className="text-balance break-words font-display text-[2rem] leading-[1.12] sm:text-6xl lg:text-8xl sm:leading-[1.03] font-extrabold drop-shadow-md">
+                Good food.<br />
+                <span className="gold-gradient-text">Warm vibes.</span><br />
+                A stop worth remembering.
+              </h1>
+
+              <p className="mt-4 sm:mt-6 max-w-xl text-sm leading-relaxed sm:text-base sm:leading-7 text-primary-foreground/90 drop-shadow">
+                Authentic Punjabi dining, air-conditioned banquet celebrations, and comfortable AC rooms along the historic Nangal–Chandigarh Road in Brahmpur.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-2.5 sm:gap-3.5">
+                <Button
+                  type="button"
+                  size="lg"
+                  onClick={() => setBookingOpen(true)}
+                  className="h-12 w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 px-6 text-foreground font-extrabold shadow-xl hover:opacity-95 transform hover:-translate-y-0.5 transition-all text-sm sm:text-base"
+                >
+                  <PartyPopper className="mr-2 size-5 shrink-0" />
+                  <span>Book Banquet Hall</span>
+                </Button>
+
+                <div className="grid grid-cols-3 gap-2 w-full sm:w-auto sm:flex sm:flex-wrap sm:gap-3.5">
+                  <Button asChild size="lg" className="h-11 sm:h-12 bg-primary px-3 sm:px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md text-xs sm:text-sm">
+                    <a href="#menu">
+                      <Utensils className="mr-1.5 sm:mr-2 size-4 shrink-0" />
+                      <span>Menu</span>
+                    </a>
+                  </Button>
+
+                  <Button asChild size="lg" variant="outline" className="h-11 sm:h-12 border-primary-foreground/40 bg-primary-foreground/10 px-3 sm:px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur text-xs sm:text-sm">
+                    <a href="#gallery">
+                      <ImageIcon className="mr-1.5 sm:mr-2 size-4 shrink-0" />
+                      <span>Gallery</span>
+                    </a>
+                  </Button>
+
+                  <Button asChild size="lg" variant="ghost" className="h-11 sm:h-12 border border-white/20 bg-white/5 sm:border-0 sm:bg-transparent px-3 sm:px-5 text-primary-foreground hover:bg-primary-foreground/15 text-xs sm:text-sm">
+                    <a
+                      href={restaurant.phoneHref}
+                      onClick={() => activityTracker.trackCallClick({ source: "Hero Section Call Button" })}
+                    >
+                      <Phone className="mr-1.5 sm:mr-2 size-4 shrink-0 text-gold" />
+                      <span>Call</span>
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Quick Metrics Bar in Hero */}
+              <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3 pt-5 sm:pt-6 border-t border-white/15 max-w-2xl text-white">
+                <a
+                  href="#reviews"
+                  onClick={(e) => {
+                    const el = document.getElementById("reviews");
+                    if (el) {
+                      e.preventDefault();
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="rounded-xl bg-white/5 p-2.5 sm:p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
                   title="View Google Reviews & Stories"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-2xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">650+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">650+</p>
                     <ArrowRight className="size-3 text-gold/60 group-hover:translate-x-0.5 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Google Reviews</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Google Reviews</p>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => setBookingOpen(true)}
-                  className="rounded-xl bg-white/5 p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left w-full"
+                  className="rounded-xl bg-white/5 p-2.5 sm:p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left w-full"
                   title="Banquet Hall Details & Booking"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-2xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">300+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">300+</p>
                     <PartyPopper className="size-3 text-gold/60 group-hover:rotate-12 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Banquet Capacity</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Banquet Capacity</p>
                 </button>
 
                 <a
@@ -609,14 +687,14 @@ export function HomePage() {
                       el.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="rounded-xl bg-white/5 p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
+                  className="rounded-xl bg-white/5 p-2.5 sm:p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
                   title="Browse full menu"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-2xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">55+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">55+</p>
                     <Utensils className="size-3 text-gold/60 group-hover:rotate-12 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Punjabi Dishes</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Punjabi Dishes</p>
                 </a>
 
                 <a
@@ -628,14 +706,14 @@ export function HomePage() {
                       el.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="rounded-xl bg-white/5 p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
+                  className="rounded-xl bg-white/5 p-2.5 sm:p-3 backdrop-blur border border-white/10 hover:border-gold/60 hover:bg-white/15 transition-all cursor-pointer group text-left block"
                   title="View opening hours and location"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-2xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">7AM–12</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">7AM–12</p>
                     <Clock3 className="size-3 text-gold/60 group-hover:text-gold transition-colors" />
                   </div>
-                  <p className="text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Daily Open</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Daily Open</p>
                 </a>
               </div>
             </div>

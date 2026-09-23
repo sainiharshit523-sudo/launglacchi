@@ -108,6 +108,15 @@ button, a {
   background: var(--primary);
 }
 
+/* Utility to hide scrollbar while preserving swipe scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Punjabi Geometric Folk Pattern */
 .punjabi-pattern {
   background-image: 

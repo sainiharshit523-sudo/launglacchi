@@ -18,7 +18,7 @@ export function BrandMark({
   return (
     <span
       className={cn(
-        "group inline-flex items-center gap-3 sm:gap-4 transition-all duration-300 select-none",
+        "group inline-flex items-center gap-2 sm:gap-3.5 md:gap-4 transition-all duration-300 select-none",
         className
       )}
       aria-label="Laung Laachi Brahmpur Restaurant"
@@ -27,7 +27,7 @@ export function BrandMark({
       <span
         className={cn(
           "relative grid shrink-0 place-items-center rounded-full bg-gradient-to-br from-red-600 via-primary to-stone-950 text-white shadow-lg shadow-primary/25 ring-2 ring-gold/80 ring-offset-2 ring-offset-background transition-transform duration-300 group-hover:scale-105 group-hover:ring-gold group-hover:shadow-xl group-hover:shadow-primary/30",
-          isSm ? "size-10 ring-1 ring-offset-1" : "size-12 sm:size-14 md:size-15"
+          isSm ? "size-8.5 sm:size-10 ring-1 ring-offset-1" : "size-10 sm:size-14 md:size-15"
         )}
         aria-hidden="true"
       >
@@ -39,7 +39,7 @@ export function BrandMark({
           viewBox="0 0 36 36"
           className={cn(
             "fill-none transition-transform duration-300 group-hover:rotate-3",
-            isSm ? "size-6" : "size-8 sm:size-9"
+            isSm ? "size-5 sm:size-6" : "size-6 sm:size-8 md:size-9"
           )}
           role="img"
         >
@@ -76,16 +76,16 @@ export function BrandMark({
         <span className="flex flex-col justify-center leading-none">
           <span
             className={cn(
-              "font-brand font-black tracking-[0.08em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
-              isSm ? "text-base sm:text-lg" : "text-xl sm:text-2xl md:text-[27px] leading-[1.08]"
+              "font-brand font-black tracking-[0.06em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
+              isSm ? "text-xs sm:text-base" : "text-[15px] sm:text-2xl md:text-[27px] leading-[1.08]"
             )}
           >
             LAUNG
           </span>
           <span
             className={cn(
-              "font-brand font-black tracking-[0.08em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
-              isSm ? "text-base sm:text-lg" : "text-xl sm:text-2xl md:text-[27px] leading-[1.08]"
+              "font-brand font-black tracking-[0.06em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
+              isSm ? "text-xs sm:text-base" : "text-[15px] sm:text-2xl md:text-[27px] leading-[1.08]"
             )}
           >
             LAACHI
@@ -94,10 +94,10 @@ export function BrandMark({
           {showSubtitle && (
             <span
               className={cn(
-                "mt-1 flex items-center gap-1.5 font-bold uppercase transition-colors group-hover:text-foreground",
+                "mt-0.5 sm:mt-1 flex items-center gap-1 font-bold uppercase transition-colors group-hover:text-foreground",
                 isSm
-                  ? "text-[9px] tracking-widest text-muted-foreground"
-                  : "text-[10px] sm:text-[11px] tracking-[0.22em] text-foreground/75 dark:text-gold"
+                  ? "text-[8px] sm:text-[9px] tracking-widest text-muted-foreground"
+                  : "text-[8px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.22em] text-foreground/75 dark:text-gold"
               )}
             >
               <span>BRAHMPUR</span>
