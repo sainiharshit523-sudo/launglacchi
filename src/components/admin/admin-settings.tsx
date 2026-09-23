@@ -63,7 +63,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
     setTimeout(() => setSiteSaveStatus(null), 4000);
   };
 
-  const handlePasswordChange = (e: React.FormEvent) => {
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
     e.preventDefault();
     setPasswordStatus(null);
 
@@ -80,14 +82,19 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
       return;
     }
 
-    const res = adminAuth.changePassword(currentPassword, newPassword);
-    if (res.success) {
-      setPasswordStatus({ success: true, message: "Password updated successfully!" });
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-    } else {
-      setPasswordStatus({ success: false, message: res.error || "Failed to update password." });
+    setIsChangingPassword(true);
+    try {
+      const res = await adminAuth.changePassword(currentPassword, newPassword);
+      if (res.success) {
+        setPasswordStatus({ success: true, message: "Password updated successfully!" });
+        setCurrentPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+      } else {
+        setPasswordStatus({ success: false, message: res.error || "Failed to update password." });
+      }
+    } finally {
+      setIsChangingPassword(false);
     }
   };
 
@@ -355,8 +362,12 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
               </div>
             )}
 
-            <Button type="submit" className="w-full h-10 text-xs font-bold bg-primary text-primary-foreground shadow-xs">
-              Save New Password
+            <Button
+              type="submit"
+              disabled={isChangingPassword}
+              className="w-full h-10 text-xs font-bold bg-primary text-primary-foreground shadow-xs"
+            >
+              {isChangingPassword ? "Saving..." : "Save New Password"}
             </Button>
           </form>
         </div>

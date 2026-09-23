@@ -18,19 +18,14 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
         <div className="absolute bottom-0 right-0 h-[400px] w-[500px] rounded-full bg-amber-500/10 blur-[120px]" />
       </div>
 
-      {/* Top Bar with Admin Link */}
+      {/* Top Bar */}
       <header className="relative z-10 border-b border-border/60 bg-background/80 backdrop-blur-md px-4 py-4 sm:px-8">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <BrandMark size="sm" showSubtitle={false} />
 
-          <Link
-            to="/admin"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3.5 py-1.5 text-xs font-bold text-muted-foreground hover:text-foreground hover:border-primary transition-all shadow-2xs"
-            title="Restaurant Management Portal"
-          >
-            <Lock className="size-3 text-primary" />
-            <span>Staff / Admin Access</span>
-          </Link>
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-200">
+            <span>Special Notice</span>
+          </div>
         </div>
       </header>
 
@@ -144,10 +139,11 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
           <div className="flex items-center gap-4">
             <Link
               to="/admin"
-              className="font-bold text-primary hover:underline inline-flex items-center gap-1"
+              className="text-[11px] text-muted-foreground/60 hover:text-foreground inline-flex items-center gap-1 transition-colors"
+              title="Staff Portal"
             >
-              <Shield className="size-3" />
-              <span>Admin Dashboard</span>
+              <Lock className="size-2.5" />
+              <span>Staff Portal</span>
             </Link>
           </div>
         </div>

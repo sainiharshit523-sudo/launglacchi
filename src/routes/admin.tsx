@@ -8,7 +8,6 @@ import {
   Eye,
   EyeOff,
   Globe,
-  KeyRound,
   LayoutDashboard,
   Lock,
   LogOut,
@@ -160,16 +159,23 @@ export function AdminPage() {
     }, 6000);
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError(null);
+    setIsLoggingIn(true);
 
-    const res = adminAuth.login(username, password, rememberMe);
-    if (res.success) {
-      setAuthenticated(true);
-      loadData();
-    } else {
-      setLoginError(res.error || "Invalid username or password.");
+    try {
+      const res = await adminAuth.login(username, password, rememberMe);
+      if (res.success) {
+        setAuthenticated(true);
+        loadData();
+      } else {
+        setLoginError(res.error || "Invalid username or password.");
+      }
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -187,12 +193,6 @@ export function AdminPage() {
     a.download = `laung-laachi-admin-data-${new Date().toISOString().split("T")[0]}.json`;
     a.click();
     URL.revokeObjectURL(url);
-  };
-
-  const fillDefaultCredentials = () => {
-    setUsername("admin@launglaachi.com");
-    setPassword("LaungLaachi#Royal2026!");
-    setLoginError(null);
   };
 
   // -------------------------------------------------------------
@@ -242,9 +242,13 @@ export function AdminPage() {
                   <Input
                     type="text"
                     required
+                    autoComplete="off"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck="false"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="admin@launglaachi.com"
+                    placeholder="Enter admin username"
                     className="h-11 rounded-xl text-xs font-medium pl-3 pr-4"
                   />
                 </div>
@@ -268,9 +272,10 @@ export function AdminPage() {
                   <Input
                     type={showPassword ? "text" : "password"}
                     required
+                    autoComplete="new-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter admin password"
+                    placeholder="Enter secret password"
                     className="h-11 rounded-xl text-xs font-medium pl-3 pr-10"
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -303,24 +308,12 @@ export function AdminPage() {
               {/* Submit Button */}
               <Button
                 type="submit"
+                disabled={isLoggingIn}
                 className="w-full h-11 bg-primary text-primary-foreground hover:bg-primary/95 font-bold text-sm shadow-md mt-2"
               >
                 <ShieldCheck className="mr-2 size-4" />
-                <span>Secure Sign In</span>
+                <span>{isLoggingIn ? "Verifying..." : "Secure Sign In"}</span>
               </Button>
-
-              {/* Quick Fill Demo Credentials */}
-              <div className="mt-4 pt-4 border-t border-border/60 text-center">
-                <p className="text-[11px] text-muted-foreground mb-2">Default Admin Credentials:</p>
-                <button
-                  type="button"
-                  onClick={fillDefaultCredentials}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-gold/40 bg-gold/10 px-3 py-1.5 text-xs font-bold text-amber-900 dark:text-amber-200 hover:bg-gold/20 transition-colors"
-                >
-                  <KeyRound className="size-3.5 text-gold" />
-                  <span>Auto-fill: admin@launglaachi.com</span>
-                </button>
-              </div>
             </form>
           </div>
         </div>

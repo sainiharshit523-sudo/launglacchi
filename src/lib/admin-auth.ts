@@ -1,14 +1,23 @@
-// Admin Authentication & Session Management for Laung Laachi
-const STORAGE_AUTH_CREDS_KEY = "laung_laachi_admin_creds_v1";
-const STORAGE_AUTH_SESSION_KEY = "laung_laachi_admin_session_v1";
+// Secure Admin Authentication & Session Management for Laung Laachi
+// Uses Salted SHA-256 Cryptographic Verification & Brute-Force Protection
+// Passwords are never stored or exposed in plaintext.
 
-const DEFAULT_ADMIN_USER = "admin@launglaachi.com";
-const DEFAULT_FALLBACK_USER = "launglaachi_admin";
-const DEFAULT_STRONG_PASSWORD = "LaungLaachi#Royal2026!";
+const STORAGE_AUTH_CREDS_KEY = "laung_laachi_admin_creds_v2";
+const STORAGE_AUTH_SESSION_KEY = "laung_laachi_admin_session_v2";
+const STORAGE_RATE_LIMIT_KEY = "laung_laachi_admin_ratelimit_v1";
+
+// Salt and Initial Cryptographic Hash (SHA-256)
+const PASSWORD_SALT = "laung_salt_v2_";
+const DEFAULT_ADMIN_USER = "launglaachi_admin";
+// Precomputed SHA-256 hash of (PASSWORD_SALT + initial private password)
+const INITIAL_PASSWORD_HASH = "94b9ad48b0a64cb29d69b7dc2045d21aab4c1e761f91feac64f96008420e0c11";
+
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
 
 interface AdminCredentials {
   username: string;
-  passwordHash: string; // encoded
+  passwordHash: string; // Salted SHA-256 hex string
   lastUpdated: string;
 }
 
@@ -19,30 +28,108 @@ interface AdminSession {
   expiresAt: number;
 }
 
-// Simple base64 encode for localStorage persistence
-function encodePassword(pass: string): string {
-  if (typeof btoa !== "undefined") {
-    return btoa(unescape(encodeURIComponent(pass)));
-  }
-  return pass;
+interface RateLimitState {
+  attempts: number;
+  lockedUntil: number;
 }
 
-function decodePassword(hash: string): string {
+// Compute Salted SHA-256 hash
+export async function computePasswordHash(password: string): Promise<string> {
+  const salted = PASSWORD_SALT + password;
+  if (typeof crypto !== "undefined" && crypto.subtle) {
+    const msgBuffer = new TextEncoder().encode(salted);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    return Array.from(new Uint8Array(hashBuffer))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+  // Safe synchronous fallback if crypto.subtle is unavailable
+  let hash = 0;
+  for (let i = 0; i < salted.length; i++) {
+    const char = salted.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash |= 0;
+  }
+  return "fb_" + Math.abs(hash).toString(16);
+}
+
+// Generate cryptographically secure random session token
+function generateSecureToken(): string {
+  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+    const arr = new Uint8Array(24);
+    crypto.getRandomValues(arr);
+    return Array.from(arr, (b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  return "ll_sec_" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// Clean up any legacy insecure keys
+function cleanLegacyKeys(): void {
+  if (typeof window === "undefined") return;
   try {
-    if (typeof atob !== "undefined") {
-      return decodeURIComponent(escape(atob(hash)));
+    localStorage.removeItem("laung_laachi_admin_creds_v1");
+    sessionStorage.removeItem("laung_laachi_admin_session_v1");
+    localStorage.removeItem("laung_laachi_admin_session_v1");
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+// Rate limit helper
+function checkRateLimit(): { isLocked: boolean; minutesRemaining: number } {
+  if (typeof window === "undefined") return { isLocked: false, minutesRemaining: 0 };
+  try {
+    const raw = sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) || localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
+    if (!raw) return { isLocked: false, minutesRemaining: 0 };
+    const state: RateLimitState = JSON.parse(raw);
+    const now = Date.now();
+    if (state.lockedUntil > now) {
+      const minutes = Math.ceil((state.lockedUntil - now) / 60000);
+      return { isLocked: true, minutesRemaining: minutes };
     }
   } catch {
-    // fallback
+    // Ignore parsing issues
   }
-  return hash;
+  return { isLocked: false, minutesRemaining: 0 };
+}
+
+function recordFailedAttempt(): void {
+  if (typeof window === "undefined") return;
+  try {
+    const raw = sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) || localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
+    const state: RateLimitState = raw ? JSON.parse(raw) : { attempts: 0, lockedUntil: 0 };
+    state.attempts = (state.attempts || 0) + 1;
+    if (state.attempts >= MAX_FAILED_ATTEMPTS) {
+      state.lockedUntil = Date.now() + LOCKOUT_DURATION_MS;
+    }
+    const val = JSON.stringify(state);
+    sessionStorage.setItem(STORAGE_RATE_LIMIT_KEY, val);
+    localStorage.setItem(STORAGE_RATE_LIMIT_KEY, val);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+function clearRateLimit(): void {
+  if (typeof window === "undefined") return;
+  try {
+    sessionStorage.removeItem(STORAGE_RATE_LIMIT_KEY);
+    localStorage.removeItem(STORAGE_RATE_LIMIT_KEY);
+  } catch {
+    // Ignore storage errors
+  }
 }
 
 export const adminAuth = {
-  // Get currently active admin credentials
-  getCredentials(): { username: string; password: string } {
+  // Get active credentials hash
+  getCredentials(): AdminCredentials {
+    cleanLegacyKeys();
     if (typeof window === "undefined") {
-      return { username: DEFAULT_ADMIN_USER, password: DEFAULT_STRONG_PASSWORD };
+      return {
+        username: DEFAULT_ADMIN_USER,
+        passwordHash: INITIAL_PASSWORD_HASH,
+        lastUpdated: new Date().toISOString(),
+      };
     }
 
     try {
@@ -50,20 +137,24 @@ export const adminAuth = {
       if (!stored) {
         const initialCreds: AdminCredentials = {
           username: DEFAULT_ADMIN_USER,
-          passwordHash: encodePassword(DEFAULT_STRONG_PASSWORD),
+          passwordHash: INITIAL_PASSWORD_HASH,
           lastUpdated: new Date().toISOString(),
         };
         localStorage.setItem(STORAGE_AUTH_CREDS_KEY, JSON.stringify(initialCreds));
-        return { username: DEFAULT_ADMIN_USER, password: DEFAULT_STRONG_PASSWORD };
+        return initialCreds;
       }
 
       const parsed: AdminCredentials = JSON.parse(stored);
-      return {
-        username: parsed.username || DEFAULT_ADMIN_USER,
-        password: decodePassword(parsed.passwordHash) || DEFAULT_STRONG_PASSWORD,
-      };
+      if (!parsed.passwordHash) {
+        parsed.passwordHash = INITIAL_PASSWORD_HASH;
+      }
+      return parsed;
     } catch {
-      return { username: DEFAULT_ADMIN_USER, password: DEFAULT_STRONG_PASSWORD };
+      return {
+        username: DEFAULT_ADMIN_USER,
+        passwordHash: INITIAL_PASSWORD_HASH,
+        lastUpdated: new Date().toISOString(),
+      };
     }
   },
 
@@ -90,39 +181,64 @@ export const adminAuth = {
   },
 
   // Log in with username & password
-  login(
+  async login(
     usernameInput: string,
     passwordInput: string,
     rememberMe = false
-  ): { success: boolean; error?: string } {
-    const cleanUser = usernameInput.trim().toLowerCase();
-    const creds = adminAuth.getCredentials();
-
-    const isUserValid =
-      cleanUser === creds.username.toLowerCase() ||
-      cleanUser === DEFAULT_ADMIN_USER.toLowerCase() ||
-      cleanUser === DEFAULT_FALLBACK_USER.toLowerCase();
-
-    const isPassValid = passwordInput === creds.password || passwordInput === DEFAULT_STRONG_PASSWORD;
-
-    if (!isUserValid || !isPassValid) {
+  ): Promise<{ success: boolean; error?: string }> {
+    // 1. Check brute-force lockout
+    const rateCheck = checkRateLimit();
+    if (rateCheck.isLocked) {
       return {
         success: false,
-        error: "Invalid username or password. Please verify your credentials.",
+        error: `Portal is temporarily locked due to multiple failed attempts. Please try again in ${rateCheck.minutesRemaining} minute(s).`,
       };
     }
 
+    const cleanUser = usernameInput.trim().toLowerCase();
+    const creds = adminAuth.getCredentials();
+
+    const isUserValid = cleanUser === creds.username.toLowerCase();
+
+    // 2. Hash input password and compare with stored cryptographic hash
+    const inputHash = await computePasswordHash(passwordInput);
+    const isPassValid = inputHash === creds.passwordHash;
+
+    if (!isUserValid || !isPassValid) {
+      recordFailedAttempt();
+      const updatedCheck = checkRateLimit();
+      if (updatedCheck.isLocked) {
+        return {
+          success: false,
+          error: "Too many failed attempts. Admin portal is locked for 15 minutes for security.",
+        };
+      }
+      return {
+        success: false,
+        error: "Invalid username or password. Access is restricted to authorized personnel.",
+      };
+    }
+
+    // 3. Clear rate limit on successful authentication
+    clearRateLimit();
+
     const session: AdminSession = {
-      token: "ll_token_" + Math.random().toString(36).substring(2) + Date.now().toString(36),
+      token: generateSecureToken(),
       username: creds.username,
       loginTime: Date.now(),
       expiresAt: Date.now() + 1000 * 60 * 60 * 24, // 24 hours
     };
 
-    if (rememberMe) {
-      localStorage.setItem(STORAGE_AUTH_SESSION_KEY, JSON.stringify(session));
-    } else {
-      sessionStorage.setItem(STORAGE_AUTH_SESSION_KEY, JSON.stringify(session));
+    if (typeof window !== "undefined") {
+      try {
+        if (rememberMe) {
+          localStorage.setItem(STORAGE_AUTH_SESSION_KEY, JSON.stringify(session));
+        } else {
+          sessionStorage.setItem(STORAGE_AUTH_SESSION_KEY, JSON.stringify(session));
+        }
+      } catch {
+        // Ignore storage write issues
+      }
     }
 
     return { success: true };
@@ -131,18 +247,23 @@ export const adminAuth = {
   // Log out current session
   logout(): void {
     if (typeof window === "undefined") return;
-    sessionStorage.removeItem(STORAGE_AUTH_SESSION_KEY);
-    localStorage.removeItem(STORAGE_AUTH_SESSION_KEY);
+    try {
+      sessionStorage.removeItem(STORAGE_AUTH_SESSION_KEY);
+      localStorage.removeItem(STORAGE_AUTH_SESSION_KEY);
+    } catch {
+      // Ignore
+    }
   },
 
   // Change password in admin settings
-  changePassword(
+  async changePassword(
     currentPasswordInput: string,
     newPasswordInput: string
-  ): { success: boolean; error?: string } {
+  ): Promise<{ success: boolean; error?: string }> {
     const creds = adminAuth.getCredentials();
 
-    if (currentPasswordInput !== creds.password && currentPasswordInput !== DEFAULT_STRONG_PASSWORD) {
+    const currentHash = await computePasswordHash(currentPasswordInput);
+    if (currentHash !== creds.passwordHash) {
       return { success: false, error: "The current password you entered is incorrect." };
     }
 
@@ -151,26 +272,18 @@ export const adminAuth = {
     }
 
     try {
+      const newHash = await computePasswordHash(newPasswordInput);
       const updatedCreds: AdminCredentials = {
         username: creds.username,
-        passwordHash: encodePassword(newPasswordInput),
+        passwordHash: newHash,
         lastUpdated: new Date().toISOString(),
       };
-      localStorage.setItem(STORAGE_AUTH_CREDS_KEY, JSON.stringify(updatedCreds));
+      if (typeof window !== "undefined") {
+        localStorage.setItem(STORAGE_AUTH_CREDS_KEY, JSON.stringify(updatedCreds));
+      }
       return { success: true };
     } catch {
       return { success: false, error: "Could not save new password. Please try again." };
     }
-  },
-
-  // Reset to default credentials
-  resetCredentialsToDefault(): void {
-    if (typeof window === "undefined") return;
-    const initialCreds: AdminCredentials = {
-      username: DEFAULT_ADMIN_USER,
-      passwordHash: encodePassword(DEFAULT_STRONG_PASSWORD),
-      lastUpdated: new Date().toISOString(),
-    };
-    localStorage.setItem(STORAGE_AUTH_CREDS_KEY, JSON.stringify(initialCreds));
   },
 };
