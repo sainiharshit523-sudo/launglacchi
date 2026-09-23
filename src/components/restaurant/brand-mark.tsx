@@ -73,19 +73,19 @@ export function BrandMark({
 
       {/* Brand Typography: Stacked Royal Letters covering both sides & up and down */}
       {!compact && (
-        <span className="flex flex-col justify-center leading-none">
+        <span className="flex flex-col justify-center leading-none shrink-0">
           <span
             className={cn(
-              "font-brand font-black tracking-[0.06em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
-              isSm ? "text-xs sm:text-base" : "text-[15px] sm:text-2xl md:text-[27px] leading-[1.08]"
+              "font-brand font-black tracking-[0.05em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
+              isSm ? "text-xs sm:text-base" : "text-[14px] sm:text-2xl md:text-[27px] leading-[1.05]"
             )}
           >
             LAUNG
           </span>
           <span
             className={cn(
-              "font-brand font-black tracking-[0.06em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
-              isSm ? "text-xs sm:text-base" : "text-[15px] sm:text-2xl md:text-[27px] leading-[1.08]"
+              "font-brand font-black tracking-[0.05em] sm:tracking-[0.12em] text-foreground transition-colors group-hover:text-primary brand-title-shadow",
+              isSm ? "text-xs sm:text-base" : "text-[14px] sm:text-2xl md:text-[27px] leading-[1.05]"
             )}
           >
             LAACHI
@@ -94,10 +94,10 @@ export function BrandMark({
           {showSubtitle && (
             <span
               className={cn(
-                "mt-0.5 sm:mt-1 flex items-center gap-1 font-bold uppercase transition-colors group-hover:text-foreground",
+                "mt-0.5 sm:mt-1 flex items-center gap-1 font-bold uppercase transition-colors group-hover:text-foreground whitespace-nowrap",
                 isSm
-                  ? "text-[8px] sm:text-[9px] tracking-widest text-muted-foreground"
-                  : "text-[8px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.22em] text-foreground/75 dark:text-gold"
+                  ? "text-[7.5px] sm:text-[9px] tracking-wider text-muted-foreground"
+                  : "text-[7.5px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.22em] text-foreground/75 dark:text-gold"
               )}
             >
               <span>BRAHMPUR</span>

@@ -342,14 +342,27 @@ export function HomePage() {
             <Button
               type="button"
               onClick={() => setBookingOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-primary to-amber-600 text-primary-foreground font-bold shadow-md hover:opacity-95 text-xs sm:text-sm h-8.5 sm:h-10 px-2.5 sm:px-4.5 animate-pulse-ring hover:scale-102 transition-transform"
+              className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-primary to-amber-600 text-primary-foreground font-bold shadow-md hover:opacity-95 text-xs sm:text-sm h-8.5 sm:h-10 px-2 sm:px-4.5 animate-pulse-ring hover:scale-102 transition-transform shrink-0"
             >
               <PartyPopper className="mr-1 sm:mr-1.5 size-3.5 sm:size-4 animate-icon-bounce shrink-0" />
-              <span className="hidden min-[420px]:inline">Book Banquet</span>
-              <span className="min-[420px]:hidden">Banquet</span>
+              <span className="hidden min-[380px]:inline">Book Banquet</span>
+              <span className="min-[380px]:hidden">Book</span>
             </Button>
 
-            <Button asChild variant="outline" className="hidden sm:inline-flex h-10 border-border hover:border-primary hover:scale-102 transition-transform">
+            {/* Direct Phone Call Button in Header on Mobile */}
+            <Button asChild variant="outline" size="icon" className="sm:hidden size-8.5 rounded-xl border border-border/70 hover:border-primary hover:bg-muted shrink-0">
+              <a
+                href={restaurant.phoneHref}
+                onClick={() => activityTracker.trackCallClick({ source: "Mobile Header Call Button" })}
+                title="Call Restaurant Directly"
+                aria-label="Call Restaurant Directly"
+              >
+                <Phone className="size-3.5 text-primary" />
+              </a>
+            </Button>
+
+            {/* Desktop Full Call Button */}
+            <Button asChild variant="outline" className="hidden sm:inline-flex h-10 border-border hover:border-primary hover:scale-102 transition-transform shrink-0">
               <a
                 href={restaurant.phoneHref}
                 onClick={() => activityTracker.trackCallClick({ source: "Header Call Button" })}
@@ -359,42 +372,43 @@ export function HomePage() {
               </a>
             </Button>
 
+            {/* Hamburger Menu Toggle Button */}
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden size-8.5 sm:size-10 rounded-xl border border-border/50 hover:bg-muted"
+              className="lg:hidden size-8.5 sm:size-10 rounded-xl border border-border/60 hover:bg-muted shrink-0"
               onClick={() => setMobileOpen((open) => !open)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              {mobileOpen ? <X className="size-4.5" /> : <Menu className="size-4.5" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Horizontal Quick-Nav Scroll Bar */}
-        <div className="lg:hidden border-t border-border/60 bg-card/85 backdrop-blur-md px-2.5 py-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+        {/* Mobile Upper Quick Navigation Bar (All desktop navigation buttons right at the top) */}
+        <div className="lg:hidden border-t border-b border-border/70 bg-background/95 backdrop-blur-xl px-2 py-1.5 shadow-xs overflow-x-auto no-scrollbar scroll-smooth">
           <div className="flex items-center gap-1.5 min-w-max">
             {navItemsConfig.map((item) => {
               const Icon = item.icon;
               const isActive = activeHref === item.href;
               return (
                 <a
-                  key={`mobile-bar-${item.label}`}
+                  key={`upper-bar-${item.label}`}
                   href={item.href}
                   onClick={() => setActiveHref(item.href)}
-                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold transition-all duration-200 ${
+                  className={`inline-flex items-center gap-1.5 shrink-0 rounded-full px-2.5 py-1 text-xs font-bold transition-all duration-200 border shadow-xs ${
                     isActive
-                      ? `bg-gradient-to-r ${item.activeGradient} text-white shadow-xs`
-                      : `bg-muted/80 text-foreground/80 border border-border/60 hover:bg-muted active:scale-95`
+                      ? `bg-gradient-to-r ${item.activeGradient} text-white border-transparent scale-102 shadow-sm`
+                      : `bg-card border-border/80 text-foreground/80 hover:bg-muted active:scale-95`
                   }`}
                 >
-                  <Icon className={`size-3 ${isActive ? "text-white" : item.iconColor}`} />
+                  <Icon className={`size-3.5 ${isActive ? "text-white" : item.iconColor}`} />
                   <span>{item.label}</span>
                   {item.badge && (
                     <span
-                      className={`text-[8.5px] px-1 py-0.2 rounded-full font-black ${
-                        isActive ? "bg-black/25 text-white" : "bg-background text-muted-foreground"
+                      className={`text-[8.5px] px-1.5 py-0.2 rounded-full font-black uppercase ${
+                        isActive ? "bg-black/25 text-white" : "bg-muted text-muted-foreground"
                       }`}
                     >
                       {item.badge}
@@ -559,13 +573,13 @@ export function HomePage() {
           </button>
 
           {/* Main Hero Content */}
-          <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center px-4 py-8 sm:px-6 sm:py-16 lg:px-8">
+          <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center px-3.5 py-4 sm:px-6 sm:py-16 lg:px-8">
             <div className="max-w-3xl">
               {/* Event Booking Announcement Badge */}
               <button
                 type="button"
                 onClick={() => setBookingOpen(true)}
-                className="mb-4 sm:mb-6 relative z-20 pointer-events-auto inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-gold/50 bg-black/60 px-3 py-1.5 sm:px-4 text-[11px] sm:text-xs font-extrabold uppercase text-secondary backdrop-blur hover:bg-black/80 hover:border-gold hover:scale-102 transition-all cursor-pointer shadow-lg group text-left"
+                className="mb-2.5 sm:mb-6 relative z-20 pointer-events-auto inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-gold/50 bg-black/60 px-3 py-1 sm:px-4 text-[11px] sm:text-xs font-extrabold uppercase text-secondary backdrop-blur hover:bg-black/80 hover:border-gold hover:scale-102 transition-all cursor-pointer shadow-lg group text-left"
               >
                 <PartyPopper className="size-3.5 sm:size-4 shrink-0 text-gold group-hover:rotate-12 transition-transform" />
                 <span className="truncate sm:hidden">Marriages & Parties Booking Open</span>
@@ -574,7 +588,7 @@ export function HomePage() {
               </button>
 
               {/* Mobile Google Rating Badge (Exclusive to mobile view) */}
-              <div className="mb-3 flex items-center gap-2 lg:hidden">
+              <div className="mb-2.5 flex items-center gap-2 lg:hidden">
                 <a
                   href="#reviews"
                   onClick={(e) => {
@@ -586,7 +600,7 @@ export function HomePage() {
                   }}
                   className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-black/50 px-2.5 py-1 text-xs font-bold text-white backdrop-blur shadow-sm active:bg-black/80"
                 >
-                  <span className="grid size-5 place-items-center rounded-full bg-gold/20 text-gold text-[11px] font-black">
+                  <span className="grid size-4.5 place-items-center rounded-full bg-gold/20 text-gold text-[10px] font-black">
                     ★
                   </span>
                   <span className="text-gold font-black">3.9</span>
@@ -595,49 +609,49 @@ export function HomePage() {
                 </a>
               </div>
 
-              <h1 className="text-balance break-words font-display text-[2rem] leading-[1.12] sm:text-6xl lg:text-8xl sm:leading-[1.03] font-extrabold drop-shadow-md">
+              <h1 className="text-balance break-words font-display text-[1.85rem] leading-[1.08] sm:text-6xl lg:text-8xl sm:leading-[1.03] font-extrabold drop-shadow-md">
                 Good food.<br />
                 <span className="gold-gradient-text">Warm vibes.</span><br />
                 A stop worth remembering.
               </h1>
 
-              <p className="mt-4 sm:mt-6 max-w-xl text-sm leading-relaxed sm:text-base sm:leading-7 text-primary-foreground/90 drop-shadow">
+              <p className="mt-2.5 sm:mt-6 max-w-xl text-xs sm:text-base leading-relaxed sm:leading-7 text-primary-foreground/90 drop-shadow">
                 Authentic Punjabi dining, air-conditioned banquet celebrations, and comfortable AC rooms along the historic Nangal–Chandigarh Road in Brahmpur.
               </p>
 
-              {/* Action Buttons */}
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-2.5 sm:gap-3.5">
+              {/* Action Buttons - Fully visible on all mobile screens */}
+              <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-3.5">
                 <Button
                   type="button"
                   size="lg"
                   onClick={() => setBookingOpen(true)}
-                  className="h-12 w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 px-6 text-foreground font-extrabold shadow-xl hover:opacity-95 transform hover:-translate-y-0.5 transition-all text-sm sm:text-base"
+                  className="h-11 sm:h-12 w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 px-5 text-foreground font-black shadow-xl hover:opacity-95 transform hover:-translate-y-0.5 transition-all text-xs sm:text-base"
                 >
-                  <PartyPopper className="mr-2 size-5 shrink-0" />
-                  <span>Book Banquet Hall</span>
+                  <PartyPopper className="mr-2 size-4.5 shrink-0" />
+                  <span>Book Banquet Hall for Marriages & Parties</span>
                 </Button>
 
                 <div className="grid grid-cols-3 gap-2 w-full sm:w-auto sm:flex sm:flex-wrap sm:gap-3.5">
-                  <Button asChild size="lg" className="h-11 sm:h-12 bg-primary px-3 sm:px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md text-xs sm:text-sm">
+                  <Button asChild size="lg" className="h-10 sm:h-12 bg-primary px-2.5 sm:px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md text-xs sm:text-sm">
                     <a href="#menu">
-                      <Utensils className="mr-1.5 sm:mr-2 size-4 shrink-0" />
+                      <Utensils className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0" />
                       <span>Menu</span>
                     </a>
                   </Button>
 
-                  <Button asChild size="lg" variant="outline" className="h-11 sm:h-12 border-primary-foreground/40 bg-primary-foreground/10 px-3 sm:px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur text-xs sm:text-sm">
+                  <Button asChild size="lg" variant="outline" className="h-10 sm:h-12 border-primary-foreground/40 bg-primary-foreground/10 px-2.5 sm:px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur text-xs sm:text-sm">
                     <a href="#gallery">
-                      <ImageIcon className="mr-1.5 sm:mr-2 size-4 shrink-0" />
+                      <ImageIcon className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0" />
                       <span>Gallery</span>
                     </a>
                   </Button>
 
-                  <Button asChild size="lg" variant="ghost" className="h-11 sm:h-12 border border-white/20 bg-white/5 sm:border-0 sm:bg-transparent px-3 sm:px-5 text-primary-foreground hover:bg-primary-foreground/15 text-xs sm:text-sm">
+                  <Button asChild size="lg" variant="ghost" className="h-10 sm:h-12 border border-white/20 bg-white/10 sm:border-0 sm:bg-transparent px-2.5 sm:px-5 text-primary-foreground hover:bg-primary-foreground/15 text-xs sm:text-sm">
                     <a
                       href={restaurant.phoneHref}
                       onClick={() => activityTracker.trackCallClick({ source: "Hero Section Call Button" })}
                     >
-                      <Phone className="mr-1.5 sm:mr-2 size-4 shrink-0 text-gold" />
+                      <Phone className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0 text-gold" />
                       <span>Call</span>
                     </a>
                   </Button>
@@ -645,7 +659,7 @@ export function HomePage() {
               </div>
 
               {/* Quick Metrics Bar in Hero */}
-              <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3 pt-5 sm:pt-6 border-t border-white/15 max-w-2xl text-white">
+              <div className="mt-5 sm:mt-12 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3 pt-4 sm:pt-6 border-t border-white/15 max-w-2xl text-white">
                 <a
                   href="#reviews"
                   onClick={(e) => {
