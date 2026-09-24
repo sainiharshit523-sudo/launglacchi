@@ -1,15 +1,29 @@
-import { Phone, MessageCircle, MapPin, Clock, Shield, Lock, ExternalLink } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { Phone, MessageCircle, MapPin, Clock, Shield, ExternalLink } from "lucide-react";
 import { BrandMark } from "./brand-mark";
 import { Button } from "@/components/ui/button";
 import { restaurant } from "@/data/restaurant";
 import type { WebsiteStatusConfig } from "@/lib/website-status";
+import { StaffAccessModal } from "@/components/admin/staff-access-modal";
 
 interface WebsiteOfflineViewProps {
   status: WebsiteStatusConfig;
 }
 
 export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
+  const [staffModalOpen, setStaffModalOpen] = useState(false);
+
+  // Hidden keyboard shortcut for restaurant management (Ctrl + Shift + L)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "L" || e.key === "l")) {
+        e.preventDefault();
+        setStaffModalOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
   return (
     <div className="relative min-h-screen flex flex-col justify-between bg-background text-foreground selection:bg-primary/20">
       {/* Subtle luxury ambient glows */}
@@ -136,18 +150,12 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
       <footer className="relative z-10 border-t border-border/60 bg-background/80 px-4 py-4 text-center text-xs text-muted-foreground">
         <div className="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-2">
           <p>© {new Date().getFullYear()} {restaurant.name}. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <Link
-              to="/admin"
-              className="text-[11px] text-muted-foreground/60 hover:text-foreground inline-flex items-center gap-1 transition-colors"
-              title="Staff Portal"
-            >
-              <Lock className="size-2.5" />
-              <span>Staff Portal</span>
-            </Link>
-          </div>
+          <p className="text-[11px] text-muted-foreground/70">Nangal to Chandigarh Road, Rupnagar District, Punjab</p>
         </div>
       </footer>
+
+      {/* Discrete Staff Access Gateway Security Modal */}
+      <StaffAccessModal open={staffModalOpen} onOpenChange={setStaffModalOpen} />
     </div>
   );
 }

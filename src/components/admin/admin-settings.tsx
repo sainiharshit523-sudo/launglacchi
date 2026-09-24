@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import {
   Bell,
   CheckCircle2,
+  Copy,
   Download,
+  ExternalLink,
   Globe,
   KeyRound,
+  Link as LinkIcon,
   Lock,
   Power,
   PowerOff,
@@ -12,6 +15,7 @@ import {
   Save,
   ShieldAlert,
   ShieldCheck,
+  ShieldX,
   Trash2,
   Volume2,
   VolumeX,
@@ -19,7 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { adminAuth } from "@/lib/admin-auth";
+import { adminAuth, ADMIN_PORTAL_PATH } from "@/lib/admin-auth";
 import { activityTracker, playNotificationChime } from "@/lib/activity-tracker";
 import { websiteStatusManager, type WebsiteStatusConfig } from "@/lib/website-status";
 
@@ -39,6 +43,37 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
 
   const [siteConfig, setSiteConfig] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
   const [siteSaveStatus, setSiteSaveStatus] = useState<string | null>(null);
+
+  const [copiedCustomer, setCopiedCustomer] = useState(false);
+  const [copiedPortal, setCopiedPortal] = useState(false);
+
+  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://launglaachirestaurant.com";
+  const customerLink = `${siteOrigin}/`;
+  const portalLink = `${siteOrigin}${ADMIN_PORTAL_PATH}`;
+
+  const copyToClipboard = async (text: string, type: "customer" | "portal") => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+      if (type === "customer") {
+        setCopiedCustomer(true);
+        setTimeout(() => setCopiedCustomer(false), 2500);
+      } else {
+        setCopiedPortal(true);
+        setTimeout(() => setCopiedPortal(false), 2500);
+      }
+    } catch {
+      // Fallback
+    }
+  };
 
   useEffect(() => {
     const unsub = websiteStatusManager.subscribe((updated) => {
@@ -158,6 +193,142 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
         <p className="text-xs sm:text-sm text-muted-foreground mt-1">
           Manage your credentials, audio notifications, and activity data retention.
         </p>
+      </div>
+
+      {/* Link Separation & Portal URL Security Card */}
+      <div className="rounded-3xl border border-gold/40 bg-card p-6 sm:p-7 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-border pb-4">
+          <div className="flex items-center gap-3">
+            <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-amber-500/15 border border-amber-500/30 text-gold shadow-sm">
+              <LinkIcon className="size-6 text-gold" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-bold text-foreground text-lg">Customer vs Admin Link Separation</h3>
+                <Badge variant="outline" className="border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] uppercase">
+                  Protected & Isolated
+                </Badge>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Public customer website and private operations portal links are separated for security.
+              </p>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-[11px] font-extrabold text-red-700 dark:text-red-300 self-start sm:self-auto">
+            <ShieldX className="size-3.5 text-red-500 shrink-0" />
+            <span>/admin Access: Permanently Blocked (404)</span>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          {/* Card 1: Public Customer Link */}
+          <div className="rounded-2xl border border-border/80 bg-muted/20 p-4 flex flex-col justify-between space-y-3">
+            <div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-foreground">
+                  <Globe className="size-3.5 text-primary" />
+                  <span>Public Customer Website</span>
+                </span>
+                <Badge className="bg-primary/20 text-primary border-primary/30 text-[10px] font-extrabold uppercase">
+                  Public
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                Give this link to your customers, put on business cards, Instagram bio & Google Maps. Shows food menu, banquet booking enquiry, and calling buttons.
+              </p>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <div className="flex items-center gap-2 rounded-xl border border-border bg-background px-3 py-2 text-xs font-mono text-foreground break-all">
+                <span className="truncate">{customerLink}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => copyToClipboard(customerLink, "customer")}
+                  className="h-8 flex-1 text-xs font-bold"
+                  variant="outline"
+                >
+                  {copiedCustomer ? (
+                    <>
+                      <CheckCircle2 className="mr-1.5 size-3.5 text-emerald-500" />
+                      <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="mr-1.5 size-3.5" />
+                      <span>Copy Customer Link</span>
+                    </>
+                  )}
+                </Button>
+                <Button asChild size="sm" variant="ghost" className="h-8 px-2.5 text-xs">
+                  <a href={customerLink} target="_blank" rel="noopener noreferrer" title="Open customer website in new tab">
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Private Operations Command Link */}
+          <div className="rounded-2xl border border-gold/50 bg-gold/5 p-4 flex flex-col justify-between space-y-3 shadow-xs">
+            <div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-amber-900 dark:text-gold">
+                  <Lock className="size-3.5 text-gold" />
+                  <span>Private Management Portal</span>
+                </span>
+                <Badge className="bg-amber-500/20 text-amber-800 dark:text-amber-200 border-amber-500/40 text-[10px] font-extrabold uppercase">
+                  Confidential
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                Secret link strictly for the restaurant owner & managers. Bookmark this in your personal browser. Standard /admin is blocked with 404 to protect your privacy.
+              </p>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <div className="flex items-center gap-2 rounded-xl border border-gold/40 bg-background px-3 py-2 text-xs font-mono font-bold text-amber-900 dark:text-amber-300 break-all shadow-xs">
+                <span className="truncate">{portalLink}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => copyToClipboard(portalLink, "portal")}
+                  className="h-8 flex-1 text-xs font-black bg-gold text-neutral-950 hover:bg-gold/90 shadow-xs cursor-pointer"
+                >
+                  {copiedPortal ? (
+                    <>
+                      <CheckCircle2 className="mr-1.5 size-3.5 text-neutral-950" />
+                      <span>Copied Private Link!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="mr-1.5 size-3.5" />
+                      <span>Copy Secret Portal Link</span>
+                    </>
+                  )}
+                </Button>
+                <Button asChild size="sm" variant="outline" className="h-8 px-2.5 text-xs border-gold/40 hover:bg-gold/10">
+                  <a href={portalLink} target="_blank" rel="noopener noreferrer" title="Open private portal in new tab">
+                    <ExternalLink className="size-3.5 text-gold" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Security Summary Banner */}
+        <div className="mt-4 rounded-xl border border-border/80 bg-muted/30 p-3 text-xs text-muted-foreground flex items-start gap-2.5">
+          <ShieldAlert className="size-4 text-primary shrink-0 mt-0.5" />
+          <div className="text-[11px] leading-relaxed">
+            <strong className="text-foreground">Why this keeps your portal safe:</strong> Automated crawlers and unauthorized people frequently attempt to open <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">/admin</code>. Because <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">/admin</code> now returns a 404 Page Not Found and public pages contain no admin buttons, visitors have no way of knowing your management portal URL.
+          </div>
+        </div>
       </div>
 
       {/* Master Website Online/Offline Availability Card */}
@@ -322,15 +493,69 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
             </div>
 
             <div>
-              <label className="text-xs font-bold text-foreground block mb-1">New Strong Password</label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="text-xs font-bold text-foreground">New Strong Password</label>
+                {newPassword && (
+                  <span
+                    className={`text-[10px] font-extrabold uppercase ${
+                      newPassword.length < 8
+                        ? "text-red-500"
+                        : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/.test(newPassword)
+                        ? "text-emerald-500"
+                        : "text-amber-500"
+                    }`}
+                  >
+                    {newPassword.length < 8
+                      ? "Too Short"
+                      : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/.test(newPassword)
+                      ? "Very Strong"
+                      : "Moderate"}
+                  </span>
+                )}
+              </div>
               <Input
                 type="password"
                 required
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="At least 8 characters"
+                placeholder="At least 8 characters with letters, numbers & symbols"
                 className="h-10 text-xs"
               />
+
+              {/* Password strength visual bar */}
+              {newPassword && (
+                <div className="mt-2 space-y-1.5">
+                  <div className="grid grid-cols-4 gap-1 h-1.5 w-full bg-muted/60 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full transition-all ${
+                        newPassword.length >= 8 ? "bg-amber-500" : "bg-red-500"
+                      }`}
+                    />
+                    <div
+                      className={`h-full transition-all ${
+                        newPassword.length >= 8 && /[a-z]/.test(newPassword) && /[A-Z]/.test(newPassword)
+                          ? "bg-amber-500"
+                          : "bg-muted"
+                      }`}
+                    />
+                    <div
+                      className={`h-full transition-all ${
+                        newPassword.length >= 8 && /\d/.test(newPassword) ? "bg-emerald-500" : "bg-muted"
+                      }`}
+                    />
+                    <div
+                      className={`h-full transition-all ${
+                        newPassword.length >= 8 && /[^a-zA-Z0-9]/.test(newPassword)
+                          ? "bg-emerald-500"
+                          : "bg-muted"
+                      }`}
+                    />
+                  </div>
+                  <p className="text-[10px] text-muted-foreground">
+                    Recommended: minimum 8 characters with mixed case, numbers, and symbols.
+                  </p>
+                </div>
+              )}
             </div>
 
             <div>

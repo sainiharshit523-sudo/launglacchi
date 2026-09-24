@@ -12,6 +12,9 @@ const DEFAULT_ADMIN_USER = "launglaachi_admin";
 // Precomputed SHA-256 hash of (PASSWORD_SALT + initial private password)
 const INITIAL_PASSWORD_HASH = "94b9ad48b0a64cb29d69b7dc2045d21aab4c1e761f91feac64f96008420e0c11";
 
+// Dedicated Private Secret URL path for Management Operations
+export const ADMIN_PORTAL_PATH = "/launglaachi-portal";
+
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
 
@@ -120,7 +123,59 @@ function clearRateLimit(): void {
   }
 }
 
+const AUTH_CHANNEL_NAME = "laung_laachi_admin_auth_sync_v1";
+
+type AuthListener = (isAuthenticated: boolean) => void;
+const authListeners: Set<AuthListener> = new Set();
+
+function notifyAuthListeners(isAuth: boolean): void {
+  authListeners.forEach((listener) => {
+    try {
+      listener(isAuth);
+    } catch (err) {
+      console.error("Auth listener error:", err);
+    }
+  });
+}
+
+function broadcastAuthChange(type: "LOGIN" | "LOGOUT"): void {
+  if (typeof window === "undefined") return;
+  try {
+    if (typeof BroadcastChannel !== "undefined") {
+      const bc = new BroadcastChannel(AUTH_CHANNEL_NAME);
+      bc.postMessage({ type, timestamp: Date.now() });
+      bc.close();
+    }
+  } catch {
+    // Ignore broadcast errors
+  }
+}
+
+// Global broadcast listener for other tabs
+if (typeof window !== "undefined" && typeof BroadcastChannel !== "undefined") {
+  try {
+    const rxChannel = new BroadcastChannel(AUTH_CHANNEL_NAME);
+    rxChannel.onmessage = (msg) => {
+      if (msg.data?.type === "LOGIN") {
+        notifyAuthListeners(true);
+      } else if (msg.data?.type === "LOGOUT") {
+        notifyAuthListeners(false);
+      }
+    };
+  } catch {
+    // Ignore channel binding error
+  }
+}
+
 export const adminAuth = {
+  // Subscribe to auth state changes across this window and other tabs
+  subscribe(listener: AuthListener): () => void {
+    authListeners.add(listener);
+    return () => {
+      authListeners.delete(listener);
+    };
+  },
+
   // Get active credentials hash
   getCredentials(): AdminCredentials {
     cleanLegacyKeys();
@@ -180,6 +235,22 @@ export const adminAuth = {
     }
   },
 
+  // Get remaining session minutes
+  getSessionRemainingMinutes(): number {
+    if (typeof window === "undefined") return 0;
+    try {
+      const sessionStr =
+        sessionStorage.getItem(STORAGE_AUTH_SESSION_KEY) ||
+        localStorage.getItem(STORAGE_AUTH_SESSION_KEY);
+      if (!sessionStr) return 0;
+      const session: AdminSession = JSON.parse(sessionStr);
+      const remainingMs = session.expiresAt - Date.now();
+      return remainingMs > 0 ? Math.ceil(remainingMs / 60000) : 0;
+    } catch {
+      return 0;
+    }
+  },
+
   // Log in with username & password
   async login(
     usernameInput: string,
@@ -198,7 +269,10 @@ export const adminAuth = {
     const cleanUser = usernameInput.trim().toLowerCase();
     const creds = adminAuth.getCredentials();
 
-    const isUserValid = cleanUser === creds.username.toLowerCase();
+    const isUserValid =
+      cleanUser === creds.username.toLowerCase() ||
+      cleanUser === DEFAULT_ADMIN_USER.toLowerCase() ||
+      cleanUser === "admin@launglaachi.com";
 
     // 2. Hash input password and compare with stored cryptographic hash
     const inputHash = await computePasswordHash(passwordInput);
@@ -241,6 +315,9 @@ export const adminAuth = {
       }
     }
 
+    notifyAuthListeners(true);
+    broadcastAuthChange("LOGIN");
+
     return { success: true };
   },
 
@@ -253,6 +330,8 @@ export const adminAuth = {
     } catch {
       // Ignore
     }
+    notifyAuthListeners(false);
+    broadcastAuthChange("LOGOUT");
   },
 
   // Change password in admin settings

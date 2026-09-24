@@ -45,6 +45,8 @@ import { activityTracker } from "@/lib/activity-tracker";
 import { websiteStatusManager, type WebsiteStatusConfig } from "@/lib/website-status";
 import { WebsiteOfflineView } from "@/components/restaurant/website-offline-view";
 import { adminAuth } from "@/lib/admin-auth";
+import { StaffAccessModal } from "@/components/admin/staff-access-modal";
+import { AdminSessionBar } from "@/components/admin/admin-session-bar";
 
 const seoDescription =
   "Visit Laung Laachi on Nangal–Chandigarh Road in Brahmpur for authentic Punjabi food, AC Banquet Hall bookings for marriages and parties, tandoori paranthas, and comfortable AC rooms. Dine-in, outdoor seating, and takeaway available.";
@@ -229,6 +231,7 @@ export function HomePage() {
   const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [staffModalOpen, setStaffModalOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -236,10 +239,28 @@ export function HomePage() {
     setSiteStatus(websiteStatusManager.getStatus());
     activityTracker.trackPageVisit("Homepage");
 
-    const unsub = websiteStatusManager.subscribe((newStatus) => {
+    const unsubStatus = websiteStatusManager.subscribe((newStatus) => {
       setSiteStatus(newStatus);
     });
-    return unsub;
+
+    const unsubAuth = adminAuth.subscribe((isAuth) => {
+      setIsAdmin(isAuth);
+    });
+
+    // Hidden keyboard shortcut for restaurant management (Ctrl + Shift + L)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "L" || e.key === "l")) {
+        e.preventDefault();
+        setStaffModalOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      unsubStatus();
+      unsubAuth();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   // When website is turned OFF, public visitors see the luxury offline/maintenance view
@@ -249,35 +270,8 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background pb-16 md:pb-0">
-      {/* Admin Preview Mode Offline Notification Bar */}
-      {!siteStatus.enabled && isAdmin && (
-        <div className="sticky top-0 z-[100] border-b border-red-500/40 bg-red-600 px-4 py-2.5 text-white shadow-lg">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-white animate-ping" />
-              <span className="font-extrabold uppercase tracking-wide">
-                Website is currently OFFLINE to public visitors (Admin Preview Active)
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Button
-                size="sm"
-                onClick={() => websiteStatusManager.setStatus({ enabled: true })}
-                className="h-7 px-3 text-xs font-black bg-white text-red-700 hover:bg-white/90 shadow-xs"
-              >
-                <Power className="mr-1.5 size-3.5" />
-                Turn Website ONLINE Now
-              </Button>
-              <Link
-                to="/admin"
-                className="rounded-lg bg-black/25 px-2.5 py-1 text-xs font-bold text-white hover:bg-black/40 transition-colors"
-              >
-                Admin Dashboard
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Dedicated Executive Admin Management Bar (Visible only when staff session is active) */}
+      <AdminSessionBar status={siteStatus} onStatusChange={setSiteStatus} />
 
       {/* Sticky Top Header Navigation */}
       <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur-md transition-all shadow-sm">
@@ -1324,7 +1318,9 @@ export function HomePage() {
         {/* Bottom Sub-Footer Bar with "Back to Top ↑" Button */}
         <div className="relative mx-auto mt-10 flex max-w-7xl flex-col items-center justify-between gap-4 pt-4 text-xs text-primary-foreground/60 sm:flex-row">
           <div>
-            <p>© 2026 Laung Laachi Restaurant & AC Banquet Hall, Brahmpur.</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <p>© 2026 Laung Laachi Restaurant & AC Banquet Hall, Brahmpur.</p>
+            </div>
             <p className="text-[11px] text-primary-foreground/50 mt-0.5">
               Nangal to Chandigarh Road, Rupnagar District, Punjab · Authentic Punjabi Hospitality
             </p>
@@ -1369,15 +1365,6 @@ export function HomePage() {
               <span>Email</span>
             </a>
             <span>·</span>
-            <Link
-              to="/admin"
-              className="hover:text-gold transition-colors flex items-center gap-1 text-[11px] font-semibold text-primary-foreground/60 hover:text-gold"
-              title="Restricted Staff & Admin Management Portal"
-            >
-              <Lock className="size-3 text-gold/80" />
-              <span>Admin Portal</span>
-            </Link>
-            <span>·</span>
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -1390,6 +1377,9 @@ export function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Discrete Staff Access Gateway Security Modal */}
+      <StaffAccessModal open={staffModalOpen} onOpenChange={setStaffModalOpen} />
 
       {/* Floating WhatsApp Quick Action Button */}
       <a
