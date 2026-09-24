@@ -40,7 +40,7 @@ function buildBookingWhatsAppUrl(booking: {
   guestCount: string;
   cateringType: string;
   roomsNeeded: string;
-  notes?: string;
+  notes?: string | undefined;
 }): string {
   const lines = [
     `*🎉 NEW BANQUET & EVENT BOOKING INQUIRY*`,
@@ -63,7 +63,7 @@ function buildBookingWhatsAppUrl(booking: {
   lines.push(
     ``,
     `----------------------------------------`,
-    `_Hello Admin, I have submitted this booking inquiry on the Laung Laachi website. Please verify date availability and share banquet package quotation._`
+    `_Hello Admin, I have submitted this booking inquiry on the Laung Laachi website. Please verify date availability and share banquet package quotation._`,
   );
 
   return `https://wa.me/919915716739?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -110,7 +110,7 @@ export function BanquetBookingDialog({
   const handleWhatsAppInquiry = () => {
     activityTracker.trackWhatsAppClick(
       "Banquet Booking Dialog",
-      `Inquiry by ${name || "Guest"} for ${eventType}`
+      `Inquiry by ${name || "Guest"} for ${eventType}`,
     );
 
     const waUrl = buildBookingWhatsAppUrl({
@@ -153,7 +153,7 @@ export function BanquetBookingDialog({
     // 2. Track WhatsApp auto-redirect event in activity logs
     activityTracker.trackWhatsAppClick(
       "Banquet Booking Auto-Redirect",
-      `Auto-redirected to WhatsApp for booking #${refCode} (${name.trim()} - ${eventType})`
+      `Auto-redirected to WhatsApp for booking #${refCode} (${name.trim()} - ${eventType})`,
     );
 
     // 3. Build WhatsApp URL
@@ -200,7 +200,8 @@ export function BanquetBookingDialog({
             Book for Marriages, Parties & Celebrations
           </DialogTitle>
           <DialogDescription className="text-xs sm:text-sm text-muted-foreground">
-            Plan your special day with our air-conditioned banquet hall, custom Punjabi catering, live tandoor, and comfortable guest rooms in Brahmpur.
+            Plan your special day with our air-conditioned banquet hall, custom Punjabi catering,
+            live tandoor, and comfortable guest rooms in Brahmpur.
           </DialogDescription>
         </DialogHeader>
 
@@ -230,7 +231,8 @@ export function BanquetBookingDialog({
                 </span>
               </div>
               <p className="text-[11px] text-muted-foreground max-w-md">
-                Your booking details have been prepared for the restaurant admin. Tap below to send the message directly to our manager on WhatsApp.
+                Your booking details have been prepared for the restaurant admin. Tap below to send
+                the message directly to our manager on WhatsApp.
               </p>
             </div>
 
@@ -247,7 +249,7 @@ export function BanquetBookingDialog({
                   onClick={() => {
                     activityTracker.trackWhatsAppClick(
                       "Booking Confirmation WhatsApp Button",
-                      `Customer tapped manual WhatsApp link for #${bookingRef}`
+                      `Customer tapped manual WhatsApp link for #${bookingRef}`,
                     );
                   }}
                 >
@@ -261,26 +263,44 @@ export function BanquetBookingDialog({
               {lastSubmittedData && (
                 <div className="rounded-2xl border border-border/80 bg-muted/30 p-3.5 text-xs text-left grid grid-cols-2 gap-2 text-muted-foreground">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">Guest Name</span>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">
+                      Guest Name
+                    </span>
                     <span className="font-semibold text-foreground">{lastSubmittedData.name}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">Event Type</span>
-                    <span className="font-semibold text-foreground">{lastSubmittedData.eventType}</span>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">
+                      Event Type
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      {lastSubmittedData.eventType}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">Preferred Date</span>
-                    <span className="font-semibold text-foreground">{lastSubmittedData.eventDate || "Date TBD"}</span>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">
+                      Preferred Date
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      {lastSubmittedData.eventDate || "Date TBD"}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">Guests</span>
-                    <span className="font-semibold text-foreground">{lastSubmittedData.guestCount}</span>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground/75 block">
+                      Guests
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      {lastSubmittedData.guestCount}
+                    </span>
                   </div>
                 </div>
               )}
 
               <div className="flex flex-col sm:flex-row items-center gap-2 pt-1">
-                <Button asChild variant="outline" className="w-full sm:flex-1 h-10 text-xs font-bold border-border">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full sm:flex-1 h-10 text-xs font-bold border-border"
+                >
                   <a href={restaurant.phoneHref}>
                     <Phone className="mr-2 size-3.5 text-primary" />
                     <span>Direct Call: {restaurant.phoneDisplay}</span>
@@ -318,10 +338,11 @@ export function BanquetBookingDialog({
                     key={item}
                     type="button"
                     onClick={() => setEventType(item)}
-                    className={`rounded-xl border p-2.5 text-left text-xs font-bold transition-all ${eventType === item
+                    className={`rounded-xl border p-2.5 text-left text-xs font-bold transition-all ${
+                      eventType === item
                         ? "border-primary bg-primary text-primary-foreground shadow-sm"
                         : "border-border bg-card hover:border-border/80 hover:bg-muted/50 text-foreground"
-                      }`}
+                    }`}
                   >
                     {item}
                   </button>
@@ -332,7 +353,10 @@ export function BanquetBookingDialog({
             {/* Name & Phone */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <label htmlFor="guest-name" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="guest-name"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Your Full Name *
                 </label>
                 <input
@@ -347,7 +371,10 @@ export function BanquetBookingDialog({
               </div>
 
               <div>
-                <label htmlFor="guest-phone" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="guest-phone"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Contact / WhatsApp Number *
                 </label>
                 <input
@@ -365,7 +392,10 @@ export function BanquetBookingDialog({
             {/* Date & Guest Count */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <label htmlFor="event-date" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="event-date"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Preferred Event Date
                 </label>
                 <div className="relative mt-1.5">
@@ -380,7 +410,10 @@ export function BanquetBookingDialog({
               </div>
 
               <div>
-                <label htmlFor="guest-count" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="guest-count"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Expected Guest Count
                 </label>
                 <select
@@ -401,7 +434,10 @@ export function BanquetBookingDialog({
             {/* Catering & AC Rooms */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <label htmlFor="catering-type" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="catering-type"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Food & Catering Preference
                 </label>
                 <select
@@ -412,13 +448,18 @@ export function BanquetBookingDialog({
                 >
                   <option value="Pure Veg Royal Buffet">Pure Veg Royal Punjabi Buffet</option>
                   <option value="Pure Veg & Non-Veg Buffet">Veg & Non-Veg Mixed Feast</option>
-                  <option value="Custom Tandoori Live Counters">Live Tandoori & Snack Counters</option>
+                  <option value="Custom Tandoori Live Counters">
+                    Live Tandoori & Snack Counters
+                  </option>
                   <option value="High Tea & Snacks Buffet">High Tea & Snacks Only</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="rooms-needed" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <label
+                  htmlFor="rooms-needed"
+                  className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                >
                   Need AC Rooms for Guests?
                 </label>
                 <select
@@ -436,7 +477,10 @@ export function BanquetBookingDialog({
 
             {/* Notes */}
             <div>
-              <label htmlFor="special-notes" className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <label
+                htmlFor="special-notes"
+                className="block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+              >
                 Special Requests or Decoration Ideas (Optional)
               </label>
               <textarea
@@ -452,7 +496,9 @@ export function BanquetBookingDialog({
             {/* Banquet Perks Pill Banner */}
             <div className="rounded-xl border border-gold/30 bg-secondary/15 p-3 text-xs text-muted-foreground flex items-center gap-2">
               <Sparkles className="size-4 text-gold shrink-0" />
-              <span>Includes stage setup, air-conditioned hall, backup generators & private parking.</span>
+              <span>
+                Includes stage setup, air-conditioned hall, backup generators & private parking.
+              </span>
             </div>
 
             {/* Action Buttons */}

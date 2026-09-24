@@ -29,7 +29,8 @@ export function AdminCallsLog({ events }: AdminCallsLogProps) {
             <span>Customer Phone Calls & Dish Order Clicks</span>
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-            Logs of every customer who tapped "Call Order" on a dish card or clicked the restaurant phone hotline.
+            Logs of every customer who tapped "Call Order" on a dish card or clicked the restaurant
+            phone hotline.
           </p>
         </div>
 
@@ -109,11 +110,16 @@ export function AdminCallsLog({ events }: AdminCallsLogProps) {
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-muted-foreground">
-                        <p className="font-semibold text-foreground">{item.metadata?.device || "Desktop PC"}</p>
+                        <p className="font-semibold text-foreground">
+                          {item.metadata?.device || "Desktop PC"}
+                        </p>
                         <p className="text-[10px]">{item.metadata?.browser || "Web Browser"}</p>
                       </td>
                       <td className="px-6 py-4 text-right whitespace-nowrap">
-                        <Badge variant="outline" className="border-red-500/30 text-red-700 dark:text-red-300 font-mono text-[10px]">
+                        <Badge
+                          variant="outline"
+                          className="border-red-500/30 text-red-700 dark:text-red-300 font-mono text-[10px]"
+                        >
                           +91 99157 16739
                         </Badge>
                       </td>
@@ -127,9 +133,12 @@ export function AdminCallsLog({ events }: AdminCallsLogProps) {
       ) : (
         <div className="rounded-3xl border border-dashed border-border p-12 text-center bg-card">
           <Phone className="mx-auto size-12 text-muted-foreground/40" />
-          <h3 className="mt-4 font-display text-lg font-bold text-foreground">No call events recorded yet</h3>
+          <h3 className="mt-4 font-display text-lg font-bold text-foreground">
+            No call events recorded yet
+          </h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            Whenever a customer clicks to call or order a dish, the record will show up here instantly.
+            Whenever a customer clicks to call or order a dish, the record will show up here
+            instantly.
           </p>
         </div>
       )}

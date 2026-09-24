@@ -17,7 +17,8 @@ export function AdminWhatsAppLog({ events }: AdminWhatsAppLogProps) {
     return (
       e.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       e.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (e.metadata?.whatsappSource && e.metadata.whatsappSource.toLowerCase().includes(searchTerm.toLowerCase()))
+      (e.metadata?.whatsappSource &&
+        e.metadata.whatsappSource.toLowerCase().includes(searchTerm.toLowerCase()))
     );
   });
 
@@ -30,7 +31,8 @@ export function AdminWhatsAppLog({ events }: AdminWhatsAppLogProps) {
             <span>Customer WhatsApp Button Taps & Chats</span>
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-            Logs of all visitors who initiated a WhatsApp chat via the floating help button or banquet inquiry buttons.
+            Logs of all visitors who initiated a WhatsApp chat via the floating help button or
+            banquet inquiry buttons.
           </p>
         </div>
 
@@ -83,10 +85,14 @@ export function AdminWhatsAppLog({ events }: AdminWhatsAppLogProps) {
                       </td>
                       <td className="px-6 py-4">
                         <p className="font-bold text-foreground text-sm">{item.title}</p>
-                        <p className="text-[11px] text-muted-foreground mt-0.5">{item.description}</p>
+                        <p className="text-[11px] text-muted-foreground mt-0.5">
+                          {item.description}
+                        </p>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-muted-foreground">
-                        <p className="font-semibold text-foreground">{item.metadata?.device || "Mobile Device"}</p>
+                        <p className="font-semibold text-foreground">
+                          {item.metadata?.device || "Mobile Device"}
+                        </p>
                         <p className="text-[10px]">{item.metadata?.browser || "Web Browser"}</p>
                       </td>
                       <td className="px-6 py-4 text-right whitespace-nowrap">
@@ -112,7 +118,9 @@ export function AdminWhatsAppLog({ events }: AdminWhatsAppLogProps) {
       ) : (
         <div className="rounded-3xl border border-dashed border-border p-12 text-center bg-card">
           <MessageCircle className="mx-auto size-12 text-muted-foreground/40" />
-          <h3 className="mt-4 font-display text-lg font-bold text-foreground">No WhatsApp interactions logged</h3>
+          <h3 className="mt-4 font-display text-lg font-bold text-foreground">
+            No WhatsApp interactions logged
+          </h3>
           <p className="mt-1 text-xs text-muted-foreground">
             Customer clicks on any WhatsApp widget or button will be tracked here in real time.
           </p>

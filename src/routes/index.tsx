@@ -56,7 +56,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Laung Laachi Brahmpur | Restaurant & Banquet Hall on Nangal–Chandigarh Road" },
       { name: "description", content: seoDescription },
-      { property: "og:title", content: "Laung Laachi — Authentic Restaurant & Banquet Hall in Brahmpur" },
+      {
+        property: "og:title",
+        content: "Laung Laachi — Authentic Restaurant & Banquet Hall in Brahmpur",
+      },
       { property: "og:description", content: seoDescription },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -83,7 +86,15 @@ export const Route = createFileRoute("/")({
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
               opens: "07:00",
               closes: "00:00",
             },
@@ -228,7 +239,9 @@ export function HomePage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>("#home");
-  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
+  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(
+    websiteStatusManager.getStatus(),
+  );
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [staffModalOpen, setStaffModalOpen] = useState(false);
@@ -344,10 +357,17 @@ export function HomePage() {
             </Button>
 
             {/* Direct Phone Call Button in Header on Mobile */}
-            <Button asChild variant="outline" size="icon" className="sm:hidden size-8.5 rounded-xl border border-border/70 hover:border-primary hover:bg-muted shrink-0">
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="sm:hidden size-8.5 rounded-xl border border-border/70 hover:border-primary hover:bg-muted shrink-0"
+            >
               <a
                 href={restaurant.phoneHref}
-                onClick={() => activityTracker.trackCallClick({ source: "Mobile Header Call Button" })}
+                onClick={() =>
+                  activityTracker.trackCallClick({ source: "Mobile Header Call Button" })
+                }
                 title="Call Restaurant Directly"
                 aria-label="Call Restaurant Directly"
               >
@@ -356,7 +376,11 @@ export function HomePage() {
             </Button>
 
             {/* Desktop Full Call Button */}
-            <Button asChild variant="outline" className="hidden sm:inline-flex h-10 border-border hover:border-primary hover:scale-102 transition-transform shrink-0">
+            <Button
+              asChild
+              variant="outline"
+              className="hidden sm:inline-flex h-10 border-border hover:border-primary hover:scale-102 transition-transform shrink-0"
+            >
               <a
                 href={restaurant.phoneHref}
                 onClick={() => activityTracker.trackCallClick({ source: "Header Call Button" })}
@@ -416,7 +440,10 @@ export function HomePage() {
 
         {/* Mobile Nav Menu Drawer with Thematic Colors and Animated Entry */}
         {mobileOpen && (
-          <nav className="border-t border-border bg-card/95 px-4 py-4 lg:hidden backdrop-blur-xl animate-pop-in max-h-[calc(100svh-5rem)] overflow-y-auto" aria-label="Mobile navigation">
+          <nav
+            className="border-t border-border bg-card/95 px-4 py-4 lg:hidden backdrop-blur-xl animate-pop-in max-h-[calc(100svh-5rem)] overflow-y-auto"
+            aria-label="Mobile navigation"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {navItemsConfig.map((item) => {
                 const Icon = item.icon;
@@ -453,15 +480,15 @@ export function HomePage() {
                       {item.badge && (
                         <span
                           className={`rounded-md px-1.5 py-0.5 text-[10px] font-extrabold ${
-                            isActive
-                              ? "bg-black/25 text-white"
-                              : "bg-muted text-muted-foreground"
+                            isActive ? "bg-black/25 text-white" : "bg-muted text-muted-foreground"
                           }`}
                         >
                           {item.badge}
                         </span>
                       )}
-                      <ChevronRight className={`size-4 ${isActive ? "text-white/80" : "text-muted-foreground"}`} />
+                      <ChevronRight
+                        className={`size-4 ${isActive ? "text-white/80" : "text-muted-foreground"}`}
+                      />
                     </div>
                   </a>
                 );
@@ -504,7 +531,10 @@ export function HomePage() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5.5rem)] overflow-hidden bg-foreground text-primary-foreground flex flex-col justify-center">
+        <section
+          id="home"
+          className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5.5rem)] overflow-hidden bg-foreground text-primary-foreground flex flex-col justify-center"
+        >
           {/* Background Hero Photo with soft parallax depth */}
           <img
             src={heroImage}
@@ -558,7 +588,9 @@ export function HomePage() {
               <PartyPopper className="size-6 text-gold" />
             </div>
             <div className="text-left text-xs">
-              <p className="font-bold text-white text-sm group-hover:text-gold transition-colors">Grand AC Banquet Hall</p>
+              <p className="font-bold text-white text-sm group-hover:text-gold transition-colors">
+                Grand AC Banquet Hall
+              </p>
               <p className="text-gold font-semibold">Marriages · Parties · 300+ Capacity</p>
               <span className="text-[10px] text-white/70 group-hover:text-white flex items-center gap-1 mt-0.5">
                 Click to check dates & book ↗
@@ -577,7 +609,9 @@ export function HomePage() {
               >
                 <PartyPopper className="size-3.5 sm:size-4 shrink-0 text-gold group-hover:rotate-12 transition-transform" />
                 <span className="truncate sm:hidden">Marriages & Parties Booking Open</span>
-                <span className="hidden sm:inline">Bookings Open for Marriages, Ring Ceremonies & Parties</span>
+                <span className="hidden sm:inline">
+                  Bookings Open for Marriages, Ring Ceremonies & Parties
+                </span>
                 <ChevronRight className="size-3.5 shrink-0 text-gold/80 group-hover:translate-x-1 transition-transform" />
               </button>
 
@@ -604,13 +638,15 @@ export function HomePage() {
               </div>
 
               <h1 className="text-balance break-words font-display text-[1.85rem] leading-[1.08] sm:text-6xl lg:text-8xl sm:leading-[1.03] font-extrabold drop-shadow-md">
-                Good food.<br />
-                <span className="gold-gradient-text">Warm vibes.</span><br />
-                A stop worth remembering.
+                Good food.
+                <br />
+                <span className="gold-gradient-text">Warm vibes.</span>
+                <br />A stop worth remembering.
               </h1>
 
               <p className="mt-2.5 sm:mt-6 max-w-xl text-xs sm:text-base leading-relaxed sm:leading-7 text-primary-foreground/90 drop-shadow">
-                Authentic Punjabi dining, air-conditioned banquet celebrations, and comfortable AC rooms along the historic Nangal–Chandigarh Road in Brahmpur.
+                Authentic Punjabi dining, air-conditioned banquet celebrations, and comfortable AC
+                rooms along the historic Nangal–Chandigarh Road in Brahmpur.
               </p>
 
               {/* Action Buttons - Fully visible on all mobile screens */}
@@ -626,24 +662,40 @@ export function HomePage() {
                 </Button>
 
                 <div className="grid grid-cols-3 gap-2 w-full sm:w-auto sm:flex sm:flex-wrap sm:gap-3.5">
-                  <Button asChild size="lg" className="h-10 sm:h-12 bg-primary px-2.5 sm:px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md text-xs sm:text-sm">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="h-10 sm:h-12 bg-primary px-2.5 sm:px-6 text-primary-foreground font-bold hover:bg-primary/90 shadow-md text-xs sm:text-sm"
+                  >
                     <a href="#menu">
                       <Utensils className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0" />
                       <span>Menu</span>
                     </a>
                   </Button>
 
-                  <Button asChild size="lg" variant="outline" className="h-10 sm:h-12 border-primary-foreground/40 bg-primary-foreground/10 px-2.5 sm:px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur text-xs sm:text-sm">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="h-10 sm:h-12 border-primary-foreground/40 bg-primary-foreground/10 px-2.5 sm:px-6 text-primary-foreground hover:bg-primary-foreground hover:text-foreground backdrop-blur text-xs sm:text-sm"
+                  >
                     <a href="#gallery">
                       <ImageIcon className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0" />
                       <span>Gallery</span>
                     </a>
                   </Button>
 
-                  <Button asChild size="lg" variant="ghost" className="h-10 sm:h-12 border border-white/20 bg-white/10 sm:border-0 sm:bg-transparent px-2.5 sm:px-5 text-primary-foreground hover:bg-primary-foreground/15 text-xs sm:text-sm">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="ghost"
+                    className="h-10 sm:h-12 border border-white/20 bg-white/10 sm:border-0 sm:bg-transparent px-2.5 sm:px-5 text-primary-foreground hover:bg-primary-foreground/15 text-xs sm:text-sm"
+                  >
                     <a
                       href={restaurant.phoneHref}
-                      onClick={() => activityTracker.trackCallClick({ source: "Hero Section Call Button" })}
+                      onClick={() =>
+                        activityTracker.trackCallClick({ source: "Hero Section Call Button" })
+                      }
                     >
                       <Phone className="mr-1.5 sm:mr-2 size-3.5 sm:size-4 shrink-0 text-gold" />
                       <span>Call</span>
@@ -667,10 +719,14 @@ export function HomePage() {
                   title="View Google Reviews & Stories"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">650+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">
+                      650+
+                    </p>
                     <ArrowRight className="size-3 text-gold/60 group-hover:translate-x-0.5 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Google Reviews</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">
+                    Google Reviews
+                  </p>
                 </a>
 
                 <button
@@ -680,10 +736,14 @@ export function HomePage() {
                   title="Banquet Hall Details & Booking"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">300+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">
+                      300+
+                    </p>
                     <PartyPopper className="size-3 text-gold/60 group-hover:rotate-12 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Banquet Capacity</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">
+                    Banquet Capacity
+                  </p>
                 </button>
 
                 <a
@@ -699,10 +759,14 @@ export function HomePage() {
                   title="Browse full menu"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">55+</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">
+                      55+
+                    </p>
                     <Utensils className="size-3 text-gold/60 group-hover:rotate-12 group-hover:text-gold transition-transform" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Punjabi Dishes</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">
+                    Punjabi Dishes
+                  </p>
                 </a>
 
                 <a
@@ -718,10 +782,14 @@ export function HomePage() {
                   title="View opening hours and location"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">7AM–12</p>
+                    <p className="font-display text-xl sm:text-3xl font-extrabold text-gold group-hover:scale-105 transition-transform">
+                      7AM–12
+                    </p>
                     <Clock3 className="size-3 text-gold/60 group-hover:text-gold transition-colors" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">Daily Open</p>
+                  <p className="text-[10px] sm:text-[11px] text-white/75 font-semibold uppercase group-hover:text-white transition-colors">
+                    Daily Open
+                  </p>
                 </a>
               </div>
             </div>
@@ -733,13 +801,36 @@ export function HomePage() {
         </section>
 
         {/* Highlights Bar with interactive lift-hover */}
-        <section aria-label="Restaurant highlights" className="relative z-10 border-y border-border bg-card shadow-sm">
+        <section
+          aria-label="Restaurant highlights"
+          className="relative z-10 border-y border-border bg-card shadow-sm"
+        >
           <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-4">
             {[
-              { label: "AC Banquet Hall & Rooms", sub: "For Marriages & Parties", icon: PartyPopper, color: "text-amber-600 dark:text-amber-400" },
-              { label: "Dine-in & Cloud Lounge", sub: "Comfortable Sofa Seating", icon: Store, color: "text-primary" },
-              { label: "Takeaway & Highway Food", sub: "Freshly Packed for Road", icon: Bike, color: "text-emerald-600 dark:text-emerald-400" },
-              { label: "7:00 AM – 12:00 AM", sub: "Open All 7 Days", icon: Clock3, color: "text-primary" },
+              {
+                label: "AC Banquet Hall & Rooms",
+                sub: "For Marriages & Parties",
+                icon: PartyPopper,
+                color: "text-amber-600 dark:text-amber-400",
+              },
+              {
+                label: "Dine-in & Cloud Lounge",
+                sub: "Comfortable Sofa Seating",
+                icon: Store,
+                color: "text-primary",
+              },
+              {
+                label: "Takeaway & Highway Food",
+                sub: "Freshly Packed for Road",
+                icon: Bike,
+                color: "text-emerald-600 dark:text-emerald-400",
+              },
+              {
+                label: "7:00 AM – 12:00 AM",
+                sub: "Open All 7 Days",
+                icon: Clock3,
+                color: "text-primary",
+              },
             ].map(({ label, sub, icon: Icon, color }, index) => (
               <div
                 key={label}
@@ -781,12 +872,18 @@ export function HomePage() {
                   A delicious stop along the highway.
                 </h2>
                 <p className="mt-6 leading-relaxed text-muted-foreground sm:text-lg">
-                  Whether it is breakfast before the day gets going, fragrant chai between stretches of road, a quick bite, or an unforgettable family celebration, Laung Laachi offers a restful, welcoming pause in Brahmpur.
+                  Whether it is breakfast before the day gets going, fragrant chai between stretches
+                  of road, a quick bite, or an unforgettable family celebration, Laung Laachi offers
+                  a restful, welcoming pause in Brahmpur.
                 </p>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground font-bold shadow hover:bg-primary/90">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary text-primary-foreground font-bold shadow hover:bg-primary/90"
+                >
                   <a href={restaurant.directionsUrl} target="_blank" rel="noreferrer">
                     <CarFront className="mr-2 size-4" />
                     Plan your stop
@@ -810,7 +907,11 @@ export function HomePage() {
               {[
                 { icon: Coffee, label: "Breakfast & tea", desc: "Fresh gud wali chai & paranthas" },
                 { icon: Utensils, label: "Family meals", desc: "Comfortable AC sofa dining" },
-                { icon: PartyPopper, label: "Banquet & Parties", desc: "Weddings, rings & birthdays" },
+                {
+                  icon: PartyPopper,
+                  label: "Banquet & Parties",
+                  desc: "Weddings, rings & birthdays",
+                },
                 { icon: MapPin, label: "Brahmpur stop", desc: "Right on Nangal-Chandigarh Rd" },
               ].map(({ icon: Icon, label, desc }) => (
                 <div
@@ -829,7 +930,10 @@ export function HomePage() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="border-y border-border bg-card px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section
+          id="experience"
+          className="border-y border-border bg-card px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+        >
           <div className="mx-auto max-w-7xl">
             <div className="text-center max-w-2xl mx-auto">
               <p className="section-kicker">Choose your pause</p>
@@ -837,7 +941,8 @@ export function HomePage() {
                 Eat here, celebrate in the hall, or take it along.
               </h2>
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Four simple ways to enjoy Laung Laachi while you are traveling through the Shivalik corridor.
+                Four simple ways to enjoy Laung Laachi while you are traveling through the Shivalik
+                corridor.
               </p>
             </div>
 
@@ -853,8 +958,12 @@ export function HomePage() {
                     <span className="grid size-12 place-items-center rounded-xl bg-primary/10 text-primary">
                       <Icon className="size-6" />
                     </span>
-                    <h3 className="mt-6 font-display text-xl font-bold text-foreground">{service.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.copy}</p>
+                    <h3 className="mt-6 font-display text-xl font-bold text-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {service.copy}
+                    </p>
                   </article>
                 );
               })}
@@ -863,7 +972,10 @@ export function HomePage() {
         </section>
 
         {/* Verified Reviews & Traveler Stories Section */}
-        <section id="reviews" className="relative scroll-mt-20 overflow-hidden bg-secondary/35 py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+        <section
+          id="reviews"
+          className="relative scroll-mt-20 overflow-hidden bg-secondary/35 py-20 sm:py-28 px-4 sm:px-6 lg:px-8"
+        >
           <div className="punjabi-pattern absolute inset-0 opacity-20 pointer-events-none" />
           <div className="relative mx-auto max-w-7xl">
             {/* Reviews Header with Google Rating */}
@@ -881,7 +993,10 @@ export function HomePage() {
                 <div>
                   <div className="flex gap-1 text-gold" aria-label="3.9 out of 5 stars">
                     {[1, 2, 3, 4].map((n) => (
-                      <Star key={n} className="size-5 fill-current group-hover:scale-110 transition-transform" />
+                      <Star
+                        key={n}
+                        className="size-5 fill-current group-hover:scale-110 transition-transform"
+                      />
                     ))}
                     <Star className="size-5" />
                   </div>
@@ -897,7 +1012,12 @@ export function HomePage() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <Button asChild variant="outline" className="border-border hover:border-primary">
-                  <a href={restaurant.googleMapsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+                  <a
+                    href={restaurant.googleMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2"
+                  >
                     <span>Read all reviews on Google Maps</span>
                     <ExternalLink className="size-3.5 text-primary" />
                   </a>
@@ -926,12 +1046,16 @@ export function HomePage() {
                     <Quote className="size-6 text-primary/30" />
                   </div>
                   <p className="mt-4 text-sm leading-relaxed text-foreground/85 italic">
-                    “The best highway breakfast between Chandigarh and Anandpur Sahib. Piping hot tandoori aloo paranthas with fresh butter, and fragrant gud wali chai refreshed our entire family after the long drive.”
+                    “The best highway breakfast between Chandigarh and Anandpur Sahib. Piping hot
+                    tandoori aloo paranthas with fresh butter, and fragrant gud wali chai refreshed
+                    our entire family after the long drive.”
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/60">
                   <p className="font-display font-bold text-sm text-foreground">Sukhwinder Singh</p>
-                  <p className="text-xs text-muted-foreground">Pilgrim Traveler · Via Anandpur Sahib</p>
+                  <p className="text-xs text-muted-foreground">
+                    Pilgrim Traveler · Via Anandpur Sahib
+                  </p>
                 </div>
               </article>
 
@@ -946,11 +1070,15 @@ export function HomePage() {
                     <Quote className="size-6 text-gold/50" />
                   </div>
                   <p className="mt-4 text-sm leading-relaxed text-foreground/85 italic">
-                    “We booked the banquet hall for our sister’s ring ceremony. The stage floral decoration, sound setup, and live tandoori snacks counter were appreciated by all 150 guests from Mohali and Ropar. Clean AC rooms too!”
+                    “We booked the banquet hall for our sister’s ring ceremony. The stage floral
+                    decoration, sound setup, and live tandoori snacks counter were appreciated by
+                    all 150 guests from Mohali and Ropar. Clean AC rooms too!”
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/60">
-                  <p className="font-display font-bold text-sm text-foreground">Manpreet Kaur & Family</p>
+                  <p className="font-display font-bold text-sm text-foreground">
+                    Manpreet Kaur & Family
+                  </p>
                   <p className="text-xs text-muted-foreground">Family Event Organizer · Mohali</p>
                 </div>
               </article>
@@ -966,7 +1094,9 @@ export function HomePage() {
                     <Quote className="size-6 text-primary/30" />
                   </div>
                   <p className="mt-4 text-sm leading-relaxed text-foreground/85 italic">
-                    “Super clean AC cloud lounge and ample roadside parking right on the Nangal highway. The butter chicken with garlic naans and dal makhani was exceptional. Highly recommended road stop!”
+                    “Super clean AC cloud lounge and ample roadside parking right on the Nangal
+                    highway. The butter chicken with garlic naans and dal makhani was exceptional.
+                    Highly recommended road stop!”
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/60">
@@ -987,15 +1117,23 @@ export function HomePage() {
             <div className="relative flex min-h-[440px] flex-col justify-between overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground sm:p-12 shadow-2xl">
               <div className="punjabi-pattern absolute inset-0 opacity-30" />
               <div className="relative">
-                <p className="text-xs font-extrabold uppercase text-secondary tracking-widest">Find us in Brahmpur</p>
+                <p className="text-xs font-extrabold uppercase text-secondary tracking-widest">
+                  Find us in Brahmpur
+                </p>
                 <h2 className="mt-4 max-w-xl font-display text-4xl font-bold sm:text-5xl text-white">
                   Right on the Nangal–Chandigarh Road.
                 </h2>
               </div>
               <div className="relative">
-                <p className="max-w-lg text-lg leading-relaxed text-primary-foreground/85">{restaurant.address}</p>
+                <p className="max-w-lg text-lg leading-relaxed text-primary-foreground/85">
+                  {restaurant.address}
+                </p>
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <Button asChild size="lg" className="bg-secondary text-secondary-foreground font-bold hover:bg-secondary/90 shadow">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-secondary text-secondary-foreground font-bold hover:bg-secondary/90 shadow"
+                  >
                     <a href={restaurant.directionsUrl} target="_blank" rel="noreferrer">
                       <MapPin className="mr-2 size-4" />
                       Get directions
@@ -1010,7 +1148,12 @@ export function HomePage() {
                     <PartyPopper className="mr-2 size-4" />
                     Book Banquet Hall
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-foreground">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-foreground"
+                  >
                     <a href={restaurant.phoneHref}>
                       <Phone className="mr-2 size-4" />
                       {restaurant.phoneDisplay}
@@ -1024,14 +1167,20 @@ export function HomePage() {
               <article className="lift-hover rounded-2xl border border-border bg-card p-7 sm:p-9 shadow-sm">
                 <Clock3 className="size-7 text-primary" />
                 <p className="mt-6 section-kicker">Opening hours</p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">Monday–Sunday</h3>
+                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">
+                  Monday–Sunday
+                </h3>
                 <p className="mt-2 text-lg text-muted-foreground">7:00 AM – 12:00 AM</p>
-                <p className="text-xs text-muted-foreground mt-1">Breakfast, Lunch, Evening Tea & Late Dinners</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Breakfast, Lunch, Evening Tea & Late Dinners
+                </p>
               </article>
               <article className="lift-hover rounded-2xl border border-border bg-card p-7 sm:p-9 shadow-sm">
                 <Phone className="size-7 text-primary" />
                 <p className="mt-6 section-kicker">Call the restaurant</p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">{restaurant.phoneDisplay}</h3>
+                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">
+                  {restaurant.phoneDisplay}
+                </h3>
                 <div className="mt-3 flex items-center gap-4">
                   <Button asChild variant="link" className="h-auto p-0 text-primary font-bold">
                     <a href={restaurant.phoneHref}>
@@ -1070,7 +1219,8 @@ export function HomePage() {
                 Visit our highway restaurant or book our AC banquet hall.
               </h3>
               <p className="mt-1.5 text-xs sm:text-sm text-primary-foreground/80 leading-relaxed">
-                Enjoy authentic Punjabi cuisine along Nangal–Chandigarh Road, host up to 300+ guests for weddings and parties, or message our team directly.
+                Enjoy authentic Punjabi cuisine along Nangal–Chandigarh Road, host up to 300+ guests
+                for weddings and parties, or message our team directly.
               </p>
             </div>
 
@@ -1084,20 +1234,45 @@ export function HomePage() {
                 <PartyPopper className="mr-2 size-4" />
                 Book Banquet Hall ↗
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-emerald-500/50 bg-emerald-950/40 text-emerald-400 hover:bg-emerald-900/60 hover:text-white">
-                <a href={restaurant.whatsappUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-emerald-500/50 bg-emerald-950/40 text-emerald-400 hover:bg-emerald-900/60 hover:text-white"
+              >
+                <a
+                  href={restaurant.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2"
+                >
                   <MessageCircle className="size-4 text-emerald-400" />
                   <span>WhatsApp Chat</span>
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-gold/40 bg-gold/10 text-gold hover:bg-gold hover:text-black transition-all">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-gold/40 bg-gold/10 text-gold hover:bg-gold hover:text-black transition-all"
+              >
                 <a href={restaurant.emailHref} className="flex items-center gap-2">
                   <Mail className="size-4" />
                   <span>Email Us</span>
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/15">
-                <a href={restaurant.directionsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/20 bg-white/5 text-white hover:bg-white/15"
+              >
+                <a
+                  href={restaurant.directionsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2"
+                >
                   <MapPin className="size-4 text-gold" />
                   <span>Get Directions</span>
                 </a>
@@ -1112,7 +1287,9 @@ export function HomePage() {
           <div className="space-y-4">
             <BrandMark className="[&_span]:text-primary-foreground" size="md" />
             <p className="text-xs sm:text-sm leading-relaxed text-primary-foreground/75">
-              Authentic roadside Punjabi dining, air-conditioned banquet celebrations for marriages and parties, and comfortable AC rooms in Brahmpur along the Nangal–Chandigarh corridor.
+              Authentic roadside Punjabi dining, air-conditioned banquet celebrations for marriages
+              and parties, and comfortable AC rooms in Brahmpur along the Nangal–Chandigarh
+              corridor.
             </p>
 
             {/* Google Maps 3.9★ Verified Card */}
@@ -1210,15 +1387,21 @@ export function HomePage() {
             <div className="mt-4 space-y-2.5 border-t border-primary-foreground/15 pt-3 text-xs text-primary-foreground/80">
               <p className="flex items-center gap-2">
                 <Clock3 className="size-4 text-gold shrink-0" />
-                <span><strong>Daily:</strong> 7:00 AM – 12:00 Midnight</span>
+                <span>
+                  <strong>Daily:</strong> 7:00 AM – 12:00 Midnight
+                </span>
               </p>
               <p className="flex items-center gap-2">
                 <Coffee className="size-4 text-gold shrink-0" />
-                <span><strong>Breakfast from 7 AM:</strong> Gurh Chai & Paranthas</span>
+                <span>
+                  <strong>Breakfast from 7 AM:</strong> Gurh Chai & Paranthas
+                </span>
               </p>
               <p className="flex items-center gap-2">
                 <CarFront className="size-4 text-gold shrink-0" />
-                <span><strong>Parking:</strong> Free bus & family car highway parking</span>
+                <span>
+                  <strong>Parking:</strong> Free bus & family car highway parking
+                </span>
               </p>
             </div>
 
@@ -1244,7 +1427,8 @@ export function HomePage() {
             <div className="mt-4 space-y-2 text-xs text-primary-foreground/85">
               <p className="font-bold text-white text-sm">Capacity: 50 to 300+ Guests</p>
               <p className="leading-relaxed text-primary-foreground/75">
-                Marriages, Ring Ceremonies, Sagan, Sangeet, Birthdays, Kitties & Highway Coach Stops.
+                Marriages, Ring Ceremonies, Sagan, Sangeet, Birthdays, Kitties & Highway Coach
+                Stops.
               </p>
             </div>
 
@@ -1270,7 +1454,12 @@ export function HomePage() {
                 <PartyPopper className="mr-1.5 size-3.5" />
                 Book Hall ↗
               </Button>
-              <Button asChild size="sm" variant="outline" className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/15 text-xs h-8">
+              <Button
+                asChild
+                size="sm"
+                variant="outline"
+                className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/15 text-xs h-8"
+              >
                 <a href={restaurant.phoneHref}>
                   <Phone className="mr-1.5 size-3.5 text-gold" />
                   {restaurant.phoneDisplay}
@@ -1293,7 +1482,9 @@ export function HomePage() {
                     href={item.href}
                     className="flex items-center gap-1.5 text-primary-foreground/75 hover:text-gold transition-colors py-0.5 group"
                   >
-                    <Icon className={`size-3 ${item.iconColor} transition-transform group-hover:scale-125`} />
+                    <Icon
+                      className={`size-3 ${item.iconColor} transition-transform group-hover:scale-125`}
+                    />
                     <span>{item.label}</span>
                   </a>
                 );
@@ -1392,13 +1583,14 @@ export function HomePage() {
         aria-label="Chat with Laung Laachi on WhatsApp"
       >
         <MessageCircle className="size-5 text-white group-hover:rotate-12 transition-transform" />
-        <span className="hidden sm:inline text-xs font-extrabold tracking-wide">
-          WhatsApp Help
-        </span>
+        <span className="hidden sm:inline text-xs font-extrabold tracking-wide">WhatsApp Help</span>
       </a>
 
       {/* Mobile Fixed Bottom Quick Actions Bar with Distinct Vibrant Colors & Animations */}
-      <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-4 gap-1 border-t border-border/80 bg-background/95 p-1.5 shadow-2xl backdrop-blur-xl md:hidden" aria-label="Quick actions">
+      <nav
+        className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-4 gap-1 border-t border-border/80 bg-background/95 p-1.5 shadow-2xl backdrop-blur-xl md:hidden"
+        aria-label="Quick actions"
+      >
         <a
           href="#menu"
           onClick={() => setActiveHref("#menu")}

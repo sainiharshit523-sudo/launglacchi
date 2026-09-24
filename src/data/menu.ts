@@ -145,7 +145,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-chicken",
     dietary: "non-veg",
     price: 280,
-    description: "Tender tandoori chicken cooked in a velvety, buttery tomato-cashew gravy scented with dried fenugreek leaves (kasuri methi) and fresh cream.",
+    description:
+      "Tender tandoori chicken cooked in a velvety, buttery tomato-cashew gravy scented with dried fenugreek leaves (kasuri methi) and fresh cream.",
     portion: "Half (₹280) / Full (₹480) · Serves 2-3",
     isSignature: true,
     isBestseller: true,
@@ -159,7 +160,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-chicken",
     dietary: "non-veg",
     price: 270,
-    description: "Chicken braised in an iron kadhai with chunky bell peppers, onions, whole coriander seeds, and a spicy tomato reduction.",
+    description:
+      "Chicken braised in an iron kadhai with chunky bell peppers, onions, whole coriander seeds, and a spicy tomato reduction.",
     portion: "Half (₹270) / Full (₹460) · Serves 2-3",
     isBestseller: true,
     spiceLevel: 3,
@@ -172,7 +174,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-chicken",
     dietary: "non-veg",
     price: 260,
-    description: "Traditional Punjabi highway dhaba thin-gravy chicken curry infused with whole garlic pods, ginger, and roasted garam masala. Best paired with tandoori roti.",
+    description:
+      "Traditional Punjabi highway dhaba thin-gravy chicken curry infused with whole garlic pods, ginger, and roasted garam masala. Best paired with tandoori roti.",
     portion: "Half (₹260) / Full (₹450) · Serves 2",
     isSignature: true,
     spiceLevel: 2,
@@ -185,7 +188,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-chicken",
     dietary: "non-veg",
     price: 290,
-    description: "Smoky boneless tandoori chicken tikka pieces simmered in a spiced onion-tomato masala with diced bell peppers.",
+    description:
+      "Smoky boneless tandoori chicken tikka pieces simmered in a spiced onion-tomato masala with diced bell peppers.",
     portion: "Full portion · Serves 2",
     isBestseller: true,
     spiceLevel: 2,
@@ -197,7 +201,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-chicken",
     dietary: "non-veg",
     price: 310,
-    description: "A rich combination of juicy chicken pieces cooked in a spiced minced chicken (keema) gravy slow-cooked with aromatic spices.",
+    description:
+      "A rich combination of juicy chicken pieces cooked in a spiced minced chicken (keema) gravy slow-cooked with aromatic spices.",
     portion: "Full portion · Serves 2",
     spiceLevel: 3,
     badge: "Chef's Delight",
@@ -211,7 +216,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-tandoori",
     dietary: "non-veg",
     price: 230,
-    description: "Whole bone-in chicken marinated overnight in mustard oil, Kashmiri chili, hung curd, and Punjabi spices, roasted in clay tandoor.",
+    description:
+      "Whole bone-in chicken marinated overnight in mustard oil, Kashmiri chili, hung curd, and Punjabi spices, roasted in clay tandoor.",
     portion: "Half (₹230) / Full (₹420) · Served with onion rings & mint chutney",
     isSignature: true,
     isBestseller: true,
@@ -225,7 +231,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-tandoori",
     dietary: "non-veg",
     price: 250,
-    description: "Boneless chicken chunks marinated in cashew paste, fresh cream, white pepper, and green cardamom, grilled gentle and tender.",
+    description:
+      "Boneless chicken chunks marinated in cashew paste, fresh cream, white pepper, and green cardamom, grilled gentle and tender.",
     portion: "6 juicy pieces · Mild & creamy",
     spiceLevel: 1,
     isBestseller: true,
@@ -237,7 +244,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-tandoori",
     dietary: "non-veg",
     price: 220,
-    description: "Spiced minced chicken skewered on long iron rods and cooked over hot glowing coals with mint & green chili marinade.",
+    description:
+      "Spiced minced chicken skewered on long iron rods and cooked over hot glowing coals with mint & green chili marinade.",
     portion: "4 long skewers · Served with lachha pyaaz",
     spiceLevel: 2,
   },
@@ -250,7 +258,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-mutton",
     dietary: "non-veg",
     price: 340,
-    description: "Tender goat meat slow-cooked in a rich gravy infused with Kashmiri red chillies, ratan jot, fennel seeds, and dry ginger powder.",
+    description:
+      "Tender goat meat slow-cooked in a rich gravy infused with Kashmiri red chillies, ratan jot, fennel seeds, and dry ginger powder.",
     portion: "Full portion (4 pcs mutton) · Serves 1-2",
     isSignature: true,
     isBestseller: true,
@@ -264,7 +273,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-mutton",
     dietary: "non-veg",
     price: 360,
-    description: "Succulent mutton pieces slow-roasted in their own juices with caramelized onions, roasted garlic, and coarsely ground spices.",
+    description:
+      "Succulent mutton pieces slow-roasted in their own juices with caramelized onions, roasted garlic, and coarsely ground spices.",
     portion: "Full portion · Serves 1-2",
     spiceLevel: 3,
   },
@@ -277,7 +287,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-egg",
     dietary: "non-veg",
     price: 140,
-    description: "Pan-fried boiled eggs simmered in a spiced, comforting onion-tomato gravy with chopped coriander.",
+    description:
+      "Pan-fried boiled eggs simmered in a spiced, comforting onion-tomato gravy with chopped coriander.",
     portion: "2 eggs · Served with gravy",
     isBestseller: true,
     spiceLevel: 2,
@@ -289,7 +300,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "non-veg-egg",
     dietary: "non-veg",
     price: 110,
-    description: "Farm-fresh eggs scrambled with diced onions, tomatoes, ginger, green chilies, and fresh coriander in desi butter.",
+    description:
+      "Farm-fresh eggs scrambled with diced onions, tomatoes, ginger, green chilies, and fresh coriander in desi butter.",
     portion: "2 eggs · Served with 2 tava rotis or bread",
     spiceLevel: 2,
   },
@@ -302,7 +314,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "rice",
     dietary: "non-veg",
     price: 240,
-    description: "Long-grain aged basmati rice layered with marinated chicken, saffron, fried onions, and whole mint leaves. Served with spicy salan & cucumber raita.",
+    description:
+      "Long-grain aged basmati rice layered with marinated chicken, saffron, fried onions, and whole mint leaves. Served with spicy salan & cucumber raita.",
     portion: "Handi portion · Serves 1-2",
     isBestseller: true,
     spiceLevel: 2,
@@ -315,7 +328,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breads",
     dietary: "non-veg",
     price: 140,
-    description: "Crispy tandoori naan stuffed with seasoned minced chicken, baked in clay oven and served with a bowl of rich mutton gravy.",
+    description:
+      "Crispy tandoori naan stuffed with seasoned minced chicken, baked in clay oven and served with a bowl of rich mutton gravy.",
     portion: "1 large stuffed naan + gravy dip",
     isSignature: true,
     badge: "Dhaba Classic",
@@ -333,7 +347,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breakfast",
     dietary: "veg",
     price: 70,
-    description: "Crispy tandoor-baked flatbread stuffed with spiced mashed potatoes, fresh coriander, and carom seeds. Served with butter & fresh curd.",
+    description:
+      "Crispy tandoor-baked flatbread stuffed with spiced mashed potatoes, fresh coriander, and carom seeds. Served with butter & fresh curd.",
     portion: "Per piece · Served with curd & pickle",
     isBestseller: true,
     spiceLevel: 1,
@@ -345,7 +360,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breakfast",
     dietary: "veg",
     price: 110,
-    description: "Generously packed with seasoned grated paneer, green chilies, and herbs, baked golden crisp in clay oven.",
+    description:
+      "Generously packed with seasoned grated paneer, green chilies, and herbs, baked golden crisp in clay oven.",
     portion: "Per piece · Served with curd & butter",
     isBestseller: true,
     spiceLevel: 1,
@@ -358,7 +374,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breakfast",
     dietary: "veg",
     price: 80,
-    description: "Traditional spiced cauliflower filling prepared fresh with roasted cumin and ginger.",
+    description:
+      "Traditional spiced cauliflower filling prepared fresh with roasted cumin and ginger.",
     portion: "Per piece · Served with curd & pickle",
     spiceLevel: 1,
   },
@@ -369,7 +386,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breakfast",
     dietary: "veg",
     price: 90,
-    description: "Wholesome blend of seasoned potato, cauliflower, onion, and fresh cottage cheese.",
+    description:
+      "Wholesome blend of seasoned potato, cauliflower, onion, and fresh cottage cheese.",
     portion: "Per piece · Served with curd & butter",
     spiceLevel: 1,
   },
@@ -404,7 +422,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 240,
-    description: "Signature restaurant preparation of soft paneer cubes in a rich, luscious cashew-tomato gravy garnished with grated paneer and fresh cream.",
+    description:
+      "Signature restaurant preparation of soft paneer cubes in a rich, luscious cashew-tomato gravy garnished with grated paneer and fresh cream.",
     portion: "Full portion · Serves 2",
     isSignature: true,
     isBestseller: true,
@@ -418,7 +437,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 230,
-    description: "Melt-in-mouth cottage cheese cooked in a silky, mildly sweet aromatic gravy of almonds, cashews, cardamom, and saffron.",
+    description:
+      "Melt-in-mouth cottage cheese cooked in a silky, mildly sweet aromatic gravy of almonds, cashews, cardamom, and saffron.",
     portion: "Full portion · Serves 2",
     isBestseller: true,
     spiceLevel: 1,
@@ -430,7 +450,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 240,
-    description: "Succulent paneer tossed in an iron kadhai with crunchy bell peppers, onions, and freshly pounded coriander seeds.",
+    description:
+      "Succulent paneer tossed in an iron kadhai with crunchy bell peppers, onions, and freshly pounded coriander seeds.",
     portion: "Full portion · Serves 2",
     spiceLevel: 3,
   },
@@ -441,7 +462,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 235,
-    description: "A North Indian classic of paneer cooked in a rich, buttery tomato sauce infused with kasuri methi and cream.",
+    description:
+      "A North Indian classic of paneer cooked in a rich, buttery tomato sauce infused with kasuri methi and cream.",
     portion: "Full portion · Serves 2",
     spiceLevel: 1,
   },
@@ -452,7 +474,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 210,
-    description: "Tender green peas and paneer cubes simmered in a spiced homestyle onion-tomato sauce.",
+    description:
+      "Tender green peas and paneer cubes simmered in a spiced homestyle onion-tomato sauce.",
     portion: "Full portion · Serves 2",
     spiceLevel: 2,
   },
@@ -463,7 +486,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 220,
-    description: "Fresh spinach puree slow-cooked with garlic, ginger, green chilies, and tender cottage cheese cubes.",
+    description:
+      "Fresh spinach puree slow-cooked with garlic, ginger, green chilies, and tender cottage cheese cubes.",
     portion: "Full portion · Serves 2",
     spiceLevel: 2,
   },
@@ -474,7 +498,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "paneer",
     dietary: "veg",
     price: 250,
-    description: "Fresh scrambled paneer sautéed with onions, tomatoes, green chilies, and special Punjabi spices.",
+    description:
+      "Fresh scrambled paneer sautéed with onions, tomatoes, green chilies, and special Punjabi spices.",
     portion: "Full portion · Serves 2",
     isBestseller: true,
     spiceLevel: 2,
@@ -488,7 +513,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "dal-curry",
     dietary: "veg",
     price: 190,
-    description: "Whole black lentils and kidney beans slow-cooked overnight on charcoal, finished with butter, cream, and gentle whole spices.",
+    description:
+      "Whole black lentils and kidney beans slow-cooked overnight on charcoal, finished with butter, cream, and gentle whole spices.",
     portion: "Full portion · Serves 2",
     isSignature: true,
     isBestseller: true,
@@ -502,7 +528,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "dal-curry",
     dietary: "veg",
     price: 150,
-    description: "Yellow arhar dal tempered twice with golden garlic, cumin, asafoetida, and dry Kashmiri red chilies.",
+    description:
+      "Yellow arhar dal tempered twice with golden garlic, cumin, asafoetida, and dry Kashmiri red chilies.",
     portion: "Full portion · Serves 2",
     isBestseller: true,
     spiceLevel: 2,
@@ -514,7 +541,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "dal-curry",
     dietary: "veg",
     price: 180,
-    description: "A medley of fresh garden vegetables tossed with ginger juliennes, carom seeds, and house masala.",
+    description:
+      "A medley of fresh garden vegetables tossed with ginger juliennes, carom seeds, and house masala.",
     portion: "Full portion · Serves 2",
     isBestseller: true,
     spiceLevel: 2,
@@ -526,7 +554,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "dal-curry",
     dietary: "veg",
     price: 170,
-    description: "Chickpeas simmered with dried pomegranate seeds, roasted spices, and ginger in a hearty, robust gravy.",
+    description:
+      "Chickpeas simmered with dried pomegranate seeds, roasted spices, and ginger in a hearty, robust gravy.",
     portion: "Full portion · Serves 2",
     spiceLevel: 2,
   },
@@ -537,7 +566,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "dal-curry",
     dietary: "veg",
     price: 165,
-    description: "Rich red kidney beans cooked tender in a thick tomato-onion gravy; best enjoyed with steaming basmati rice.",
+    description:
+      "Rich red kidney beans cooked tender in a thick tomato-onion gravy; best enjoyed with steaming basmati rice.",
     portion: "Full portion · Serves 2",
     spiceLevel: 2,
   },
@@ -561,7 +591,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breads",
     dietary: "veg",
     price: 65,
-    description: "Soft, pillowy refined flour bread topped with minced roasted garlic and fresh coriander, brushed with butter.",
+    description:
+      "Soft, pillowy refined flour bread topped with minced roasted garlic and fresh coriander, brushed with butter.",
     portion: "Per piece",
     isSignature: true,
     isBestseller: true,
@@ -615,7 +646,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breads",
     dietary: "veg",
     price: 45,
-    description: "Gram flour (besan) and wheat roti kneaded with onions, ajwain, and dried fenugreek leaves.",
+    description:
+      "Gram flour (besan) and wheat roti kneaded with onions, ajwain, and dried fenugreek leaves.",
     portion: "Per piece",
   },
   {
@@ -625,7 +657,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "breads",
     dietary: "veg",
     price: 95,
-    description: "Crispy, flaky layered kulcha stuffed with spiced potato and paneer, served with chana gravy sample.",
+    description:
+      "Crispy, flaky layered kulcha stuffed with spiced potato and paneer, served with chana gravy sample.",
     portion: "Per piece",
     badge: "Specialty",
   },
@@ -638,7 +671,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "thali",
     dietary: "veg",
     price: 260,
-    description: "A royal platter featuring Paneer Lababdar, slow-cooked Dal Makhani, Seasonal Mix Veg, Jeera Rice, 2 Butter Naan / 4 Tandoori Rotis, Boondi Raita, Salad, Pickle, and hot Gulab Jamun.",
+    description:
+      "A royal platter featuring Paneer Lababdar, slow-cooked Dal Makhani, Seasonal Mix Veg, Jeera Rice, 2 Butter Naan / 4 Tandoori Rotis, Boondi Raita, Salad, Pickle, and hot Gulab Jamun.",
     portion: "Complete Platter · Serves 1-2",
     isSignature: true,
     isBestseller: true,
@@ -651,7 +685,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "thali",
     dietary: "veg",
     price: 210,
-    description: "Hearty meal combo with Yellow Dal Tadka, Matar Paneer, Steamed Basmati Rice, 3 Butter Rotis, Fresh Curd, and Sweet.",
+    description:
+      "Hearty meal combo with Yellow Dal Tadka, Matar Paneer, Steamed Basmati Rice, 3 Butter Rotis, Fresh Curd, and Sweet.",
     portion: "Complete Platter · Serves 1",
   },
   {
@@ -661,7 +696,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "thali",
     dietary: "veg",
     price: 140,
-    description: "2 Stuffed Aloo or Gobhi Paranthas served with chilled dahi, homemade pickle, white butter, and 1 cup of piping hot Gud Wali Chai.",
+    description:
+      "2 Stuffed Aloo or Gobhi Paranthas served with chilled dahi, homemade pickle, white butter, and 1 cup of piping hot Gud Wali Chai.",
     portion: "Breakfast Combo",
     isBestseller: true,
     badge: "Highway Breakfast",
@@ -675,7 +711,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "snacks",
     dietary: "veg",
     price: 150,
-    description: "Thick cottage cheese slices sandwiched with mint chutney, coated in seasoned gram flour batter, and fried to crispy golden perfection.",
+    description:
+      "Thick cottage cheese slices sandwiched with mint chutney, coated in seasoned gram flour batter, and fried to crispy golden perfection.",
     portion: "6 pieces · Served with mint & tamarind chutney",
     isBestseller: true,
   },
@@ -686,7 +723,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "snacks",
     dietary: "veg",
     price: 120,
-    description: "Assorted fritters of potato, cauliflower, onion, and spinach tossed with chaat masala.",
+    description:
+      "Assorted fritters of potato, cauliflower, onion, and spinach tossed with chaat masala.",
     portion: "Full plate · Served with chutneys",
   },
   {
@@ -716,7 +754,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "snacks",
     dietary: "veg",
     price: 80,
-    description: "Roasted crunchy peanuts tossed with chopped onions, tomatoes, green chilies, lemon juice, and chaat masala.",
+    description:
+      "Roasted crunchy peanuts tossed with chopped onions, tomatoes, green chilies, lemon juice, and chaat masala.",
     portion: "Plate",
     spiceLevel: 2,
   },
@@ -729,7 +768,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "chinese",
     dietary: "veg",
     price: 130,
-    description: "Long noodles stir-fried with julienne vegetables, garlic, scallions, and light soya sauce.",
+    description:
+      "Long noodles stir-fried with julienne vegetables, garlic, scallions, and light soya sauce.",
     portion: "Full plate",
     isBestseller: true,
   },
@@ -740,7 +780,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "chinese",
     dietary: "veg",
     price: 210,
-    description: "Crispy fried paneer cubes wok-tossed with capsicum, onions, dark soy sauce, and fiery green chilies.",
+    description:
+      "Crispy fried paneer cubes wok-tossed with capsicum, onions, dark soy sauce, and fiery green chilies.",
     portion: "Full plate",
     spiceLevel: 3,
   },
@@ -751,7 +792,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "chinese",
     dietary: "veg",
     price: 170,
-    description: "Deep-fried vegetable dumplings bathed in a savory, garlic-scented Indo-Chinese gravy.",
+    description:
+      "Deep-fried vegetable dumplings bathed in a savory, garlic-scented Indo-Chinese gravy.",
     portion: "Full plate",
     spiceLevel: 2,
   },
@@ -762,7 +804,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "chinese",
     dietary: "veg",
     price: 140,
-    description: "Steamed rice wok-tossed with diced carrots, french beans, spring onions, and toasted white pepper.",
+    description:
+      "Steamed rice wok-tossed with diced carrots, french beans, spring onions, and toasted white pepper.",
     portion: "Full plate",
   },
 
@@ -774,7 +817,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "rice",
     dietary: "veg",
     price: 190,
-    description: "Fragrant basmati rice layered with seasoned paneer, garden vegetables, fried onions, and saffron milk. Served with cucumber raita.",
+    description:
+      "Fragrant basmati rice layered with seasoned paneer, garden vegetables, fried onions, and saffron milk. Served with cucumber raita.",
     portion: "Handi portion · Serves 1-2",
     isBestseller: true,
   },
@@ -785,7 +829,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "rice",
     dietary: "veg",
     price: 110,
-    description: "Steamed long-grain basmati rice tempered with golden roasted cumin seeds and desi ghee.",
+    description:
+      "Steamed long-grain basmati rice tempered with golden roasted cumin seeds and desi ghee.",
     portion: "Full plate · Serves 1-2",
   },
   {
@@ -807,7 +852,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "beverages",
     dietary: "veg",
     price: 35,
-    description: "Our signature roadside specialty: freshly brewed milk tea sweetened with authentic Punjabi desi gud, crushed cardamom (laachi), and ginger.",
+    description:
+      "Our signature roadside specialty: freshly brewed milk tea sweetened with authentic Punjabi desi gud, crushed cardamom (laachi), and ginger.",
     portion: "Hot Clay Kulhad / Cup",
     isSignature: true,
     isBestseller: true,
@@ -820,7 +866,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "beverages",
     dietary: "veg",
     price: 25,
-    description: "Rich black tea boiled with ginger, cloves (laung), cinnamon, and crushed green cardamom.",
+    description:
+      "Rich black tea boiled with ginger, cloves (laung), cinnamon, and crushed green cardamom.",
     portion: "Hot Cup",
     isBestseller: true,
   },
@@ -831,7 +878,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "beverages",
     dietary: "veg",
     price: 70,
-    description: "Thick, churned yogurt drink topped with a layer of fresh malai, roohafza swirl, and crushed dry fruits.",
+    description:
+      "Thick, churned yogurt drink topped with a layer of fresh malai, roohafza swirl, and crushed dry fruits.",
     portion: "Tall Glass (350ml)",
     isSignature: true,
     isBestseller: true,
@@ -844,7 +892,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "beverages",
     dietary: "veg",
     price: 40,
-    description: "Light, refreshing spiced buttermilk tempered with roasted cumin, rock salt, and fresh mint leaves.",
+    description:
+      "Light, refreshing spiced buttermilk tempered with roasted cumin, rock salt, and fresh mint leaves.",
     portion: "Chilled Glass (300ml)",
   },
   {
@@ -864,7 +913,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "beverages",
     dietary: "veg",
     price: 50,
-    description: "Crisp sparkling soda stirred with freshly squeezed lemon juice, black salt, and mint.",
+    description:
+      "Crisp sparkling soda stirred with freshly squeezed lemon juice, black salt, and mint.",
     portion: "Chilled Glass",
   },
 
@@ -876,7 +926,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "desserts",
     dietary: "veg",
     price: 60,
-    description: "Soft khoya dumplings deep fried and soaked in rose and green cardamom flavored warm sugar syrup.",
+    description:
+      "Soft khoya dumplings deep fried and soaked in rose and green cardamom flavored warm sugar syrup.",
     portion: "2 warm pieces",
     isBestseller: true,
   },
@@ -887,7 +938,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "desserts",
     dietary: "veg",
     price: 70,
-    description: "Slow-cooked rice pudding made with whole milk, saffron, cardamom, and sliced almonds.",
+    description:
+      "Slow-cooked rice pudding made with whole milk, saffron, cardamom, and sliced almonds.",
     portion: "Chilled Bowl",
   },
   {
@@ -897,7 +949,8 @@ export const fullMenuList: MenuItem[] = [
     categoryId: "desserts",
     dietary: "veg",
     price: 60,
-    description: "Rich, dense frozen dairy dessert infused with pistachio, almond, and saffron in an earthen pot.",
+    description:
+      "Rich, dense frozen dairy dessert infused with pistachio, almond, and saffron in an earthen pot.",
     portion: "1 Matka",
   },
 ];

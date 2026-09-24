@@ -71,9 +71,7 @@ export const websiteStatusManager = {
         localStorage.setItem(STORAGE_WEBSITE_STATUS_KEY, JSON.stringify(updated));
 
         // Dispatch local window event for same-tab reactive updates
-        window.dispatchEvent(
-          new CustomEvent(WINDOW_EVENT_NAME, { detail: updated })
-        );
+        window.dispatchEvent(new CustomEvent(WINDOW_EVENT_NAME, { detail: updated }));
 
         // Broadcast to other open tabs (e.g. customer tabs vs admin tabs)
         const channel = getChannel();

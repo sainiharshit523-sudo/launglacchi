@@ -36,18 +36,24 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordStatus, setPasswordStatus] = useState<{ success?: boolean; message?: string } | null>(null);
+  const [passwordStatus, setPasswordStatus] = useState<{
+    success?: boolean;
+    message?: string;
+  } | null>(null);
 
   const [chimeEnabled, setChimeEnabled] = useState(activityTracker.isChimeEnabled());
   const [resetStatus, setResetStatus] = useState<string | null>(null);
 
-  const [siteConfig, setSiteConfig] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
+  const [siteConfig, setSiteConfig] = useState<WebsiteStatusConfig>(
+    websiteStatusManager.getStatus(),
+  );
   const [siteSaveStatus, setSiteSaveStatus] = useState<string | null>(null);
 
   const [copiedCustomer, setCopiedCustomer] = useState(false);
   const [copiedPortal, setCopiedPortal] = useState(false);
 
-  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://launglaachirestaurant.com";
+  const siteOrigin =
+    typeof window !== "undefined" ? window.location.origin : "https://launglaachirestaurant.com";
   const customerLink = `${siteOrigin}/`;
   const portalLink = `${siteOrigin}${ADMIN_PORTAL_PATH}`;
 
@@ -86,7 +92,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
     const updated = websiteStatusManager.toggle();
     setSiteConfig(updated);
     setSiteSaveStatus(
-      updated.enabled ? "🟢 Public website turned ONLINE!" : "🔴 Public website turned OFFLINE (Maintenance active)!"
+      updated.enabled
+        ? "🟢 Public website turned ONLINE!"
+        : "🔴 Public website turned OFFLINE (Maintenance active)!",
     );
     setTimeout(() => setSiteSaveStatus(null), 4000);
   };
@@ -160,7 +168,7 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
     }
     if (
       confirm(
-        "Are you sure you want to completely CLEAR ALL DATA? This will permanently delete all banquet enquiries, calls, WhatsApp logs, and visitor entries."
+        "Are you sure you want to completely CLEAR ALL DATA? This will permanently delete all banquet enquiries, calls, WhatsApp logs, and visitor entries.",
       )
     ) {
       activityTracker.clearAllData();
@@ -173,7 +181,7 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
   const handleResetData = () => {
     if (
       confirm(
-        "Are you sure you want to restore initial demo data? This will load sample bookings and events."
+        "Are you sure you want to restore initial demo data? This will load sample bookings and events.",
       )
     ) {
       activityTracker.resetAllData();
@@ -204,13 +212,19 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-bold text-foreground text-lg">Customer vs Admin Link Separation</h3>
-                <Badge variant="outline" className="border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] uppercase">
+                <h3 className="font-bold text-foreground text-lg">
+                  Customer vs Admin Link Separation
+                </h3>
+                <Badge
+                  variant="outline"
+                  className="border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] uppercase"
+                >
                   Protected & Isolated
                 </Badge>
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Public customer website and private operations portal links are separated for security.
+                Public customer website and private operations portal links are separated for
+                security.
               </p>
             </div>
           </div>
@@ -235,7 +249,8 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                 </Badge>
               </div>
               <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
-                Give this link to your customers, put on business cards, Instagram bio & Google Maps. Shows food menu, banquet booking enquiry, and calling buttons.
+                Give this link to your customers, put on business cards, Instagram bio & Google
+                Maps. Shows food menu, banquet booking enquiry, and calling buttons.
               </p>
             </div>
 
@@ -254,7 +269,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                   {copiedCustomer ? (
                     <>
                       <CheckCircle2 className="mr-1.5 size-3.5 text-emerald-500" />
-                      <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">Copied!</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">
+                        Copied!
+                      </span>
                     </>
                   ) : (
                     <>
@@ -264,7 +281,12 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                   )}
                 </Button>
                 <Button asChild size="sm" variant="ghost" className="h-8 px-2.5 text-xs">
-                  <a href={customerLink} target="_blank" rel="noopener noreferrer" title="Open customer website in new tab">
+                  <a
+                    href={customerLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Open customer website in new tab"
+                  >
                     <ExternalLink className="size-3.5" />
                   </a>
                 </Button>
@@ -285,7 +307,8 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                 </Badge>
               </div>
               <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
-                Secret link strictly for the restaurant owner & managers. Bookmark this in your personal browser. Standard /admin is blocked with 404 to protect your privacy.
+                Secret link strictly for the restaurant owner & managers. Bookmark this in your
+                personal browser. Standard /admin is blocked with 404 to protect your privacy.
               </p>
             </div>
 
@@ -312,8 +335,18 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                     </>
                   )}
                 </Button>
-                <Button asChild size="sm" variant="outline" className="h-8 px-2.5 text-xs border-gold/40 hover:bg-gold/10">
-                  <a href={portalLink} target="_blank" rel="noopener noreferrer" title="Open private portal in new tab">
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="h-8 px-2.5 text-xs border-gold/40 hover:bg-gold/10"
+                >
+                  <a
+                    href={portalLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Open private portal in new tab"
+                  >
                     <ExternalLink className="size-3.5 text-gold" />
                   </a>
                 </Button>
@@ -326,7 +359,17 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
         <div className="mt-4 rounded-xl border border-border/80 bg-muted/30 p-3 text-xs text-muted-foreground flex items-start gap-2.5">
           <ShieldAlert className="size-4 text-primary shrink-0 mt-0.5" />
           <div className="text-[11px] leading-relaxed">
-            <strong className="text-foreground">Why this keeps your portal safe:</strong> Automated crawlers and unauthorized people frequently attempt to open <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">/admin</code>. Because <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">/admin</code> now returns a 404 Page Not Found and public pages contain no admin buttons, visitors have no way of knowing your management portal URL.
+            <strong className="text-foreground">Why this keeps your portal safe:</strong> Automated
+            crawlers and unauthorized people frequently attempt to open{" "}
+            <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">
+              /admin
+            </code>
+            . Because{" "}
+            <code className="px-1.5 py-0.5 rounded bg-muted font-mono font-bold text-foreground">
+              /admin
+            </code>{" "}
+            now returns a 404 Page Not Found and public pages contain no admin buttons, visitors
+            have no way of knowing your management portal URL.
           </div>
         </div>
       </div>
@@ -334,16 +377,16 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
       {/* Master Website Online/Offline Availability Card */}
       <div
         className={`rounded-3xl border p-6 shadow-sm transition-all ${
-          siteConfig.enabled
-            ? "border-emerald-500/40 bg-card"
-            : "border-red-500/40 bg-card"
+          siteConfig.enabled ? "border-emerald-500/40 bg-card" : "border-red-500/40 bg-card"
         }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-border pb-4">
           <div className="flex items-center gap-3">
             <div
               className={`grid size-12 shrink-0 place-items-center rounded-2xl text-white shadow-sm ${
-                siteConfig.enabled ? "bg-emerald-600 shadow-emerald-500/20" : "bg-red-600 shadow-red-500/20"
+                siteConfig.enabled
+                  ? "bg-emerald-600 shadow-emerald-500/20"
+                  : "bg-red-600 shadow-red-500/20"
               }`}
             >
               {siteConfig.enabled ? <Power className="size-6" /> : <PowerOff className="size-6" />}
@@ -362,7 +405,8 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                 </Badge>
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Turn your public restaurant website ON or OFF instantly anytime (for night closure, renovation, or maintenance).
+                Turn your public restaurant website ON or OFF instantly anytime (for night closure,
+                renovation, or maintenance).
               </p>
             </div>
           </div>
@@ -389,7 +433,12 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                 </>
               )}
             </Button>
-            <Button asChild size="sm" variant="outline" className="h-10 text-xs font-bold border-border">
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="h-10 text-xs font-bold border-border"
+            >
               <a href="/" target="_blank" rel="noopener noreferrer">
                 <Globe className="mr-1.5 size-3.5 text-primary" />
                 <span>Preview Site</span>
@@ -458,7 +507,11 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
               </p>
             )}
 
-            <Button type="submit" size="sm" className="h-9 px-4 text-xs font-bold bg-primary text-primary-foreground">
+            <Button
+              type="submit"
+              size="sm"
+              className="h-9 px-4 text-xs font-bold bg-primary text-primary-foreground"
+            >
               <Save className="mr-1.5 size-3.5" />
               <span>Save Status Settings</span>
             </Button>
@@ -481,7 +534,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
 
           <form onSubmit={handlePasswordChange} className="mt-5 space-y-4">
             <div>
-              <label className="text-xs font-bold text-foreground block mb-1">Current Password</label>
+              <label className="text-xs font-bold text-foreground block mb-1">
+                Current Password
+              </label>
               <Input
                 type="password"
                 required
@@ -500,16 +555,18 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                     className={`text-[10px] font-extrabold uppercase ${
                       newPassword.length < 8
                         ? "text-red-500"
-                        : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/.test(newPassword)
-                        ? "text-emerald-500"
-                        : "text-amber-500"
+                        : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/.test(
+                              newPassword,
+                            )
+                          ? "text-emerald-500"
+                          : "text-amber-500"
                     }`}
                   >
                     {newPassword.length < 8
                       ? "Too Short"
                       : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/.test(newPassword)
-                      ? "Very Strong"
-                      : "Moderate"}
+                        ? "Very Strong"
+                        : "Moderate"}
                   </span>
                 )}
               </div>
@@ -533,14 +590,18 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
                     />
                     <div
                       className={`h-full transition-all ${
-                        newPassword.length >= 8 && /[a-z]/.test(newPassword) && /[A-Z]/.test(newPassword)
+                        newPassword.length >= 8 &&
+                        /[a-z]/.test(newPassword) &&
+                        /[A-Z]/.test(newPassword)
                           ? "bg-amber-500"
                           : "bg-muted"
                       }`}
                     />
                     <div
                       className={`h-full transition-all ${
-                        newPassword.length >= 8 && /\d/.test(newPassword) ? "bg-emerald-500" : "bg-muted"
+                        newPassword.length >= 8 && /\d/.test(newPassword)
+                          ? "bg-emerald-500"
+                          : "bg-muted"
                       }`}
                     />
                     <div
@@ -559,7 +620,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
             </div>
 
             <div>
-              <label className="text-xs font-bold text-foreground block mb-1">Confirm New Password</label>
+              <label className="text-xs font-bold text-foreground block mb-1">
+                Confirm New Password
+              </label>
               <Input
                 type="password"
                 required
@@ -606,7 +669,9 @@ export function AdminSettings({ onRefresh, onClearAll }: AdminSettingsProps) {
               </div>
               <div>
                 <h3 className="font-bold text-foreground text-base">Sound Notification Chimes</h3>
-                <p className="text-xs text-muted-foreground">Alerts whenever a customer takes action</p>
+                <p className="text-xs text-muted-foreground">
+                  Alerts whenever a customer takes action
+                </p>
               </div>
             </div>
 

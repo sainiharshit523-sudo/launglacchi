@@ -11,7 +11,8 @@ export const restaurant = {
   reviewCount: 653,
   googleMapsUrl: "https://maps.app.goo.gl/HumD2CgT2osvzSJq8",
   directionsUrl: "https://maps.app.goo.gl/HumD2CgT2osvzSJq8",
-  whatsappUrl: "https://wa.me/919915716739?text=Hello%20Laung%20Laachi%2C%20I%20have%20an%20inquiry%20regarding%20the%20restaurant%20and%20banquet%20hall.",
+  whatsappUrl:
+    "https://wa.me/919915716739?text=Hello%20Laung%20Laachi%2C%20I%20have%20an%20inquiry%20regarding%20the%20restaurant%20and%20banquet%20hall.",
   email: "launglaachibrahmpur@gmail.com",
   emailHref: "mailto:launglaachibrahmpur@gmail.com",
   social: {
@@ -45,7 +46,8 @@ export const banquetInfo = {
   capacity: "50 to 300+ Guests",
   phoneDisplay: "+91 99157 16739",
   phoneHref: "tel:+919915716739",
-  whatsappHref: "https://wa.me/919915716739?text=Hello%20Laung%20Laachi%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Banquet%20Hall%20for%20an%20event.",
+  whatsappHref:
+    "https://wa.me/919915716739?text=Hello%20Laung%20Laachi%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Banquet%20Hall%20for%20an%20event.",
   events: [
     "Marriages & Wedding Receptions",
     "Ring Ceremony / Sagan / Roka",
@@ -64,4 +66,3 @@ export const banquetInfo = {
     "Ample Free Highway & Private Parking",
   ],
 } as const;
-

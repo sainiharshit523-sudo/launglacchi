@@ -82,7 +82,9 @@ function cleanLegacyKeys(): void {
 function checkRateLimit(): { isLocked: boolean; minutesRemaining: number } {
   if (typeof window === "undefined") return { isLocked: false, minutesRemaining: 0 };
   try {
-    const raw = sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) || localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
+    const raw =
+      sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) ||
+      localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
     if (!raw) return { isLocked: false, minutesRemaining: 0 };
     const state: RateLimitState = JSON.parse(raw);
     const now = Date.now();
@@ -99,7 +101,9 @@ function checkRateLimit(): { isLocked: boolean; minutesRemaining: number } {
 function recordFailedAttempt(): void {
   if (typeof window === "undefined") return;
   try {
-    const raw = sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) || localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
+    const raw =
+      sessionStorage.getItem(STORAGE_RATE_LIMIT_KEY) ||
+      localStorage.getItem(STORAGE_RATE_LIMIT_KEY);
     const state: RateLimitState = raw ? JSON.parse(raw) : { attempts: 0, lockedUntil: 0 };
     state.attempts = (state.attempts || 0) + 1;
     if (state.attempts >= MAX_FAILED_ATTEMPTS) {
@@ -255,7 +259,7 @@ export const adminAuth = {
   async login(
     usernameInput: string,
     passwordInput: string,
-    rememberMe = false
+    rememberMe = false,
   ): Promise<{ success: boolean; error?: string }> {
     // 1. Check brute-force lockout
     const rateCheck = checkRateLimit();
@@ -337,7 +341,7 @@ export const adminAuth = {
   // Change password in admin settings
   async changePassword(
     currentPasswordInput: string,
-    newPasswordInput: string
+    newPasswordInput: string,
   ): Promise<{ success: boolean; error?: string }> {
     const creds = adminAuth.getCredentials();
 

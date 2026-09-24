@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Clock,
-  Globe,
-  Laptop,
-  Smartphone,
-  Tablet,
-  Users,
-} from "lucide-react";
+import { Clock, Globe, Laptop, Smartphone, Tablet, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { activityTracker, type VisitorSession } from "@/lib/activity-tracker";
 
@@ -21,7 +14,8 @@ export function AdminVisitorsLog() {
           <span>Live Customer Visits & Traffic Stream</span>
         </h2>
         <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-          Detailed breakdown of visitors arriving on the website, device platforms, and sections explored.
+          Detailed breakdown of visitors arriving on the website, device platforms, and sections
+          explored.
         </p>
       </div>
 
@@ -129,9 +123,12 @@ export function AdminVisitorsLog() {
       ) : (
         <div className="rounded-3xl border border-dashed border-border p-12 text-center bg-card">
           <Users className="mx-auto size-12 text-muted-foreground/40" />
-          <h3 className="mt-4 font-display text-lg font-bold text-foreground">No visitor sessions recorded yet</h3>
+          <h3 className="mt-4 font-display text-lg font-bold text-foreground">
+            No visitor sessions recorded yet
+          </h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            As soon as someone loads any page on the website, their telemetry and device details will appear here.
+            As soon as someone loads any page on the website, their telemetry and device details
+            will appear here.
           </p>
         </div>
       )}

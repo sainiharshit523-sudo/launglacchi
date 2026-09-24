@@ -1,17 +1,8 @@
 // Client-side Activity Tracker & Real-Time Notification Bus for Laung Laachi Admin
 export type ActivityEventType =
-  | "page_visit"
-  | "banquet_booking"
-  | "whatsapp_click"
-  | "call_click"
-  | "menu_interaction";
+  "page_visit" | "banquet_booking" | "whatsapp_click" | "call_click" | "menu_interaction";
 
-export type BookingStatus =
-  | "new"
-  | "in_discussion"
-  | "confirmed"
-  | "completed"
-  | "cancelled";
+export type BookingStatus = "new" | "in_discussion" | "confirmed" | "completed" | "cancelled";
 
 export interface BanquetBookingLead {
   id: string;
@@ -37,17 +28,17 @@ export interface ActivityEvent {
   description: string;
   timestamp: string;
   metadata?: {
-    device?: string;
-    browser?: string;
-    referrer?: string;
-    path?: string;
-    section?: string;
-    dishName?: string;
-    dishPrice?: number;
-    dishCategory?: string;
-    phoneClicked?: string;
-    whatsappSource?: string;
-    bookingId?: string;
+    device?: string | undefined;
+    browser?: string | undefined;
+    referrer?: string | undefined;
+    path?: string | undefined;
+    section?: string | undefined;
+    dishName?: string | undefined;
+    dishPrice?: number | undefined;
+    dishCategory?: string | undefined;
+    phoneClicked?: string | undefined;
+    whatsappSource?: string | undefined;
+    bookingId?: string | undefined;
   };
 }
 
@@ -69,7 +60,11 @@ const STORAGE_CHIME_PREF_KEY = "laung_laachi_chime_enabled_v1";
 const CHANNEL_NAME = "laung_laachi_admin_broadcast";
 
 // Detect user device & browser
-function getClientEnvironment(): { device: string; browser: string; deviceType: "Mobile" | "Tablet" | "Desktop" } {
+function getClientEnvironment(): {
+  device: string;
+  browser: string;
+  deviceType: "Mobile" | "Tablet" | "Desktop";
+} {
   if (typeof window === "undefined") {
     return { device: "Desktop", browser: "Chrome", deviceType: "Desktop" };
   }
@@ -104,7 +99,8 @@ function getSessionId(): string {
   if (typeof window === "undefined") return "server-session";
   let sid = sessionStorage.getItem("laung_laachi_session_id");
   if (!sid) {
-    sid = "sess_" + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).substring(4);
+    sid =
+      "sess_" + Math.random().toString(36).substring(2, 9) + Date.now().toString(36).substring(4);
     sessionStorage.setItem("laung_laachi_session_id", sid);
   }
   return sid;
@@ -117,7 +113,9 @@ export function playNotificationChime(frequencyMultiplier = 1.0): void {
   if (!isChimeEnabled) return;
 
   try {
-    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const AudioContextClass =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (!AudioContextClass) return;
 
     const ctx = new AudioContextClass();
@@ -188,7 +186,8 @@ const INITIAL_DEMO_BOOKINGS: BanquetBookingLead[] = [
     guestCount: "80–100 Guests",
     cateringType: "Custom Non-Veg & Veg Buffet",
     roomsNeeded: "Not required",
-    notes: "Confirmed booking. Advance token received. Wants Punjabi butter chicken & rabri jalebi.",
+    notes:
+      "Confirmed booking. Advance token received. Wants Punjabi butter chicken & rabri jalebi.",
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
     status: "confirmed",
   },
@@ -378,13 +377,14 @@ export const activityTracker = {
       const visitorsStr = localStorage.getItem(STORAGE_VISITORS_KEY);
       const visitors: VisitorSession[] = visitorsStr ? JSON.parse(visitorsStr) : [];
       const existingIdx = visitors.findIndex((v) => v.sessionId === sid);
+      const existingVisitor = existingIdx >= 0 ? visitors[existingIdx] : undefined;
 
-      if (existingIdx >= 0) {
-        visitors[existingIdx].lastActive = new Date().toISOString();
-        if (!visitors[existingIdx].sectionsViewed.includes(section)) {
-          visitors[existingIdx].sectionsViewed.push(section);
+      if (existingVisitor) {
+        existingVisitor.lastActive = new Date().toISOString();
+        if (!existingVisitor.sectionsViewed.includes(section)) {
+          existingVisitor.sectionsViewed.push(section);
         }
-        visitors[existingIdx].totalActions += 1;
+        existingVisitor.totalActions += 1;
       } else {
         visitors.unshift({
           sessionId: sid,
@@ -404,7 +404,7 @@ export const activityTracker = {
 
   // Record a new banquet booking submission
   trackBanquetBooking(
-    bookingData: Omit<BanquetBookingLead, "id" | "createdAt" | "status">
+    bookingData: Omit<BanquetBookingLead, "id" | "createdAt" | "status">,
   ): BanquetBookingLead {
     const newBooking: BanquetBookingLead = {
       ...bookingData,
@@ -444,7 +444,12 @@ export const activityTracker = {
   },
 
   // Record a Phone Call tap (from menu dish cards or header)
-  trackCallClick(details: { dishName?: string; dishPrice?: number; dishCategory?: string; source?: string }): void {
+  trackCallClick(details: {
+    dishName?: string;
+    dishPrice?: number;
+    dishCategory?: string;
+    source?: string;
+  }): void {
     const description = details.dishName
       ? `Tapped 'Call Order' for ${details.dishName}${details.dishPrice ? ` (₹${details.dishPrice})` : ""}.`
       : `Customer clicked Call Now button from ${details.source || "Header Navigation"}.`;
@@ -487,7 +492,7 @@ export const activityTracker = {
               ...(notes ? { notes: (b.notes ? b.notes + "\n" : "") + notes } : {}),
               lastFollowUp: new Date().toISOString(),
             }
-          : b
+          : b,
       );
       localStorage.setItem(STORAGE_BOOKINGS_KEY, JSON.stringify(updated));
 
@@ -595,7 +600,7 @@ export const activityTracker = {
         visitors: activityTracker.getVisitors(),
       },
       null,
-      2
+      2,
     );
   },
 

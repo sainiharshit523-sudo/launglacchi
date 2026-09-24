@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import {
-  ShieldCheck,
-  Power,
-  PowerOff,
-  ExternalLink,
-  LogOut,
-  LayoutDashboard,
-} from "lucide-react";
+import { ShieldCheck, Power, PowerOff, ExternalLink, LogOut, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { adminAuth } from "@/lib/admin-auth";
@@ -80,7 +73,9 @@ export function AdminSessionBar({ status, onStatusChange }: AdminSessionBarProps
               ) : (
                 <>
                   <span className="hidden min-[480px]:inline">Public Website: </span>
-                  <strong className="text-red-400 font-extrabold uppercase">OFFLINE (Preview Active)</strong>
+                  <strong className="text-red-400 font-extrabold uppercase">
+                    OFFLINE (Preview Active)
+                  </strong>
                 </>
               )}
             </span>
@@ -100,7 +95,11 @@ export function AdminSessionBar({ status, onStatusChange }: AdminSessionBarProps
                 ? "border-red-500/50 bg-red-900/40 text-red-200 hover:bg-red-900/70"
                 : "border-emerald-500/50 bg-emerald-500 text-neutral-950 hover:bg-emerald-400"
             }`}
-            title={status.enabled ? "Pause public website (show offline view to visitors)" : "Make public website live now"}
+            title={
+              status.enabled
+                ? "Pause public website (show offline view to visitors)"
+                : "Make public website live now"
+            }
           >
             {status.enabled ? (
               <>

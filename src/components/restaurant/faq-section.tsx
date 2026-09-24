@@ -184,8 +184,7 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
 
   const filteredFaqs = useMemo(() => {
     return faqData.filter((item) => {
-      const matchesCategory =
-        selectedCategory === "all" || item.category === selectedCategory;
+      const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !q ||
@@ -197,9 +196,7 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
   }, [selectedCategory, searchQuery]);
 
   const toggleItem = (id: string) => {
-    setOpenIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    );
+    setOpenIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
   };
 
   const handleActionClick = (actionType?: string, e?: React.MouseEvent) => {
@@ -240,7 +237,8 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
           </h2>
 
           <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Everything you need to know about our AC banquet hall celebrations, separate veg & non-veg kitchens, highway parking, and travel amenities on Nangal–Chandigarh Road.
+            Everything you need to know about our AC banquet hall celebrations, separate veg &
+            non-veg kitchens, highway parking, and travel amenities on Nangal–Chandigarh Road.
           </p>
         </div>
 
@@ -302,17 +300,13 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
                     >
                       <div className="flex items-center gap-2.5">
                         <Icon
-                          className={`size-4 ${
-                            isActive ? "text-secondary" : "text-primary"
-                          }`}
+                          className={`size-4 ${isActive ? "text-secondary" : "text-primary"}`}
                         />
                         <span>{cat.label}</span>
                       </div>
                       <span
                         className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold ${
-                          isActive
-                            ? "bg-black/25 text-white"
-                            : "bg-muted text-muted-foreground"
+                          isActive ? "bg-black/25 text-white" : "bg-muted text-muted-foreground"
                         }`}
                       >
                         {count}
@@ -342,7 +336,8 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
                 </div>
 
                 <p className="mt-3 text-xs leading-relaxed text-foreground/80">
-                  Planning a marriage, ring ceremony, bus group lunch, or customized Punjabi catering? We are always happy to help.
+                  Planning a marriage, ring ceremony, bus group lunch, or customized Punjabi
+                  catering? We are always happy to help.
                 </p>
 
                 <div className="mt-5 space-y-2.5">
@@ -417,9 +412,7 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
                     }`}
                     style={{
                       // Asymmetric architectural corner accents
-                      borderRadius: isOpen
-                        ? "28px 12px 28px 12px"
-                        : "20px 10px 20px 10px",
+                      borderRadius: isOpen ? "28px 12px 28px 12px" : "20px 10px 20px 10px",
                     }}
                   >
                     {/* Question Header Button with Smooth Click Action */}
@@ -445,9 +438,7 @@ export function FaqSection({ onOpenBooking }: FaqSectionProps) {
 
                         <h3
                           className={`font-display text-base sm:text-lg font-bold transition-colors ${
-                            isOpen
-                              ? "text-primary"
-                              : "text-foreground group-hover:text-primary"
+                            isOpen ? "text-primary" : "text-foreground group-hover:text-primary"
                           }`}
                         >
                           <span className="text-muted-foreground/60 mr-2 font-mono text-sm">

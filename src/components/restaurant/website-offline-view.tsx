@@ -99,11 +99,7 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
                 variant="outline"
                 className="h-11 border-emerald-500/40 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/10 font-bold text-xs sm:text-sm rounded-xl px-5"
               >
-                <a
-                  href={restaurant.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={restaurant.whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 size-4 text-emerald-600" />
                   <span>WhatsApp Inquiry</span>
                 </a>
@@ -114,11 +110,7 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
                 variant="outline"
                 className="h-11 border-border hover:border-foreground text-xs sm:text-sm font-bold rounded-xl px-5"
               >
-                <a
-                  href={restaurant.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer">
                   <MapPin className="mr-2 size-4 text-primary" />
                   <span>View Location</span>
                 </a>
@@ -149,8 +141,12 @@ export function WebsiteOfflineView({ status }: WebsiteOfflineViewProps) {
       {/* Bottom Footer */}
       <footer className="relative z-10 border-t border-border/60 bg-background/80 px-4 py-4 text-center text-xs text-muted-foreground">
         <div className="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-2">
-          <p>© {new Date().getFullYear()} {restaurant.name}. All rights reserved.</p>
-          <p className="text-[11px] text-muted-foreground/70">Nangal to Chandigarh Road, Rupnagar District, Punjab</p>
+          <p>
+            © {new Date().getFullYear()} {restaurant.name}. All rights reserved.
+          </p>
+          <p className="text-[11px] text-muted-foreground/70">
+            Nangal to Chandigarh Road, Rupnagar District, Punjab
+          </p>
         </div>
       </footer>
 

@@ -114,12 +114,10 @@ export function AboutSection() {
   };
 
   const selectedSpotlight =
-    activeTab !== "all"
-      ? authenticPhotos.find((p) => p.id === activeTab) ?? heroPhoto
-      : null;
+    activeTab !== "all" ? (authenticPhotos.find((p) => p.id === activeTab) ?? heroPhoto) : null;
 
   const currentLightboxPhoto =
-    lightboxIndex !== null ? authenticPhotos[lightboxIndex] ?? null : null;
+    lightboxIndex !== null ? (authenticPhotos[lightboxIndex] ?? null) : null;
 
   return (
     <section
@@ -143,8 +141,10 @@ export function AboutSection() {
             Where Highway Journeys Meet Timeless Punjabi Warmth
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Rooted in the fertile soils of Rupnagar and inspired by centuries of Punjabi hospitality,{" "}
-            <strong className="font-bold text-foreground">Laung Laachi</strong> is more than a highway restaurant—it is a sanctuary of comfort, authentic flavor, and memories along the historic Nangal to Chandigarh road.
+            Rooted in the fertile soils of Rupnagar and inspired by centuries of Punjabi
+            hospitality, <strong className="font-bold text-foreground">Laung Laachi</strong> is more
+            than a highway restaurant—it is a sanctuary of comfort, authentic flavor, and memories
+            along the historic Nangal to Chandigarh road.
           </p>
         </div>
 
@@ -406,24 +406,36 @@ export function AboutSection() {
                   The Meaning Behind Our Name
                 </div>
                 <h3 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-foreground">
-                  The Sacred Spices of Punjabi Welcome: <span className="text-primary font-extrabold">Laung</span> & <span className="text-primary font-extrabold">Laachi</span>
+                  The Sacred Spices of Punjabi Welcome:{" "}
+                  <span className="text-primary font-extrabold">Laung</span> &{" "}
+                  <span className="text-primary font-extrabold">Laachi</span>
                 </h3>
                 <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p>
-                    In traditional Punjabi households and across age-old trade routes, two spices have always reigned supreme: <strong className="text-foreground">Laung</strong> (fragrant clove) and <strong className="text-foreground">Laachi</strong> (sweet green cardamom). Together, they represent the soul of heartfelt North Indian hospitality.
+                    In traditional Punjabi households and across age-old trade routes, two spices
+                    have always reigned supreme: <strong className="text-foreground">Laung</strong>{" "}
+                    (fragrant clove) and <strong className="text-foreground">Laachi</strong> (sweet
+                    green cardamom). Together, they represent the soul of heartfelt North Indian
+                    hospitality.
                   </p>
                   <p>
-                    Whenever a traveler arrived from a grueling trek across the plains, they were immediately greeted with a steaming cup of tea infused with crushed cardamom to refresh the senses, and clove to soothe fatigue and bring warmth to the chest.
+                    Whenever a traveler arrived from a grueling trek across the plains, they were
+                    immediately greeted with a steaming cup of tea infused with crushed cardamom to
+                    refresh the senses, and clove to soothe fatigue and bring warmth to the chest.
                   </p>
                   <p>
-                    We founded <strong className="text-foreground">Laung Laachi</strong> upon this exact tradition: an honest, open-hearted vow that every traveler who steps across our threshold receives genuine hospitality (<em>Mehman-Nawazi</em>), freshly pounded spices, and wholesome food that warms the spirit.
+                    We founded <strong className="text-foreground">Laung Laachi</strong> upon this
+                    exact tradition: an honest, open-hearted vow that every traveler who steps
+                    across our threshold receives genuine hospitality (<em>Mehman-Nawazi</em>),
+                    freshly pounded spices, and wholesome food that warms the spirit.
                   </p>
                 </div>
               </div>
 
               <div className="mt-8 rounded-2xl border border-gold/30 bg-secondary/15 p-5">
                 <p className="font-display text-sm font-bold text-foreground sm:text-base italic">
-                  “In Punjab, we do not simply serve food; we serve blessings. A pinch of Laachi for sweetness, a clove of Laung for strength, and a heart full of respect.”
+                  “In Punjab, we do not simply serve food; we serve blessings. A pinch of Laachi for
+                  sweetness, a clove of Laung for strength, and a heart full of respect.”
                 </p>
               </div>
             </div>
@@ -440,20 +452,38 @@ export function AboutSection() {
                 </h3>
                 <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p>
-                    Situated right on the <strong className="text-foreground">Nangal to Chandigarh Road (Brahmpur, Ropar)</strong>, our restaurant occupies one of northern India’s most historic and scenic highway corridors.
+                    Situated right on the{" "}
+                    <strong className="text-foreground">
+                      Nangal to Chandigarh Road (Brahmpur, Ropar)
+                    </strong>
+                    , our restaurant occupies one of northern India’s most historic and scenic
+                    highway corridors.
                   </p>
                   <p>
-                    To our north lie the majestic Shivalik hill ranges, the sacred gurdwaras of <strong className="text-foreground">Sri Anandpur Sahib</strong> and <strong className="text-foreground">Kiratpur Sahib</strong>, the holy shrine of <strong className="text-foreground">Mata Naina Devi</strong>, and the onward scenic routes to Bhakra Nangal and Himachal Pradesh. To our south flows the historic Sutlej river belt leading towards the modern metropolis of Chandigarh and Mohali.
+                    To our north lie the majestic Shivalik hill ranges, the sacred gurdwaras of{" "}
+                    <strong className="text-foreground">Sri Anandpur Sahib</strong> and{" "}
+                    <strong className="text-foreground">Kiratpur Sahib</strong>, the holy shrine of{" "}
+                    <strong className="text-foreground">Mata Naina Devi</strong>, and the onward
+                    scenic routes to Bhakra Nangal and Himachal Pradesh. To our south flows the
+                    historic Sutlej river belt leading towards the modern metropolis of Chandigarh
+                    and Mohali.
                   </p>
                   <p>
-                    For generations, pilgrims on sacred journeys, families embarking on mountain holidays, and interstate travelers carrying northern commerce have chosen this specific stretch of road for rest, reflection, and nourishment.
+                    For generations, pilgrims on sacred journeys, families embarking on mountain
+                    holidays, and interstate travelers carrying northern commerce have chosen this
+                    specific stretch of road for rest, reflection, and nourishment.
                   </p>
                 </div>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href={restaurant.directionsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+                  <a
+                    href={restaurant.directionsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2"
+                  >
                     <MapPin className="size-4" />
                     <span>View Location on Google Maps</span>
                   </a>
@@ -477,7 +507,8 @@ export function AboutSection() {
               What Makes Visiting Laung Laachi Unforgettable
             </h3>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Designed to soothe travel fatigue with comfortable air conditioning, authentic Punjabi cuisine, and unhurried dining.
+              Designed to soothe travel fatigue with comfortable air conditioning, authentic Punjabi
+              cuisine, and unhurried dining.
             </p>
           </div>
 
@@ -491,7 +522,8 @@ export function AboutSection() {
                 Authentic Highway Facade
               </h4>
               <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Greeted by cultural Punjabi folk statues, red brick architecture, and roadside parking right on the Nangal–Chandigarh corridor.
+                Greeted by cultural Punjabi folk statues, red brick architecture, and roadside
+                parking right on the Nangal–Chandigarh corridor.
               </p>
             </article>
 
@@ -504,7 +536,8 @@ export function AboutSection() {
                 AC Cloud Sky Lounge
               </h4>
               <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Relax in cozy cream & teal sofa booths beneath an illuminated cloud ceiling and warm ambient pendant globe lights.
+                Relax in cozy cream & teal sofa booths beneath an illuminated cloud ceiling and warm
+                ambient pendant globe lights.
               </p>
             </article>
 
@@ -517,7 +550,8 @@ export function AboutSection() {
                 The Live Clay Tandoor
               </h4>
               <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Watch our ustads slap freshly rolled dough against fiery clay walls and slow-roast spiced tikkas over charcoal embers.
+                Watch our ustads slap freshly rolled dough against fiery clay walls and slow-roast
+                spiced tikkas over charcoal embers.
               </p>
             </article>
 
@@ -530,7 +564,8 @@ export function AboutSection() {
                 Banquet & Family Haven
               </h4>
               <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Spacious celebration hall for parties and family functions, clean restrooms, AC rooms, and swift Punjabi hospitality.
+                Spacious celebration hall for parties and family functions, clean restrooms, AC
+                rooms, and swift Punjabi hospitality.
               </p>
             </article>
           </div>
@@ -548,7 +583,8 @@ export function AboutSection() {
                   Convenient Transit Stop on Major Travel Routes
                 </h4>
                 <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl">
-                  Located precisely between Rupnagar and Nangal, travelers stop here for breakfast before morning darshan at Anandpur Sahib or tea when returning home to Chandigarh.
+                  Located precisely between Rupnagar and Nangal, travelers stop here for breakfast
+                  before morning darshan at Anandpur Sahib or tea when returning home to Chandigarh.
                 </p>
               </div>
             </div>

@@ -107,7 +107,8 @@ export function AdminBanquetBookings({
             <span>Banquet Bookings & Marriage Hall Inquiries</span>
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-            Total {bookings.length} customer inquiries received for marriage receptions, ring ceremonies, and family gatherings.
+            Total {bookings.length} customer inquiries received for marriage receptions, ring
+            ceremonies, and family gatherings.
           </p>
         </div>
 
@@ -142,11 +143,31 @@ export function AdminBanquetBookings({
       <div className="flex flex-wrap items-center gap-2 border-b border-border/70 pb-3">
         {[
           { id: "all", label: "All Leads", count: bookings.length },
-          { id: "new", label: "New Leads", count: bookings.filter((b) => b.status === "new").length },
-          { id: "in_discussion", label: "In Discussion", count: bookings.filter((b) => b.status === "in_discussion").length },
-          { id: "confirmed", label: "Confirmed", count: bookings.filter((b) => b.status === "confirmed").length },
-          { id: "completed", label: "Completed", count: bookings.filter((b) => b.status === "completed").length },
-          { id: "cancelled", label: "Cancelled", count: bookings.filter((b) => b.status === "cancelled").length },
+          {
+            id: "new",
+            label: "New Leads",
+            count: bookings.filter((b) => b.status === "new").length,
+          },
+          {
+            id: "in_discussion",
+            label: "In Discussion",
+            count: bookings.filter((b) => b.status === "in_discussion").length,
+          },
+          {
+            id: "confirmed",
+            label: "Confirmed",
+            count: bookings.filter((b) => b.status === "confirmed").length,
+          },
+          {
+            id: "completed",
+            label: "Completed",
+            count: bookings.filter((b) => b.status === "completed").length,
+          },
+          {
+            id: "cancelled",
+            label: "Cancelled",
+            count: bookings.filter((b) => b.status === "cancelled").length,
+          },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -197,7 +218,9 @@ export function AdminBanquetBookings({
                     <span className="font-mono text-xs font-black tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-md border border-primary/20">
                       {booking.refCode}
                     </span>
-                    <Badge className={`${statusInfo.bg} ${statusInfo.color} ${statusInfo.border} text-[10px] font-black uppercase tracking-wider`}>
+                    <Badge
+                      className={`${statusInfo.bg} ${statusInfo.color} ${statusInfo.border} text-[10px] font-black uppercase tracking-wider`}
+                    >
                       {statusInfo.label}
                     </Badge>
                   </div>
@@ -210,7 +233,9 @@ export function AdminBanquetBookings({
                 {/* Customer Details */}
                 <div className="mt-4 space-y-3">
                   <div>
-                    <h3 className="font-display text-xl font-extrabold text-foreground">{booking.name}</h3>
+                    <h3 className="font-display text-xl font-extrabold text-foreground">
+                      {booking.name}
+                    </h3>
                     <p className="text-sm font-semibold text-primary flex items-center gap-1.5 mt-0.5">
                       <Phone className="size-3.5" />
                       <span>{booking.phone}</span>
@@ -220,23 +245,35 @@ export function AdminBanquetBookings({
                   {/* Event Specifics Grid */}
                   <div className="grid grid-cols-2 gap-2.5 rounded-2xl bg-muted/40 p-3.5 text-xs">
                     <div>
-                      <p className="text-[10px] font-bold uppercase text-muted-foreground">Event Type</p>
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Event Type
+                      </p>
                       <p className="font-bold text-foreground mt-0.5">{booking.eventType}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase text-muted-foreground">Event Date</p>
-                      <p className="font-bold text-foreground mt-0.5">{booking.eventDate || "To be confirmed"}</p>
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Event Date
+                      </p>
+                      <p className="font-bold text-foreground mt-0.5">
+                        {booking.eventDate || "To be confirmed"}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase text-muted-foreground">Expected Guests</p>
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Expected Guests
+                      </p>
                       <p className="font-bold text-foreground mt-0.5">{booking.guestCount}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase text-muted-foreground">Guest Rooms</p>
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Guest Rooms
+                      </p>
                       <p className="font-bold text-foreground mt-0.5">{booking.roomsNeeded}</p>
                     </div>
                     <div className="col-span-2 pt-1 border-t border-border/40">
-                      <p className="text-[10px] font-bold uppercase text-muted-foreground">Catering Preference</p>
+                      <p className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Catering Preference
+                      </p>
                       <p className="font-bold text-foreground mt-0.5">{booking.cateringType}</p>
                     </div>
                   </div>
@@ -244,7 +281,9 @@ export function AdminBanquetBookings({
                   {/* Customer Special Notes */}
                   {booking.notes && (
                     <div className="rounded-xl border border-border/60 bg-background/50 p-3 text-xs text-muted-foreground">
-                      <p className="font-bold text-foreground text-[10px] uppercase">Special Requests / Notes:</p>
+                      <p className="font-bold text-foreground text-[10px] uppercase">
+                        Special Requests / Notes:
+                      </p>
                       <p className="mt-1 leading-relaxed">{booking.notes}</p>
                     </div>
                   )}
@@ -257,7 +296,9 @@ export function AdminBanquetBookings({
                     <span className="text-[11px] font-bold text-muted-foreground">Status:</span>
                     <select
                       value={booking.status}
-                      onChange={(e) => handleStatusChange(booking.id, e.target.value as BookingStatus)}
+                      onChange={(e) =>
+                        handleStatusChange(booking.id, e.target.value as BookingStatus)
+                      }
                       className="rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                     >
                       <option value="new">New Lead</option>
@@ -278,7 +319,7 @@ export function AdminBanquetBookings({
                     >
                       <a
                         href={`https://wa.me/${booking.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-                          `Hello ${booking.name}! Thank you for inquiring about Laung Laachi Banquet Hall & AC Rooms (Ref: ${booking.refCode}). We would be delighted to host your ${booking.eventType}. When is a good time to discuss the menu and package pricing?`
+                          `Hello ${booking.name}! Thank you for inquiring about Laung Laachi Banquet Hall & AC Rooms (Ref: ${booking.refCode}). We would be delighted to host your ${booking.eventType}. When is a good time to discuss the menu and package pricing?`,
                         )}`}
                         target="_blank"
                         rel="noreferrer"
@@ -317,7 +358,9 @@ export function AdminBanquetBookings({
       ) : (
         <div className="rounded-3xl border border-dashed border-border p-12 text-center bg-card">
           <PartyPopper className="mx-auto size-12 text-muted-foreground/40" />
-          <h3 className="mt-4 font-display text-lg font-bold text-foreground">No banquet inquiries found</h3>
+          <h3 className="mt-4 font-display text-lg font-bold text-foreground">
+            No banquet inquiries found
+          </h3>
           <p className="mt-1 text-xs text-muted-foreground">
             {searchTerm
               ? "No booking records match your search filter."

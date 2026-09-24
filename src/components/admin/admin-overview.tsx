@@ -46,7 +46,9 @@ export function AdminOverview({
   onRefresh,
   onClearAll,
 }: AdminOverviewProps) {
-  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
+  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(
+    websiteStatusManager.getStatus(),
+  );
 
   useEffect(() => {
     const unsub = websiteStatusManager.subscribe((updated) => {
@@ -69,7 +71,8 @@ export function AdminOverview({
   const visitsEvents = events.filter((e) => e.type === "page_visit");
 
   const todayIso = new Date().toISOString().split("T")[0] || "";
-  const visitsToday = visitsEvents.filter((e) => e.timestamp.startsWith(todayIso)).length || visitsEvents.length;
+  const visitsToday =
+    visitsEvents.filter((e) => e.timestamp.startsWith(todayIso)).length || visitsEvents.length;
 
   return (
     <div className="space-y-8 animate-pop-in">
@@ -90,7 +93,8 @@ export function AdminOverview({
               </Badge>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Instant alerts whenever customers visit, tap WhatsApp, call to order food, or submit banquet hall inquiries.
+              Instant alerts whenever customers visit, tap WhatsApp, call to order food, or submit
+              banquet hall inquiries.
             </p>
           </div>
         </div>
@@ -256,12 +260,20 @@ export function AdminOverview({
             )}
           </div>
           <div className="mt-4">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">Banquet Leads</p>
-            <h3 className="mt-1 font-display text-3xl font-black text-foreground">{bookings.length}</h3>
+            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+              Banquet Leads
+            </p>
+            <h3 className="mt-1 font-display text-3xl font-black text-foreground">
+              {bookings.length}
+            </h3>
             <p className="mt-1 text-xs text-muted-foreground flex items-center gap-1">
-              <span className="font-bold text-emerald-700 dark:text-emerald-400">{confirmedBookingsCount} confirmed</span>
+              <span className="font-bold text-emerald-700 dark:text-emerald-400">
+                {confirmedBookingsCount} confirmed
+              </span>
               <span>•</span>
-              <span className="text-amber-800 dark:text-amber-300 font-bold">{newBookingsCount} pending review</span>
+              <span className="text-amber-800 dark:text-amber-300 font-bold">
+                {newBookingsCount} pending review
+              </span>
             </p>
           </div>
           <div className="mt-4 flex items-center gap-1 text-xs font-bold text-amber-800 dark:text-amber-300 group-hover:underline">
@@ -285,8 +297,12 @@ export function AdminOverview({
             </span>
           </div>
           <div className="mt-4">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">Phone Call Orders</p>
-            <h3 className="mt-1 font-display text-3xl font-black text-foreground">{callsEvents.length}</h3>
+            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+              Phone Call Orders
+            </p>
+            <h3 className="mt-1 font-display text-3xl font-black text-foreground">
+              {callsEvents.length}
+            </h3>
             <p className="mt-1 text-xs text-muted-foreground">
               Direct taps on menu dishes & phone hotline
             </p>
@@ -312,11 +328,13 @@ export function AdminOverview({
             </span>
           </div>
           <div className="mt-4">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">WhatsApp Inquiries</p>
-            <h3 className="mt-1 font-display text-3xl font-black text-foreground">{whatsappEvents.length}</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Direct chats initiated by visitors
+            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+              WhatsApp Inquiries
             </p>
+            <h3 className="mt-1 font-display text-3xl font-black text-foreground">
+              {whatsappEvents.length}
+            </h3>
+            <p className="mt-1 text-xs text-muted-foreground">Direct chats initiated by visitors</p>
           </div>
           <div className="mt-4 flex items-center gap-1 text-xs font-bold text-emerald-800 dark:text-emerald-300 group-hover:underline">
             <span>View WhatsApp chats</span>
@@ -339,11 +357,11 @@ export function AdminOverview({
             </span>
           </div>
           <div className="mt-4">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">Live Visitors</p>
-            <h3 className="mt-1 font-display text-3xl font-black text-foreground">{visitsToday}</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Customer sessions recorded on site
+            <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+              Live Visitors
             </p>
+            <h3 className="mt-1 font-display text-3xl font-black text-foreground">{visitsToday}</h3>
+            <p className="mt-1 text-xs text-muted-foreground">Customer sessions recorded on site</p>
           </div>
           <div className="mt-4 flex items-center gap-1 text-xs font-bold text-purple-800 dark:text-purple-300 group-hover:underline">
             <span>Inspect visitor logs</span>
@@ -418,7 +436,7 @@ export function AdminOverview({
                     >
                       <a
                         href={`https://wa.me/${booking.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-                          `Hello ${booking.name}! We received your banquet booking request (${booking.refCode}) at Laung Laachi Brahmpur.`
+                          `Hello ${booking.name}! We received your banquet booking request (${booking.refCode}) at Laung Laachi Brahmpur.`,
                         )}`}
                         target="_blank"
                         rel="noreferrer"
@@ -467,16 +485,19 @@ export function AdminOverview({
 
               if (evt.type === "banquet_booking") {
                 icon = <PartyPopper className="size-3.5 text-amber-500" />;
-                badgeColor = "border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-200";
+                badgeColor =
+                  "border-amber-500/40 bg-amber-500/10 text-amber-800 dark:text-amber-200";
               } else if (evt.type === "call_click") {
                 icon = <Phone className="size-3.5 text-red-500" />;
                 badgeColor = "border-red-500/40 bg-red-500/10 text-red-800 dark:text-red-200";
               } else if (evt.type === "whatsapp_click") {
                 icon = <MessageCircle className="size-3.5 text-emerald-500" />;
-                badgeColor = "border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200";
+                badgeColor =
+                  "border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200";
               } else if (evt.type === "page_visit") {
                 icon = <Users className="size-3.5 text-purple-500" />;
-                badgeColor = "border-purple-500/40 bg-purple-500/10 text-purple-800 dark:text-purple-200";
+                badgeColor =
+                  "border-purple-500/40 bg-purple-500/10 text-purple-800 dark:text-purple-200";
               }
 
               const timeStr = new Date(evt.timestamp).toLocaleTimeString([], {
@@ -495,7 +516,9 @@ export function AdminOverview({
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-1">
                       <p className="font-bold text-foreground truncate">{evt.title}</p>
-                      <span className="text-[10px] text-muted-foreground whitespace-nowrap">{timeStr}</span>
+                      <span className="text-[10px] text-muted-foreground whitespace-nowrap">
+                        {timeStr}
+                      </span>
                     </div>
                     <p className="text-muted-foreground line-clamp-2 mt-0.5">{evt.description}</p>
                     {evt.metadata?.device && (

@@ -81,7 +81,9 @@ export function AdminPage() {
   const [chimeEnabled, setChimeEnabled] = useState<boolean>(true);
   const [latestAlert, setLatestAlert] = useState<string | null>(null);
   const [isClearDialogOpen, setIsClearDialogOpen] = useState<boolean>(false);
-  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(websiteStatusManager.getStatus());
+  const [siteStatus, setSiteStatus] = useState<WebsiteStatusConfig>(
+    websiteStatusManager.getStatus(),
+  );
 
   // Initialize auth & data
   useEffect(() => {
@@ -150,7 +152,7 @@ export function AdminPage() {
     setLatestAlert(
       updated.enabled
         ? "🟢 Public Website is now ONLINE & accepting customer orders and banquet bookings!"
-        : "🔴 Public Website is now OFFLINE. Visitors see the closed / maintenance screen."
+        : "🔴 Public Website is now OFFLINE. Visitors see the closed / maintenance screen.",
     );
     setTimeout(() => {
       setLatestAlert(null);
@@ -161,7 +163,9 @@ export function AdminPage() {
     activityTracker.clearAllData();
     loadData();
     setIsClearDialogOpen(false);
-    setLatestAlert("🧹 All inquiries, bookings, calls, and customer entries have been cleared successfully.");
+    setLatestAlert(
+      "🧹 All inquiries, bookings, calls, and customer entries have been cleared successfully.",
+    );
     setTimeout(() => {
       setLatestAlert(null);
     }, 6000);
@@ -219,7 +223,10 @@ export function AdminPage() {
             <ArrowLeft className="size-4 group-hover:-translate-x-0.5 transition-transform" />
             <span>Return to Customer Website</span>
           </a>
-          <Badge variant="outline" className="border-gold/40 text-gold text-[10px] font-black uppercase">
+          <Badge
+            variant="outline"
+            className="border-gold/40 text-gold text-[10px] font-black uppercase"
+          >
             Private Staff Link
           </Badge>
         </div>
@@ -244,7 +251,8 @@ export function AdminPage() {
               <div className="mt-3.5 rounded-xl border border-border/80 bg-muted/30 p-2.5 text-[11px] text-muted-foreground text-left flex items-start gap-2">
                 <Info className="size-3.5 text-primary shrink-0 mt-0.5" />
                 <span>
-                  <strong>Customer Notice:</strong> For food menu, table bookings & banquet inquiries, please visit the{" "}
+                  <strong>Customer Notice:</strong> For food menu, table bookings & banquet
+                  inquiries, please visit the{" "}
                   <a href="/" className="text-primary font-bold hover:underline">
                     Customer Website
                   </a>
@@ -341,7 +349,10 @@ export function AdminPage() {
 
         {/* Footer info */}
         <div className="mx-auto text-center text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Laung Laachi Restaurant & Banquet Hall. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Laung Laachi Restaurant & Banquet Hall. All rights
+            reserved.
+          </p>
         </div>
       </div>
     );
@@ -474,7 +485,9 @@ export function AdminPage() {
                     Clear All Enquiries & Entries?
                   </AlertDialogTitle>
                   <AlertDialogDescription className="text-center text-xs text-muted-foreground">
-                    Are you sure you want to delete all banquet hall bookings, WhatsApp clicks, phone call logs, and customer entries? This will clear all data across your admin dashboard.
+                    Are you sure you want to delete all banquet hall bookings, WhatsApp clicks,
+                    phone call logs, and customer entries? This will clear all data across your
+                    admin dashboard.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="mt-4 sm:justify-center gap-2">
@@ -584,10 +597,7 @@ export function AdminPage() {
         {activeTab === "visitors" && <AdminVisitorsLog />}
 
         {activeTab === "settings" && (
-          <AdminSettings
-            onRefresh={loadData}
-            onClearAll={() => setIsClearDialogOpen(true)}
-          />
+          <AdminSettings onRefresh={loadData} onClearAll={() => setIsClearDialogOpen(true)} />
         )}
       </main>
     </div>

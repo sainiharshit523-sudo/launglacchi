@@ -143,8 +143,7 @@ export function GallerySection() {
     }
   };
 
-  const currentPhoto =
-    lightboxIndex !== null ? filteredPhotos[lightboxIndex] ?? null : null;
+  const currentPhoto = lightboxIndex !== null ? (filteredPhotos[lightboxIndex] ?? null) : null;
 
   const handleOpenBooking = (eventType = "Marriage / Wedding Reception") => {
     setSelectedEventType(eventType);
@@ -173,7 +172,9 @@ export function GallerySection() {
               Authentic Photo Gallery of Laung Laachi
             </h2>
             <p className="mt-3 text-base text-muted-foreground sm:text-lg">
-              Explore the genuine restaurant spaces: from our iconic highway facade with folk statues to the air-conditioned Family Cloud Lounge and the Grand Celebration Banquet Hall.
+              Explore the genuine restaurant spaces: from our iconic highway facade with folk
+              statues to the air-conditioned Family Cloud Lounge and the Grand Celebration Banquet
+              Hall.
             </p>
           </div>
 
@@ -224,7 +225,9 @@ export function GallerySection() {
                 Hosting a Marriage, Ring Ceremony, or Family Party?
               </h3>
               <p className="mt-2 text-sm text-muted-foreground sm:text-base leading-relaxed">
-                Celebrate your most cherished moments in our spacious, air-conditioned banquet hall. Equipped with complete stage & floral decor, live Punjabi tandoori buffet catering, sound system, and comfortable AC guest rooms for your outstation family.
+                Celebrate your most cherished moments in our spacious, air-conditioned banquet hall.
+                Equipped with complete stage & floral decor, live Punjabi tandoori buffet catering,
+                sound system, and comfortable AC guest rooms for your outstation family.
               </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-foreground/80">
@@ -286,7 +289,7 @@ export function GallerySection() {
                 variant="outline"
                 onClick={() => {
                   const text = encodeURIComponent(
-                    "Hello Laung Laachi! I would like to inquire about banquet hall booking for marriages/parties in Brahmpur."
+                    "Hello Laung Laachi! I would like to inquire about banquet hall booking for marriages/parties in Brahmpur.",
                   );
                   window.open(`https://wa.me/919915716739?text=${text}`, "_blank");
                 }}
@@ -390,9 +393,7 @@ export function GallerySection() {
 
               {/* Card Footer Content */}
               <div className="flex flex-1 flex-col justify-between p-5">
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {photo.description}
-                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{photo.description}</p>
 
                 <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3">
                   <button

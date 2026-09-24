@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import {
-  ShieldAlert,
-  ShieldCheck,
-  Lock,
-  ArrowRight,
-  ExternalLink,
-  Info,
-} from "lucide-react";
+import { ShieldAlert, ShieldCheck, Lock, ArrowRight, ExternalLink, Info } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -64,8 +57,8 @@ export function StaffAccessModal({ open, onOpenChange }: StaffAccessModalProps) 
           </DialogTitle>
 
           <DialogDescription className="text-xs text-muted-foreground leading-relaxed">
-            This internal portal is reserved exclusively for restaurant management, banquet
-            hall coordinators, and authorized staff.
+            This internal portal is reserved exclusively for restaurant management, banquet hall
+            coordinators, and authorized staff.
           </DialogDescription>
         </DialogHeader>
 

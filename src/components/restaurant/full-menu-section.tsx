@@ -62,7 +62,8 @@ interface CategoryThemeConfig {
 }
 
 const defaultCategoryTheme: CategoryThemeConfig = {
-  gradient: "bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 text-white shadow-md shadow-amber-600/25",
+  gradient:
+    "bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 text-white shadow-md shadow-amber-600/25",
   glow: "glow-amber",
   idleBorder: "border-amber-500/30",
   idleBg: "bg-amber-500/10 hover:bg-amber-500/20",
@@ -78,7 +79,8 @@ const defaultCategoryTheme: CategoryThemeConfig = {
 
 const categoryThemeMap: Record<string, CategoryThemeConfig> = {
   all: {
-    gradient: "bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 text-white shadow-lg shadow-amber-950/40",
+    gradient:
+      "bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 text-white shadow-lg shadow-amber-950/40",
     glow: "glow-amber",
     idleBorder: "border-amber-500/35",
     idleBg: "bg-amber-500/10 hover:bg-amber-500/20",
@@ -92,7 +94,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-amber-500",
   },
   "non-veg-chicken": {
-    gradient: "bg-gradient-to-r from-red-600 via-rose-600 to-orange-600 text-white shadow-lg shadow-red-600/35",
+    gradient:
+      "bg-gradient-to-r from-red-600 via-rose-600 to-orange-600 text-white shadow-lg shadow-red-600/35",
     glow: "glow-red",
     idleBorder: "border-red-500/35",
     idleBg: "bg-red-500/10 hover:bg-red-500/20",
@@ -106,7 +109,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-red-600",
   },
   "non-veg-tandoori": {
-    gradient: "bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white shadow-lg shadow-orange-600/35",
+    gradient:
+      "bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white shadow-lg shadow-orange-600/35",
     glow: "glow-amber",
     idleBorder: "border-orange-500/35",
     idleBg: "bg-orange-500/10 hover:bg-orange-500/20",
@@ -120,7 +124,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-orange-600",
   },
   "non-veg-mutton": {
-    gradient: "bg-gradient-to-r from-rose-900 via-red-900 to-stone-900 text-white shadow-lg shadow-rose-950/40",
+    gradient:
+      "bg-gradient-to-r from-rose-900 via-red-900 to-stone-900 text-white shadow-lg shadow-rose-950/40",
     glow: "glow-rose",
     idleBorder: "border-rose-800/35",
     idleBg: "bg-rose-950/10 hover:bg-rose-950/20",
@@ -134,7 +139,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-rose-800",
   },
   "non-veg-egg": {
-    gradient: "bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 text-slate-950 shadow-lg shadow-yellow-500/35",
+    gradient:
+      "bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 text-slate-950 shadow-lg shadow-yellow-500/35",
     glow: "glow-amber",
     idleBorder: "border-yellow-500/40",
     idleBg: "bg-yellow-500/10 hover:bg-yellow-500/20",
@@ -148,7 +154,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-yellow-500",
   },
   breakfast: {
-    gradient: "bg-gradient-to-r from-amber-500 via-yellow-600 to-amber-600 text-white shadow-lg shadow-amber-500/35",
+    gradient:
+      "bg-gradient-to-r from-amber-500 via-yellow-600 to-amber-600 text-white shadow-lg shadow-amber-500/35",
     glow: "glow-amber",
     idleBorder: "border-amber-500/35",
     idleBg: "bg-amber-500/10 hover:bg-amber-500/20",
@@ -162,7 +169,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-amber-500",
   },
   paneer: {
-    gradient: "bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-lg shadow-emerald-600/35",
+    gradient:
+      "bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-lg shadow-emerald-600/35",
     glow: "glow-emerald",
     idleBorder: "border-emerald-500/35",
     idleBg: "bg-emerald-500/10 hover:bg-emerald-500/20",
@@ -176,7 +184,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-emerald-600",
   },
   "dal-curry": {
-    gradient: "bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 text-white shadow-lg shadow-orange-600/35",
+    gradient:
+      "bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 text-white shadow-lg shadow-orange-600/35",
     glow: "glow-amber",
     idleBorder: "border-orange-500/35",
     idleBg: "bg-orange-500/10 hover:bg-orange-500/20",
@@ -190,7 +199,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-orange-600",
   },
   breads: {
-    gradient: "bg-gradient-to-r from-amber-700 via-stone-700 to-yellow-800 text-white shadow-lg shadow-amber-700/35",
+    gradient:
+      "bg-gradient-to-r from-amber-700 via-stone-700 to-yellow-800 text-white shadow-lg shadow-amber-700/35",
     glow: "glow-amber",
     idleBorder: "border-amber-700/35",
     idleBg: "bg-stone-500/10 hover:bg-stone-500/20",
@@ -204,7 +214,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-amber-700",
   },
   thali: {
-    gradient: "bg-gradient-to-r from-purple-600 via-violet-600 to-amber-600 text-white shadow-lg shadow-purple-600/35",
+    gradient:
+      "bg-gradient-to-r from-purple-600 via-violet-600 to-amber-600 text-white shadow-lg shadow-purple-600/35",
     glow: "glow-purple",
     idleBorder: "border-purple-500/35",
     idleBg: "bg-purple-500/10 hover:bg-purple-500/20",
@@ -218,7 +229,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-purple-600",
   },
   snacks: {
-    gradient: "bg-gradient-to-r from-yellow-600 via-amber-600 to-orange-600 text-white shadow-lg shadow-yellow-600/35",
+    gradient:
+      "bg-gradient-to-r from-yellow-600 via-amber-600 to-orange-600 text-white shadow-lg shadow-yellow-600/35",
     glow: "glow-amber",
     idleBorder: "border-yellow-600/35",
     idleBg: "bg-yellow-500/10 hover:bg-yellow-500/20",
@@ -232,7 +244,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-yellow-600",
   },
   chinese: {
-    gradient: "bg-gradient-to-r from-rose-600 via-red-600 to-fuchsia-600 text-white shadow-lg shadow-rose-600/35",
+    gradient:
+      "bg-gradient-to-r from-rose-600 via-red-600 to-fuchsia-600 text-white shadow-lg shadow-rose-600/35",
     glow: "glow-rose",
     idleBorder: "border-rose-500/35",
     idleBg: "bg-rose-500/10 hover:bg-rose-500/20",
@@ -246,7 +259,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-rose-600",
   },
   rice: {
-    gradient: "bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-white shadow-lg shadow-amber-600/35",
+    gradient:
+      "bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-white shadow-lg shadow-amber-600/35",
     glow: "glow-amber",
     idleBorder: "border-amber-600/35",
     idleBg: "bg-amber-500/10 hover:bg-amber-500/20",
@@ -260,7 +274,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-amber-600",
   },
   beverages: {
-    gradient: "bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 text-white shadow-lg shadow-teal-600/35",
+    gradient:
+      "bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 text-white shadow-lg shadow-teal-600/35",
     glow: "glow-cyan",
     idleBorder: "border-teal-500/35",
     idleBg: "bg-teal-500/10 hover:bg-teal-500/20",
@@ -274,7 +289,8 @@ const categoryThemeMap: Record<string, CategoryThemeConfig> = {
     accentDot: "bg-teal-600",
   },
   desserts: {
-    gradient: "bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 text-white shadow-lg shadow-pink-600/35",
+    gradient:
+      "bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 text-white shadow-lg shadow-pink-600/35",
     glow: "glow-rose",
     idleBorder: "border-pink-500/35",
     idleBg: "bg-pink-500/10 hover:bg-pink-500/20",
@@ -362,7 +378,10 @@ export function FullMenuSection() {
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
-    const relevantItems = dietaryFilter === "all" ? fullMenuList : fullMenuList.filter((i) => i.dietary === dietaryFilter);
+    const relevantItems =
+      dietaryFilter === "all"
+        ? fullMenuList
+        : fullMenuList.filter((i) => i.dietary === dietaryFilter);
     counts["all"] = relevantItems.length;
     relevantItems.forEach((item) => {
       counts[item.categoryId] = (counts[item.categoryId] || 0) + 1;
@@ -397,7 +416,10 @@ export function FullMenuSection() {
             Taste the Authentic Highway Kitchen
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            From clay oven tandoori paranthas and signature <strong className="text-foreground">Paneer Lababdar</strong> to richly spiced <strong className="text-foreground">Punjabi Butter Chicken</strong> and hot <strong className="text-foreground">Gud Wali Chai</strong>.
+            From clay oven tandoori paranthas and signature{" "}
+            <strong className="text-foreground">Paneer Lababdar</strong> to richly spiced{" "}
+            <strong className="text-foreground">Punjabi Butter Chicken</strong> and hot{" "}
+            <strong className="text-foreground">Gud Wali Chai</strong>.
           </p>
 
           {/* Quick trust metrics */}
@@ -439,16 +461,22 @@ export function FullMenuSection() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <div className="flex size-4 items-center justify-center rounded border border-red-600 bg-red-50" title="Non-Vegetarian">
+                  <div
+                    className="flex size-4 items-center justify-center rounded border border-red-600 bg-red-50"
+                    title="Non-Vegetarian"
+                  >
                     <div className="size-2 rounded-full bg-red-600" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-red-600">Specialty Curry</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-red-600">
+                    Specialty Curry
+                  </span>
                 </div>
                 <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl group-hover:text-primary transition-colors">
                   Punjabi Butter Chicken
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                  Tandoor-roasted chicken simmered in a velvety tomato-butter-cashew gravy with fresh cream and kasuri methi.
+                  Tandoor-roasted chicken simmered in a velvety tomato-butter-cashew gravy with
+                  fresh cream and kasuri methi.
                 </p>
                 <div className="mt-4 flex items-center gap-3">
                   <Button
@@ -461,7 +489,12 @@ export function FullMenuSection() {
                   >
                     View Non-Veg Menu
                   </Button>
-                  <Button asChild variant="outline" size="sm" className="border-border hover:border-primary">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="border-border hover:border-primary"
+                  >
                     <a href={restaurant.phoneHref} className="flex items-center gap-1.5">
                       <Phone className="size-3.5 text-primary" />
                       <span>Order Now</span>
@@ -493,16 +526,22 @@ export function FullMenuSection() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <div className="flex size-4 items-center justify-center rounded border border-leaf bg-leaf/10" title="100% Vegetarian">
+                  <div
+                    className="flex size-4 items-center justify-center rounded border border-leaf bg-leaf/10"
+                    title="100% Vegetarian"
+                  >
                     <div className="size-2 rounded-full bg-leaf" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-leaf">Royal Highway Feast</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-leaf">
+                    Royal Highway Feast
+                  </span>
                 </div>
                 <h3 className="mt-2 font-display text-xl font-extrabold text-foreground sm:text-2xl group-hover:text-primary transition-colors">
                   Punjabi Maharaja Thali
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                  Complete royal feast with Paneer Lababdar, Dal Makhani, Mix Veg, Jeera Rice, Tandoori Breads, Raita, and Gulab Jamun.
+                  Complete royal feast with Paneer Lababdar, Dal Makhani, Mix Veg, Jeera Rice,
+                  Tandoori Breads, Raita, and Gulab Jamun.
                 </p>
                 <div className="mt-4 flex items-center gap-3">
                   <Button
@@ -515,7 +554,12 @@ export function FullMenuSection() {
                   >
                     View Thalis & Veg
                   </Button>
-                  <Button asChild variant="outline" size="sm" className="border-border hover:border-primary">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="border-border hover:border-primary"
+                  >
                     <a href={restaurant.phoneHref} className="flex items-center gap-1.5">
                       <Phone className="size-3.5 text-primary" />
                       <span>Order Now</span>
@@ -542,9 +586,13 @@ export function FullMenuSection() {
                   : "text-foreground/75 border border-transparent hover:border-amber-500/30 hover:bg-amber-500/10 hover:text-amber-900 dark:hover:text-amber-200"
               }`}
             >
-              <Utensils className={`size-4 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-115 ${dietaryFilter === "all" ? "text-amber-400" : "text-amber-600"}`} />
+              <Utensils
+                className={`size-4 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-115 ${dietaryFilter === "all" ? "text-amber-400" : "text-amber-600"}`}
+              />
               <span>Complete Menu</span>
-              <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "all" ? "bg-amber-500/25 text-amber-200 border border-amber-500/40" : "bg-muted text-muted-foreground"}`}>
+              <span
+                className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "all" ? "bg-amber-500/25 text-amber-200 border border-amber-500/40" : "bg-muted text-muted-foreground"}`}
+              >
                 {fullMenuList.length}
               </span>
             </button>
@@ -559,11 +607,17 @@ export function FullMenuSection() {
                   : "text-foreground/75 border border-transparent hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-emerald-700 dark:hover:text-emerald-300"
               }`}
             >
-              <div className={`flex size-4 items-center justify-center rounded border ${dietaryFilter === "veg" ? "border-white bg-white/20" : "border-emerald-600 bg-emerald-50"}`}>
-                <div className={`size-2 rounded-full ${dietaryFilter === "veg" ? "bg-white animate-pulse" : "bg-emerald-600"}`} />
+              <div
+                className={`flex size-4 items-center justify-center rounded border ${dietaryFilter === "veg" ? "border-white bg-white/20" : "border-emerald-600 bg-emerald-50"}`}
+              >
+                <div
+                  className={`size-2 rounded-full ${dietaryFilter === "veg" ? "bg-white animate-pulse" : "bg-emerald-600"}`}
+                />
               </div>
               <span>100% Pure Veg</span>
-              <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "veg" ? "bg-white/20 text-white border border-white/20" : "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300"}`}>
+              <span
+                className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "veg" ? "bg-white/20 text-white border border-white/20" : "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300"}`}
+              >
                 {vegCount}
               </span>
             </button>
@@ -578,9 +632,13 @@ export function FullMenuSection() {
                   : "text-foreground/75 border border-transparent hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-700 dark:hover:text-red-300"
               }`}
             >
-              <Flame className={`size-4 transition-transform duration-300 group-hover:scale-125 ${dietaryFilter === "non-veg" ? "text-yellow-200 animate-icon-bounce" : "text-red-600"}`} />
+              <Flame
+                className={`size-4 transition-transform duration-300 group-hover:scale-125 ${dietaryFilter === "non-veg" ? "text-yellow-200 animate-icon-bounce" : "text-red-600"}`}
+              />
               <span>Non-Veg Kitchen</span>
-              <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "non-veg" ? "bg-white/20 text-white border border-white/20" : "bg-red-500/15 text-red-800 dark:text-red-300"}`}>
+              <span
+                className={`rounded-full px-2.5 py-0.5 text-[11px] font-extrabold ${dietaryFilter === "non-veg" ? "bg-white/20 text-white border border-white/20" : "bg-red-500/15 text-red-800 dark:text-red-300"}`}
+              >
                 {nonVegCount}
               </span>
             </button>
@@ -592,7 +650,11 @@ export function FullMenuSection() {
           <div className="mt-5 mx-auto max-w-2xl flex items-center gap-3 rounded-2xl border border-red-500/40 bg-gradient-to-r from-red-950/15 via-rose-950/10 to-orange-950/15 px-4 py-3 text-xs sm:text-sm text-foreground shadow-sm animate-pop-in">
             <Flame className="size-5 shrink-0 text-red-600 animate-icon-bounce" />
             <div>
-              <strong className="font-bold text-red-700 dark:text-red-400">Non-Vegetarian Highway Kitchen:</strong> Handpicked chicken, mutton, and farm-fresh egg curries cooked in distinct utensils and served hot with tandoori breads.
+              <strong className="font-bold text-red-700 dark:text-red-400">
+                Non-Vegetarian Highway Kitchen:
+              </strong>{" "}
+              Handpicked chicken, mutton, and farm-fresh egg curries cooked in distinct utensils and
+              served hot with tandoori breads.
             </div>
           </div>
         )}
@@ -600,7 +662,11 @@ export function FullMenuSection() {
           <div className="mt-5 mx-auto max-w-2xl flex items-center gap-3 rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-950/15 via-teal-950/10 to-green-950/15 px-4 py-3 text-xs sm:text-sm text-foreground shadow-sm animate-pop-in">
             <ShieldCheck className="size-5 shrink-0 text-emerald-600 animate-icon-bounce" />
             <div>
-              <strong className="font-bold text-emerald-700 dark:text-emerald-400">100% Vegetarian Selection:</strong> Made with pure desi ghee, fresh daily malai paneer, slow-simmered lentils, and garden vegetables.
+              <strong className="font-bold text-emerald-700 dark:text-emerald-400">
+                100% Vegetarian Selection:
+              </strong>{" "}
+              Made with pure desi ghee, fresh daily malai paneer, slow-simmered lentils, and garden
+              vegetables.
             </div>
           </div>
         )}
@@ -643,7 +709,9 @@ export function FullMenuSection() {
                     : "border-border/80 bg-background/80 text-muted-foreground hover:border-amber-400 hover:text-amber-600 hover:bg-amber-500/10 hover:scale-102"
                 }`}
               >
-                <Star className={`size-3.5 transition-transform duration-300 group-hover:rotate-180 ${onlyBestsellers ? "fill-current text-slate-950" : "text-amber-500"}`} />
+                <Star
+                  className={`size-3.5 transition-transform duration-300 group-hover:rotate-180 ${onlyBestsellers ? "fill-current text-slate-950" : "text-amber-500"}`}
+                />
                 Bestsellers Only
               </button>
 
@@ -656,11 +724,17 @@ export function FullMenuSection() {
                     : "border-border/80 bg-background/80 text-muted-foreground hover:border-purple-400 hover:text-purple-600 hover:bg-purple-500/10 hover:scale-102"
                 }`}
               >
-                <Sparkles className={`size-3.5 transition-transform duration-300 group-hover:scale-125 ${onlySignatures ? "text-yellow-200" : "text-purple-500"}`} />
+                <Sparkles
+                  className={`size-3.5 transition-transform duration-300 group-hover:scale-125 ${onlySignatures ? "text-yellow-200" : "text-purple-500"}`}
+                />
                 House Signatures
               </button>
 
-              {(searchQuery || selectedCategory !== "all" || onlyBestsellers || onlySignatures || dietaryFilter !== "all") && (
+              {(searchQuery ||
+                selectedCategory !== "all" ||
+                onlyBestsellers ||
+                onlySignatures ||
+                dietaryFilter !== "all") && (
                 <button
                   type="button"
                   onClick={clearFilters}
@@ -736,7 +810,9 @@ export function FullMenuSection() {
                   >
                     <Icon
                       className={`size-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6 ${
-                        isSelected ? `${theme.activeIconColor} animate-icon-bounce` : theme.iconColor
+                        isSelected
+                          ? `${theme.activeIconColor} animate-icon-bounce`
+                          : theme.iconColor
                       }`}
                     />
                     <span>{cat.name}</span>
@@ -758,48 +834,61 @@ export function FullMenuSection() {
         </div>
 
         {/* Dynamic Category Description Banner Themed to Selected Category */}
-        {activeCategoryObj && selectedCategory !== "all" && (() => {
-          const theme = categoryThemeMap[selectedCategory] || defaultCategoryTheme;
-          const Icon = iconMap[activeCategoryObj.iconName] || Utensils;
+        {activeCategoryObj &&
+          selectedCategory !== "all" &&
+          (() => {
+            const theme = categoryThemeMap[selectedCategory] || defaultCategoryTheme;
+            const Icon = iconMap[activeCategoryObj.iconName] || Utensils;
 
-          return (
-            <div className={`mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border ${theme.bannerBorder} ${theme.bannerGradient} p-4 sm:p-5 shadow-sm backdrop-blur-md animate-pop-in`}>
-              <div className="flex items-center gap-3.5">
-                <div className={`grid size-11 shrink-0 place-items-center rounded-xl bg-card border ${theme.idleBorder} ${theme.iconColor} shadow-xs`}>
-                  <Icon className="size-6 animate-icon-bounce" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className={`size-2 rounded-full ${theme.accentDot}`} />
-                    <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
-                      {activeCategoryObj.name}
-                    </h3>
+            return (
+              <div
+                className={`mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border ${theme.bannerBorder} ${theme.bannerGradient} p-4 sm:p-5 shadow-sm backdrop-blur-md animate-pop-in`}
+              >
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className={`grid size-11 shrink-0 place-items-center rounded-xl bg-card border ${theme.idleBorder} ${theme.iconColor} shadow-xs`}
+                  >
+                    <Icon className="size-6 animate-icon-bounce" />
                   </div>
-                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
-                    {activeCategoryObj.description}
-                  </p>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className={`size-2 rounded-full ${theme.accentDot}`} />
+                      <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
+                        {activeCategoryObj.name}
+                      </h3>
+                    </div>
+                    <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
+                      {activeCategoryObj.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                  <span className="rounded-full bg-card/90 border border-border px-3.5 py-1 text-xs font-bold text-foreground shadow-xs">
+                    {filteredItems.length} {filteredItems.length === 1 ? "dish" : "dishes"}{" "}
+                    available
+                  </span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
-                <span className="rounded-full bg-card/90 border border-border px-3.5 py-1 text-xs font-bold text-foreground shadow-xs">
-                  {filteredItems.length} {filteredItems.length === 1 ? "dish" : "dishes"} available
-                </span>
-              </div>
-            </div>
-          );
-        })()}
+            );
+          })()}
 
         {/* Results Bar */}
         <div className="mt-6 flex items-center justify-between text-xs font-medium text-muted-foreground sm:text-sm">
           <span>
-            Showing <strong className="font-bold text-foreground">{filteredItems.length}</strong> delicious items
-            {dietaryFilter !== "all" && ` in ${dietaryFilter === "veg" ? "100% Pure Veg" : "Non-Veg"}`}
+            Showing <strong className="font-bold text-foreground">{filteredItems.length}</strong>{" "}
+            delicious items
+            {dietaryFilter !== "all" &&
+              ` in ${dietaryFilter === "veg" ? "100% Pure Veg" : "Non-Veg"}`}
             {selectedCategory !== "all" && ` · ${activeCategoryObj?.name}`}
             {searchQuery && ` matching "${searchQuery}"`}
           </span>
           <span className="hidden sm:inline-flex items-center gap-2 text-xs">
-            <span className="flex items-center gap-1"><span className="size-2 rounded-full bg-leaf" /> Veg</span>
-            <span className="flex items-center gap-1"><span className="size-2 rounded-full bg-red-600" /> Non-Veg</span>
+            <span className="flex items-center gap-1">
+              <span className="size-2 rounded-full bg-leaf" /> Veg
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="size-2 rounded-full bg-red-600" /> Non-Veg
+            </span>
           </span>
         </div>
 
@@ -815,9 +904,12 @@ export function FullMenuSection() {
         ) : (
           <div className="mt-12 rounded-2xl border border-dashed border-border p-12 text-center bg-card">
             <Utensils className="mx-auto size-12 text-muted-foreground/50" />
-            <h3 className="mt-4 font-display text-xl font-bold text-foreground">No dishes matched your filter</h3>
+            <h3 className="mt-4 font-display text-xl font-bold text-foreground">
+              No dishes matched your filter
+            </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Try adjusting your search terms, changing the category, or switching between Veg & Non-Veg.
+              Try adjusting your search terms, changing the category, or switching between Veg &
+              Non-Veg.
             </p>
             <Button onClick={clearFilters} variant="outline" className="mt-5">
               Reset Filters & Show All
@@ -839,7 +931,8 @@ export function FullMenuSection() {
                 Planning Your Stop in Brahmpur? Check Live Photos on Google Maps
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-primary-foreground/85 sm:text-base">
-                View real customer photos of our clay tandoor cooking, indoor family dining halls, and highway seating directly on Google Maps before you arrive.
+                View real customer photos of our clay tandoor cooking, indoor family dining halls,
+                and highway seating directly on Google Maps before you arrive.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-primary-foreground/80">
                 <span className="flex items-center gap-1 font-bold text-secondary">
@@ -875,7 +968,10 @@ export function FullMenuSection() {
                 variant="outline"
                 className="h-12 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground hover:text-foreground text-sm font-semibold"
               >
-                <a href={restaurant.phoneHref} className="inline-flex items-center justify-center gap-2">
+                <a
+                  href={restaurant.phoneHref}
+                  className="inline-flex items-center justify-center gap-2"
+                >
                   <Phone className="size-4" />
                   <span>Call {restaurant.phoneDisplay}</span>
                 </a>
@@ -909,199 +1005,267 @@ const dishThemes: Record<string, DishTheme> = {
   "saffron-amber": {
     id: "saffron-amber",
     name: "Saffron Amber",
-    cardBg: "bg-gradient-to-br from-amber-500/12 via-orange-500/8 to-amber-500/[0.03] dark:from-amber-950/45 dark:via-stone-900/60 dark:to-orange-950/25",
+    cardBg:
+      "bg-gradient-to-br from-amber-500/12 via-orange-500/8 to-amber-500/[0.03] dark:from-amber-950/45 dark:via-stone-900/60 dark:to-orange-950/25",
     borderColor: "border-amber-400/60 dark:border-amber-600/50",
     hoverBorder: "hover:border-amber-500 dark:hover:border-amber-400",
     hoverShadow: "hover:shadow-xl hover:shadow-amber-500/25",
     topRibbon: "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400",
-    priceBadge: "bg-gradient-to-r from-amber-500 via-amber-600 to-orange-500 text-white font-black shadow-sm border border-amber-400/50",
+    priceBadge:
+      "bg-gradient-to-r from-amber-500 via-amber-600 to-orange-500 text-white font-black shadow-sm border border-amber-400/50",
     categoryTag: "bg-amber-500/20 text-amber-950 dark:text-amber-200 border border-amber-500/35",
     titleHover: "group-hover:text-amber-600 dark:group-hover:text-amber-400",
-    callBtn: "bg-amber-500/15 text-amber-900 dark:text-amber-200 hover:bg-amber-500 hover:text-stone-950 border border-amber-400/40",
-    badgeStyle: "bg-amber-100 text-amber-950 border-amber-300 dark:bg-amber-950/70 dark:text-amber-200 dark:border-amber-700",
+    callBtn:
+      "bg-amber-500/15 text-amber-900 dark:text-amber-200 hover:bg-amber-500 hover:text-stone-950 border border-amber-400/40",
+    badgeStyle:
+      "bg-amber-100 text-amber-950 border-amber-300 dark:bg-amber-950/70 dark:text-amber-200 dark:border-amber-700",
     cornerGlow: "from-amber-400/25 to-transparent",
   },
   // 2. Fiery Ruby Red (Dhaba Kadhai / Kolhapuri / Spicy Gravies)
   "ruby-red": {
     id: "ruby-red",
     name: "Fiery Ruby Red",
-    cardBg: "bg-gradient-to-br from-red-500/12 via-rose-500/8 to-red-500/[0.03] dark:from-red-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
+    cardBg:
+      "bg-gradient-to-br from-red-500/12 via-rose-500/8 to-red-500/[0.03] dark:from-red-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
     borderColor: "border-red-400/60 dark:border-red-600/50",
     hoverBorder: "hover:border-red-500 dark:hover:border-red-400",
     hoverShadow: "hover:shadow-xl hover:shadow-red-500/25",
     topRibbon: "bg-gradient-to-r from-red-600 via-rose-600 to-orange-500",
-    priceBadge: "bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-black shadow-sm border border-red-500/50",
+    priceBadge:
+      "bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white font-black shadow-sm border border-red-500/50",
     categoryTag: "bg-red-500/20 text-red-950 dark:text-red-200 border border-red-500/35",
     titleHover: "group-hover:text-red-600 dark:group-hover:text-red-400",
-    callBtn: "bg-red-500/15 text-red-900 dark:text-red-200 hover:bg-red-600 hover:text-white border border-red-400/40",
-    badgeStyle: "bg-red-100 text-red-950 border-red-300 dark:bg-red-950/70 dark:text-red-200 dark:border-red-700",
+    callBtn:
+      "bg-red-500/15 text-red-900 dark:text-red-200 hover:bg-red-600 hover:text-white border border-red-400/40",
+    badgeStyle:
+      "bg-red-100 text-red-950 border-red-300 dark:bg-red-950/70 dark:text-red-200 dark:border-red-700",
     cornerGlow: "from-red-400/25 to-transparent",
   },
   // 3. Spiced Masala Orange (Tari Wala Highway / Desi Curries)
   "spiced-orange": {
     id: "spiced-orange",
     name: "Spiced Masala Orange",
-    cardBg: "bg-gradient-to-br from-orange-500/12 via-amber-500/8 to-orange-500/[0.03] dark:from-orange-950/45 dark:via-stone-900/60 dark:to-amber-950/25",
+    cardBg:
+      "bg-gradient-to-br from-orange-500/12 via-amber-500/8 to-orange-500/[0.03] dark:from-orange-950/45 dark:via-stone-900/60 dark:to-amber-950/25",
     borderColor: "border-orange-400/60 dark:border-orange-600/50",
     hoverBorder: "hover:border-orange-500 dark:hover:border-orange-400",
     hoverShadow: "hover:shadow-xl hover:shadow-orange-500/25",
     topRibbon: "bg-gradient-to-r from-orange-500 via-amber-500 to-red-500",
-    priceBadge: "bg-gradient-to-r from-orange-500 via-amber-600 to-orange-600 text-white font-black shadow-sm border border-orange-400/50",
-    categoryTag: "bg-orange-500/20 text-orange-950 dark:text-orange-200 border border-orange-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-orange-500 via-amber-600 to-orange-600 text-white font-black shadow-sm border border-orange-400/50",
+    categoryTag:
+      "bg-orange-500/20 text-orange-950 dark:text-orange-200 border border-orange-500/35",
     titleHover: "group-hover:text-orange-600 dark:group-hover:text-orange-400",
-    callBtn: "bg-orange-500/15 text-orange-900 dark:text-orange-200 hover:bg-orange-600 hover:text-white border border-orange-400/40",
-    badgeStyle: "bg-orange-100 text-orange-950 border-orange-300 dark:bg-orange-950/70 dark:text-orange-200 dark:border-orange-700",
+    callBtn:
+      "bg-orange-500/15 text-orange-900 dark:text-orange-200 hover:bg-orange-600 hover:text-white border border-orange-400/40",
+    badgeStyle:
+      "bg-orange-100 text-orange-950 border-orange-300 dark:bg-orange-950/70 dark:text-orange-200 dark:border-orange-700",
     cornerGlow: "from-orange-400/25 to-transparent",
   },
   // 4. Charred Tikka Coral (Tikka Masala / Smoky Tandoor)
   "coral-rose": {
     id: "coral-rose",
     name: "Charred Tikka Coral",
-    cardBg: "bg-gradient-to-br from-rose-500/12 via-pink-500/8 to-rose-500/[0.03] dark:from-rose-950/45 dark:via-stone-900/60 dark:to-pink-950/25",
+    cardBg:
+      "bg-gradient-to-br from-rose-500/12 via-pink-500/8 to-rose-500/[0.03] dark:from-rose-950/45 dark:via-stone-900/60 dark:to-pink-950/25",
     borderColor: "border-rose-400/60 dark:border-rose-600/50",
     hoverBorder: "hover:border-rose-500 dark:hover:border-rose-400",
     hoverShadow: "hover:shadow-xl hover:shadow-rose-500/25",
     topRibbon: "bg-gradient-to-r from-rose-500 via-pink-500 to-orange-400",
-    priceBadge: "bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 text-white font-black shadow-sm border border-rose-400/50",
+    priceBadge:
+      "bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 text-white font-black shadow-sm border border-rose-400/50",
     categoryTag: "bg-rose-500/20 text-rose-950 dark:text-rose-200 border border-rose-500/35",
     titleHover: "group-hover:text-rose-600 dark:group-hover:text-rose-400",
-    callBtn: "bg-rose-500/15 text-rose-900 dark:text-rose-200 hover:bg-rose-600 hover:text-white border border-rose-400/40",
-    badgeStyle: "bg-rose-100 text-rose-950 border-rose-300 dark:bg-rose-950/70 dark:text-rose-200 dark:border-rose-700",
+    callBtn:
+      "bg-rose-500/15 text-rose-900 dark:text-rose-200 hover:bg-rose-600 hover:text-white border border-rose-400/40",
+    badgeStyle:
+      "bg-rose-100 text-rose-950 border-rose-300 dark:bg-rose-950/70 dark:text-rose-200 dark:border-rose-700",
     cornerGlow: "from-rose-400/25 to-transparent",
   },
   // 5. Royal Shahi Maroon (Murgh Rara / Mutton Rogan Josh / Keema)
   "royal-maroon": {
     id: "royal-maroon",
     name: "Royal Shahi Maroon",
-    cardBg: "bg-gradient-to-br from-red-900/12 via-amber-800/8 to-stone-800/[0.03] dark:from-red-950/50 dark:via-stone-900/60 dark:to-amber-950/30",
+    cardBg:
+      "bg-gradient-to-br from-red-900/12 via-amber-800/8 to-stone-800/[0.03] dark:from-red-950/50 dark:via-stone-900/60 dark:to-amber-950/30",
     borderColor: "border-red-700/50 dark:border-red-800/60",
     hoverBorder: "hover:border-red-700 dark:hover:border-red-500",
     hoverShadow: "hover:shadow-xl hover:shadow-red-900/30",
     topRibbon: "bg-gradient-to-r from-red-800 via-amber-700 to-stone-800",
-    priceBadge: "bg-gradient-to-r from-red-800 via-red-900 to-stone-900 text-amber-200 font-black shadow-sm border border-red-700/50",
+    priceBadge:
+      "bg-gradient-to-r from-red-800 via-red-900 to-stone-900 text-amber-200 font-black shadow-sm border border-red-700/50",
     categoryTag: "bg-red-800/20 text-red-950 dark:text-red-200 border border-red-700/35",
     titleHover: "group-hover:text-red-800 dark:group-hover:text-red-400",
-    callBtn: "bg-red-800/15 text-red-950 dark:text-red-200 hover:bg-red-800 hover:text-white border border-red-700/40",
-    badgeStyle: "bg-red-100 text-red-950 border-red-400 dark:bg-red-950/70 dark:text-red-200 dark:border-red-700",
+    callBtn:
+      "bg-red-800/15 text-red-950 dark:text-red-200 hover:bg-red-800 hover:text-white border border-red-700/40",
+    badgeStyle:
+      "bg-red-100 text-red-950 border-red-400 dark:bg-red-950/70 dark:text-red-200 dark:border-red-700",
     cornerGlow: "from-red-800/25 to-transparent",
   },
   // 6. Clay Tandoor Flame (Tandoori Murgh / Kebabs / Charcoal Grill)
   "sunset-flame": {
     id: "sunset-flame",
     name: "Clay Tandoor Flame",
-    cardBg: "bg-gradient-to-br from-orange-600/12 via-red-600/8 to-amber-500/[0.03] dark:from-orange-950/50 dark:via-stone-900/60 dark:to-red-950/30",
+    cardBg:
+      "bg-gradient-to-br from-orange-600/12 via-red-600/8 to-amber-500/[0.03] dark:from-orange-950/50 dark:via-stone-900/60 dark:to-red-950/30",
     borderColor: "border-orange-500/60 dark:border-orange-600/50",
     hoverBorder: "hover:border-orange-600 dark:hover:border-orange-400",
     hoverShadow: "hover:shadow-xl hover:shadow-orange-600/30",
     topRibbon: "bg-gradient-to-r from-amber-600 via-orange-600 to-red-600",
-    priceBadge: "bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white font-black shadow-sm border border-orange-500/50",
-    categoryTag: "bg-orange-600/20 text-orange-950 dark:text-orange-200 border border-orange-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white font-black shadow-sm border border-orange-500/50",
+    categoryTag:
+      "bg-orange-600/20 text-orange-950 dark:text-orange-200 border border-orange-500/35",
     titleHover: "group-hover:text-orange-700 dark:group-hover:text-orange-400",
-    callBtn: "bg-orange-600/15 text-orange-950 dark:text-orange-200 hover:bg-orange-600 hover:text-white border border-orange-500/40",
-    badgeStyle: "bg-orange-100 text-orange-950 border-orange-300 dark:bg-orange-950/70 dark:text-orange-200 dark:border-orange-700",
+    callBtn:
+      "bg-orange-600/15 text-orange-950 dark:text-orange-200 hover:bg-orange-600 hover:text-white border border-orange-500/40",
+    badgeStyle:
+      "bg-orange-100 text-orange-950 border-orange-300 dark:bg-orange-950/70 dark:text-orange-200 dark:border-orange-700",
     cornerGlow: "from-orange-500/25 to-transparent",
   },
   // 7. Malai Emerald & Mint (Paneer Butter / Palak / Fresh Saag)
   "mint-emerald": {
     id: "mint-emerald",
     name: "Malai Emerald & Mint",
-    cardBg: "bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-emerald-500/[0.03] dark:from-emerald-950/45 dark:via-stone-900/60 dark:to-teal-950/25",
+    cardBg:
+      "bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-emerald-500/[0.03] dark:from-emerald-950/45 dark:via-stone-900/60 dark:to-teal-950/25",
     borderColor: "border-emerald-400/60 dark:border-emerald-600/50",
     hoverBorder: "hover:border-emerald-500 dark:hover:border-emerald-400",
     hoverShadow: "hover:shadow-xl hover:shadow-emerald-500/25",
     topRibbon: "bg-gradient-to-r from-emerald-600 via-teal-500 to-green-500",
-    priceBadge: "bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 text-white font-black shadow-sm border border-emerald-400/50",
-    categoryTag: "bg-emerald-500/20 text-emerald-950 dark:text-emerald-200 border border-emerald-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 text-white font-black shadow-sm border border-emerald-400/50",
+    categoryTag:
+      "bg-emerald-500/20 text-emerald-950 dark:text-emerald-200 border border-emerald-500/35",
     titleHover: "group-hover:text-emerald-600 dark:group-hover:text-emerald-400",
-    callBtn: "bg-emerald-500/15 text-emerald-900 dark:text-emerald-200 hover:bg-emerald-600 hover:text-white border border-emerald-400/40",
-    badgeStyle: "bg-emerald-100 text-emerald-950 border-emerald-300 dark:bg-emerald-950/70 dark:text-emerald-200 dark:border-emerald-700",
+    callBtn:
+      "bg-emerald-500/15 text-emerald-900 dark:text-emerald-200 hover:bg-emerald-600 hover:text-white border border-emerald-400/40",
+    badgeStyle:
+      "bg-emerald-100 text-emerald-950 border-emerald-300 dark:bg-emerald-950/70 dark:text-emerald-200 dark:border-emerald-700",
     cornerGlow: "from-emerald-400/25 to-transparent",
   },
   // 8. Maharaja Purple (Royal Thali / Shahi Biryani / Royal Platters)
   "royal-purple": {
     id: "royal-purple",
     name: "Maharaja Purple",
-    cardBg: "bg-gradient-to-br from-purple-500/12 via-violet-500/8 to-amber-500/[0.03] dark:from-purple-950/45 dark:via-stone-900/60 dark:to-violet-950/25",
+    cardBg:
+      "bg-gradient-to-br from-purple-500/12 via-violet-500/8 to-amber-500/[0.03] dark:from-purple-950/45 dark:via-stone-900/60 dark:to-violet-950/25",
     borderColor: "border-purple-400/60 dark:border-purple-600/50",
     hoverBorder: "hover:border-purple-500 dark:hover:border-purple-400",
     hoverShadow: "hover:shadow-xl hover:shadow-purple-500/25",
     topRibbon: "bg-gradient-to-r from-purple-600 via-violet-600 to-amber-500",
-    priceBadge: "bg-gradient-to-r from-purple-600 via-violet-600 to-purple-700 text-white font-black shadow-sm border border-purple-400/50",
-    categoryTag: "bg-purple-500/20 text-purple-950 dark:text-purple-200 border border-purple-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-purple-600 via-violet-600 to-purple-700 text-white font-black shadow-sm border border-purple-400/50",
+    categoryTag:
+      "bg-purple-500/20 text-purple-950 dark:text-purple-200 border border-purple-500/35",
     titleHover: "group-hover:text-purple-600 dark:group-hover:text-purple-400",
-    callBtn: "bg-purple-500/15 text-purple-900 dark:text-purple-200 hover:bg-purple-600 hover:text-white border border-purple-400/40",
-    badgeStyle: "bg-purple-100 text-purple-950 border-purple-300 dark:bg-purple-950/70 dark:text-purple-200 dark:border-purple-700",
+    callBtn:
+      "bg-purple-500/15 text-purple-900 dark:text-purple-200 hover:bg-purple-600 hover:text-white border border-purple-400/40",
+    badgeStyle:
+      "bg-purple-100 text-purple-950 border-purple-300 dark:bg-purple-950/70 dark:text-purple-200 dark:border-purple-700",
     cornerGlow: "from-purple-400/25 to-transparent",
   },
   // 9. Crisp Butter Yellow (Tandoori Paranthas / Desi Ghee Dals)
   "butter-yellow": {
     id: "butter-yellow",
     name: "Crisp Butter Yellow",
-    cardBg: "bg-gradient-to-br from-yellow-500/15 via-amber-500/8 to-yellow-500/[0.03] dark:from-yellow-950/45 dark:via-stone-900/60 dark:to-amber-950/25",
+    cardBg:
+      "bg-gradient-to-br from-yellow-500/15 via-amber-500/8 to-yellow-500/[0.03] dark:from-yellow-950/45 dark:via-stone-900/60 dark:to-amber-950/25",
     borderColor: "border-yellow-400/70 dark:border-yellow-600/50",
     hoverBorder: "hover:border-yellow-500 dark:hover:border-yellow-400",
     hoverShadow: "hover:shadow-xl hover:shadow-yellow-500/25",
     topRibbon: "bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600",
-    priceBadge: "bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-stone-950 font-black shadow-sm border border-yellow-400/60",
-    categoryTag: "bg-yellow-500/20 text-yellow-950 dark:text-yellow-200 border border-yellow-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-stone-950 font-black shadow-sm border border-yellow-400/60",
+    categoryTag:
+      "bg-yellow-500/20 text-yellow-950 dark:text-yellow-200 border border-yellow-500/35",
     titleHover: "group-hover:text-yellow-700 dark:group-hover:text-yellow-400",
-    callBtn: "bg-yellow-500/15 text-yellow-950 dark:text-yellow-200 hover:bg-yellow-500 hover:text-stone-950 border border-yellow-400/40",
-    badgeStyle: "bg-yellow-100 text-yellow-950 border-yellow-300 dark:bg-yellow-950/70 dark:text-yellow-200 dark:border-yellow-700",
+    callBtn:
+      "bg-yellow-500/15 text-yellow-950 dark:text-yellow-200 hover:bg-yellow-500 hover:text-stone-950 border border-yellow-400/40",
+    badgeStyle:
+      "bg-yellow-100 text-yellow-950 border-yellow-300 dark:bg-yellow-950/70 dark:text-yellow-200 dark:border-yellow-700",
     cornerGlow: "from-yellow-400/25 to-transparent",
   },
   // 10. Desi Chinese Wok (Chilli Chicken / Manchurian / Hakka)
   "wok-fuchsia": {
     id: "wok-fuchsia",
     name: "Desi Chinese Wok",
-    cardBg: "bg-gradient-to-br from-fuchsia-500/12 via-rose-500/8 to-fuchsia-500/[0.03] dark:from-fuchsia-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
+    cardBg:
+      "bg-gradient-to-br from-fuchsia-500/12 via-rose-500/8 to-fuchsia-500/[0.03] dark:from-fuchsia-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
     borderColor: "border-fuchsia-400/60 dark:border-fuchsia-600/50",
     hoverBorder: "hover:border-fuchsia-500 dark:hover:border-fuchsia-400",
     hoverShadow: "hover:shadow-xl hover:shadow-fuchsia-500/25",
     topRibbon: "bg-gradient-to-r from-rose-600 via-fuchsia-600 to-red-600",
-    priceBadge: "bg-gradient-to-r from-rose-600 via-fuchsia-600 to-pink-600 text-white font-black shadow-sm border border-fuchsia-400/50",
-    categoryTag: "bg-fuchsia-500/20 text-fuchsia-950 dark:text-fuchsia-200 border border-fuchsia-500/35",
+    priceBadge:
+      "bg-gradient-to-r from-rose-600 via-fuchsia-600 to-pink-600 text-white font-black shadow-sm border border-fuchsia-400/50",
+    categoryTag:
+      "bg-fuchsia-500/20 text-fuchsia-950 dark:text-fuchsia-200 border border-fuchsia-500/35",
     titleHover: "group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400",
-    callBtn: "bg-fuchsia-500/15 text-fuchsia-950 dark:text-fuchsia-200 hover:bg-fuchsia-600 hover:text-white border border-fuchsia-400/40",
-    badgeStyle: "bg-fuchsia-100 text-fuchsia-950 border-fuchsia-300 dark:bg-fuchsia-950/70 dark:text-fuchsia-200 dark:border-fuchsia-700",
+    callBtn:
+      "bg-fuchsia-500/15 text-fuchsia-950 dark:text-fuchsia-200 hover:bg-fuchsia-600 hover:text-white border border-fuchsia-400/40",
+    badgeStyle:
+      "bg-fuchsia-100 text-fuchsia-950 border-fuchsia-300 dark:bg-fuchsia-950/70 dark:text-fuchsia-200 dark:border-fuchsia-700",
     cornerGlow: "from-fuchsia-400/25 to-transparent",
   },
   // 11. Refreshing Lassi Teal (Cold Beverages / Sharbat / Jaljeera)
   "ocean-teal": {
     id: "ocean-teal",
     name: "Refreshing Lassi Teal",
-    cardBg: "bg-gradient-to-br from-teal-500/12 via-cyan-500/8 to-teal-500/[0.03] dark:from-teal-950/45 dark:via-stone-900/60 dark:to-cyan-950/25",
+    cardBg:
+      "bg-gradient-to-br from-teal-500/12 via-cyan-500/8 to-teal-500/[0.03] dark:from-teal-950/45 dark:via-stone-900/60 dark:to-cyan-950/25",
     borderColor: "border-teal-400/60 dark:border-teal-600/50",
     hoverBorder: "hover:border-teal-500 dark:hover:border-teal-400",
     hoverShadow: "hover:shadow-xl hover:shadow-teal-500/25",
     topRibbon: "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500",
-    priceBadge: "bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 text-white font-black shadow-sm border border-teal-400/50",
+    priceBadge:
+      "bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-600 text-white font-black shadow-sm border border-teal-400/50",
     categoryTag: "bg-teal-500/20 text-teal-950 dark:text-teal-200 border border-teal-500/35",
     titleHover: "group-hover:text-teal-600 dark:group-hover:text-teal-400",
-    callBtn: "bg-teal-500/15 text-teal-900 dark:text-teal-200 hover:bg-teal-600 hover:text-white border border-teal-400/40",
-    badgeStyle: "bg-teal-100 text-teal-900 border-teal-300 dark:bg-teal-950/70 dark:text-teal-200 dark:border-teal-700",
+    callBtn:
+      "bg-teal-500/15 text-teal-900 dark:text-teal-200 hover:bg-teal-600 hover:text-white border border-teal-400/40",
+    badgeStyle:
+      "bg-teal-100 text-teal-900 border-teal-300 dark:bg-teal-950/70 dark:text-teal-200 dark:border-teal-700",
     cornerGlow: "from-teal-400/25 to-transparent",
   },
   // 12. Rose & Rabri Sweet Pink (Gulab Jamun / Kheer / Kulfi)
   "rose-pink": {
     id: "rose-pink",
     name: "Rose & Rabri Sweet Pink",
-    cardBg: "bg-gradient-to-br from-pink-500/12 via-rose-500/8 to-pink-500/[0.03] dark:from-pink-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
+    cardBg:
+      "bg-gradient-to-br from-pink-500/12 via-rose-500/8 to-pink-500/[0.03] dark:from-pink-950/45 dark:via-stone-900/60 dark:to-rose-950/25",
     borderColor: "border-pink-400/60 dark:border-pink-600/50",
     hoverBorder: "hover:border-pink-500 dark:hover:border-pink-400",
     hoverShadow: "hover:shadow-xl hover:shadow-pink-500/25",
     topRibbon: "bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500",
-    priceBadge: "bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 text-white font-black shadow-sm border border-pink-400/50",
+    priceBadge:
+      "bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 text-white font-black shadow-sm border border-pink-400/50",
     categoryTag: "bg-pink-500/20 text-pink-950 dark:text-pink-200 border border-pink-500/35",
     titleHover: "group-hover:text-pink-600 dark:group-hover:text-pink-400",
-    callBtn: "bg-pink-500/15 text-pink-900 dark:text-pink-200 hover:bg-pink-600 hover:text-white border border-pink-400/40",
-    badgeStyle: "bg-pink-100 text-pink-900 border-pink-300 dark:bg-pink-950/70 dark:text-pink-200 dark:border-pink-700",
+    callBtn:
+      "bg-pink-500/15 text-pink-900 dark:text-pink-200 hover:bg-pink-600 hover:text-white border border-pink-400/40",
+    badgeStyle:
+      "bg-pink-100 text-pink-900 border-pink-300 dark:bg-pink-950/70 dark:text-pink-200 dark:border-pink-700",
     cornerGlow: "from-pink-400/25 to-transparent",
   },
 };
 
 const categoryPaletteOrder: Record<string, string[]> = {
-  "non-veg-chicken": ["saffron-amber", "ruby-red", "spiced-orange", "coral-rose", "royal-maroon", "sunset-flame"],
-  "non-veg-tandoori": ["sunset-flame", "ruby-red", "spiced-orange", "coral-rose", "saffron-amber", "royal-maroon"],
+  "non-veg-chicken": [
+    "saffron-amber",
+    "ruby-red",
+    "spiced-orange",
+    "coral-rose",
+    "royal-maroon",
+    "sunset-flame",
+  ],
+  "non-veg-tandoori": [
+    "sunset-flame",
+    "ruby-red",
+    "spiced-orange",
+    "coral-rose",
+    "saffron-amber",
+    "royal-maroon",
+  ],
   "non-veg-mutton": ["royal-maroon", "ruby-red", "spiced-orange", "coral-rose", "saffron-amber"],
   "non-veg-egg": ["spiced-orange", "saffron-amber", "butter-yellow", "coral-rose", "ruby-red"],
   breakfast: ["butter-yellow", "saffron-amber", "spiced-orange", "mint-emerald", "royal-maroon"],
@@ -1132,9 +1296,11 @@ const categoryPaletteOrder: Record<string, string[]> = {
 
 function EnhancedMenuItemCard({ item, index = 0 }: { item: MenuItem; index?: number }) {
   const isNonVeg = item.dietary === "non-veg";
-  const palette = categoryPaletteOrder[item.categoryId] || categoryPaletteOrder.all;
-  const themeKey = palette[index % palette.length] || "saffron-amber";
-  const theme = dishThemes[themeKey] || dishThemes["saffron-amber"];
+  const palette = categoryPaletteOrder[item.categoryId] ?? categoryPaletteOrder["all"] ?? [];
+  const themeKey =
+    (palette.length > 0 ? palette[index % palette.length] : undefined) ?? "saffron-amber";
+  const defaultTheme = dishThemes["saffron-amber"]!;
+  const theme = dishThemes[themeKey] ?? defaultTheme;
 
   return (
     <article
@@ -1163,14 +1329,14 @@ function EnhancedMenuItemCard({ item, index = 0 }: { item: MenuItem; index?: num
               aria-label={isNonVeg ? "Non-Vegetarian" : "Vegetarian"}
             >
               <div
-                className={`size-2 rounded-full ${
-                  isNonVeg ? "bg-red-600" : "bg-emerald-600"
-                }`}
+                className={`size-2 rounded-full ${isNonVeg ? "bg-red-600" : "bg-emerald-600"}`}
               />
             </div>
             <span
               className={`text-[10px] font-black uppercase tracking-wider ${
-                isNonVeg ? "text-red-600 dark:text-red-400" : "text-emerald-700 dark:text-emerald-400"
+                isNonVeg
+                  ? "text-red-600 dark:text-red-400"
+                  : "text-emerald-700 dark:text-emerald-400"
               }`}
             >
               {isNonVeg ? "Non-Veg" : "Pure Veg"}
@@ -1225,7 +1391,9 @@ function EnhancedMenuItemCard({ item, index = 0 }: { item: MenuItem; index?: num
 
         {/* Category tag */}
         <div className="mt-1.5 flex items-center gap-2">
-          <span className={`inline-block text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md ${theme.categoryTag}`}>
+          <span
+            className={`inline-block text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md ${theme.categoryTag}`}
+          >
             {item.category}
           </span>
         </div>
@@ -1238,7 +1406,10 @@ function EnhancedMenuItemCard({ item, index = 0 }: { item: MenuItem; index?: num
 
       {/* Card Footer: Portion & Quick Order */}
       <div className="relative z-10 mt-5 border-t border-border/70 pt-3 flex items-center justify-between gap-2 text-xs">
-        <span className="text-muted-foreground font-medium truncate text-[11px] sm:text-xs" title={item.portion}>
+        <span
+          className="text-muted-foreground font-medium truncate text-[11px] sm:text-xs"
+          title={item.portion}
+        >
           {item.portion || "Standard serving"}
         </span>
         <a

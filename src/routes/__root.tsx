@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Laung Laachi Brahmpur" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-          ],
+    ],
     links: [
       {
         rel: "stylesheet",
@@ -90,7 +90,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Bricolage+Grotesque:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Bricolage+Grotesque:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
